@@ -1,7 +1,7 @@
 class ActivitiesController < ApplicationController
   def show
-    @activity = Activity(params[:id])
+    @activity = Activity.find(params[:id])
   end
 
-  
+
 end
