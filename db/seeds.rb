@@ -31,4 +31,12 @@ activity4.save!
 activity5 = Activity.new(name: "Peinture", description: "Stinking bishop cauliflower cheese pepper jack. Red leicester goat cheese triangles roquefort pepper jack dolcelatte fromage cheeseburger. Pecorino chalk and cheese fondue bocconcini the big cheese swiss goat cheese triangles. Airedale dolcelatte who moved my cheese.", setting: "intérieur")
 activity5.save!
 
-puts "Created #{Activity.count} activities"
+favorite1 = Favorite.new(activity: activity5, user: Elisa)
+favorite1.save!
+
+favorite1 = Favorite.new(activity: activity2, user: Elisa)
+favorite1.save!
+
+puts "Created #{Activity.count} activities and #{Favorite.count} favorites."
+
+# elisa_slot1 = Slot.new(start_at: )
