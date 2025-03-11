@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :activities do
     resources :favorites, only: [:create]
   end
+  resources :favorites, only: [:destroy]
 
   get "/planning", to: "pages#planning"
   get "favorites" => "favorites#index"
