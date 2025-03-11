@@ -1,3 +1,11 @@
-<%= @favorite.each do |favorite| %>
-  <%= favorite.name %>
+<h1>Mes activitées favorites</h1>
+
+<p><%= link_to "Retour aux activités", activities_path %></p>
+
+<% @favorites.each do |favorite| %>
+  <p><%= favorite.activity.name %></p>
+  <p><%= truncate(favorite.activity.description, length: 100, omission: '[...]') %></p>
+  <p><%= favorite.activity.minimum_age %></p>
+  <p><%= favorite.activity.duration %></p>
+  <p><%= favorite.activity.setting %></p>
 <% end %>
