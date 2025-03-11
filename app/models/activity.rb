@@ -6,6 +6,6 @@ class Activity < ApplicationRecord
   validates :description, presence: true
   validates :setting, presence: true
   validates :setting, inclusion: { in: %w(intérieur extérieur) }
-  validates :minimum_age, numericality: { only_integer: true }
-  validates :duration, numericality: { only_integer: true }
+  # validates :minimum_age, numericality: { only_integer: true }
+  # validates :duration, numericality: { only_integer: true }
 end
