@@ -10,6 +10,7 @@
 
 User.destroy_all
 Activity.destroy_all
+Slot.destroy_all
 
 puts "Cleaned my database"
 
@@ -36,6 +37,14 @@ favorite1.save!
 
 favorite1 = Favorite.new(activity: activity2, user: Elisa)
 favorite1.save!
+
+start_at_8h30 = DateTime.now.change({ hour: 8, min: 30 })
+end_at_10 = DateTime.now.change({ hour: 10 })
+slot1 = Slot.create!(start_at: start_at_8h30, end_at: end_at_10, user: Elisa)
+
+start_at_10 = DateTime.now.change({ hour: 10 })
+end_at_11h30 = DateTime.now.change({ hour: 11, min: 30 })
+slot2 = Slot.create!(start_at: start_at_10, end_at: end_at_11h30, user: Elisa)
 
 puts "Created #{Activity.count} activities and #{Favorite.count} favorites."
 
