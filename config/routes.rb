@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
+
   get "activities", to: "activities#index"
   get "activities/:id", to: "activities#show", as: :activity
 
