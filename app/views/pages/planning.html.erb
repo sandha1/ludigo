@@ -1,0 +1,11 @@
+<h1>Planning de la semaine</h1>
+
+<%= calendar(number_of_days: 5, attribute: :start_at, end_attribute: :end_at) do |date| %>
+  <%= date %>
+<% end %>
+
+<% @slots.each do |slot| %>
+  <div>
+    <%= slot.user.email %>
+  </div>
+<% end %>
