@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>ACTIVITES</h1>
+    <div class="row justify-content-center">
+      <% if @activities %>
+        <% @activities.each do |activity| %>
+          <div class="card-trip-infos">
+            <h2><%= activity.name %></h2>
+            <div class="px-3">
+              <p class="mb-2"><%= activity.description[0..110] %>...</p>
+            </div>
+          </div>
+          <%= link_to("More infos", activity_path(activity), class:"btn btn-primary") %>
+          <% end %>
+      <% else %>
+        <p class="text-center mt-3">👀 Sorry, there are no results for your query.</p>
+      <% end %>
+    </div>
+</div>
