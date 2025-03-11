@@ -3,9 +3,11 @@
 <p><%= link_to "Retour aux activités", activities_path %></p>
 
 <% @favorites.each do |favorite| %>
-  <p><%= favorite.activity.name %></p>
-  <p><%= truncate(favorite.activity.description, length: 100, omission: '[...]') %></p>
+  <p><%= link_to favorite.activity.name, activity_path(favorite.activity) %></p>
   <p><%= favorite.activity.minimum_age %></p>
   <p><%= favorite.activity.duration %></p>
   <p><%= favorite.activity.setting %></p>
+  <%= link_to "Delete",
+  favorite_path(favorite),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
 <% end %>
