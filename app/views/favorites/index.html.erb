@@ -7,4 +7,7 @@
   <p><%= favorite.activity.minimum_age %></p>
   <p><%= favorite.activity.duration %></p>
   <p><%= favorite.activity.setting %></p>
+  <%= link_to "Delete",
+  favorite_path(favorite),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
 <% end %>
