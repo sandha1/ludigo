@@ -1,38 +1,91 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-danger navbar-dark">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+        <!-- Toggle button -->
+        <button data-mdb-button-init class="navbar-toggler" type="button" data-mdb-collapse-init aria-label="Toggle navigation"
+        aria-controls="navbarSupportedContent" aria-expanded="false" data-mdb-target="#navbarSupportedContent" >
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+
+            <!-- Icons -->
+            <ul class="navbar-nav d-flex flex-row me-1">
+                <li class="nav-item me-3 me-lg-0"  >
+                <%= image_tag "home_navbar.png", alt: "Logo", class: "logo" %>
+                    <%# <a class="nav-link mx-1 text-white"> %>
+                </li>
+                <li class="nav-item me-3 me-lg-0">
+                    <%= image_tag "home_navbar.png", class: "nav-link mx-1", alt: "Logo" %>
+                </li>
+                <li class="nav-item me-3 me-lg-0">
+                    <a class="nav-link mx-1 text-white" href="#"><i class="fas fa-image"></i></a>
+                </li>
+                <li class="nav-item me-3 me-lg-0">
+                    <a class="nav-link mx-1 text-white" href="#"><i class="fab fa-google-plus-g"></i></a>
+                </li>
+                <li class="nav-item me-3 me-lg-0">
+                    <a class="nav-link mx-1 text-white" href="#"><i class="far fa-calendar-alt"></i></a>
+                </li>
+                <li class="nav-item me-3 me-lg-0">
+                    <a class="nav-link mx-1 text-white" href="#"><i class="fas fa-align-justify"></i></a>
+                </li>
+                <li class="nav-item me-3 me-lg-0">
+                    <a class="nav-link mx-1 text-white" href="#"><i class="fas fa-download"></i></a>
+                </li>
+                <li class="nav-item me-3 me-lg-0">
+                    <a class="nav-link mx-1 text-white" href="#"><i class="fas fa-edit"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+
+
+
+
+
+
+<%# <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <% end %>
+      <%# <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+    <%# <% end %>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <%# <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button>
+    </button> %>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <%# <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item active">
+          <%# <li class="nav-item active">
             <%= link_to "Home", "#", class: "nav-link" %>
-          </li>
+          <%# </li>
           <li class="nav-item">
             <%= link_to "Messages", "#", class: "nav-link" %>
-          </li>
+          <%# </li>
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
-          </a>
+          <%# </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
+              <%# <%= link_to "Another action", "#", class: "dropdown-item" %>
+              <%# <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+            <%# </div>
           </li>
         <% else %>
-          <li class="nav-item">
+          <%# <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
+          <%# </li>
         <% end %>
       </ul>
-    </div>
+    <%# </div>
   </div>
-</div>
+</div>  %>
