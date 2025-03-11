@@ -4,8 +4,72 @@
   <%= date %>
 <% end %>
 
+
+<div>
+  <% @slots.each do |slot| %>
+    <div class="d-flex">
+      <div>
+        <% ds = DateTime.parse((slot.start_at).to_s) %>
+        <% de = DateTime.parse((slot.end_at).to_s) %>
+        <p>
+          <%= ds.hour %>h<%= ds.min %> - <%= de.hour %>h<%= de.min %>
+        </p>
+      </div>
+      <div>
+        <% if slot.activity.nil? %>
+          <%# <span class="ps-3">Add an activity</span> %>
+          <span class="ps-3">
+            <button type="button" class="btn btn-primary px-5" data-bs-toggle="modal" data-bs-target="#<%= dom_id(slot) %>">
+              +
+            </button></span>
+        <% else %>
+          <span class="ps-3"><%= slot.activity.name %></span>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+
+
+
+<!-- Modal -->
 <% @slots.each do |slot| %>
-  <div>
-    <%= slot.user.email %>
+  <div class="modal fade" id="<%= dom_id(slot) %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Ajoute une activité</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <% ds = DateTime.parse((slot.start_at).to_s) %>
+          <% de = DateTime.parse((slot.end_at).to_s) %>
+          <h3><%= ds.hour %>h<%= ds.min %> - <%= de.hour %>h<%= de.min %></h3>
+
+          <% @favorites.each do |favorite| %>
+            <div class="card mb-2">
+              <div class="card-body">
+
+                  <div class="d-flex justify-content-between">
+                    <h5 class="card-title"><%= favorite.activity.name %></h5>
+                    <%= link_to update_slot_path(slot, activity_id: favorite.activity.id), data: { turbo_method: :patch } do %>
+                      <i class="fa-solid fa-plus"></i>
+                    <% end %>
+                  </div>
+
+                  <p class="card-text"><%= favorite.activity.description[0..110] %></p>
+              </div>
+            </div>
+          <% end %>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>
