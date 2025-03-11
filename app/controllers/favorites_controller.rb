@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
   # before_action :set_activity, only: [:create]
 
   def index
-    @favorites = Favorite.all
+    @favorites = Favorite.where(user: current_user)
   end
 
   # def create
