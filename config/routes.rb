@@ -16,4 +16,5 @@ Rails.application.routes.draw do
 
   get "/planning", to: "pages#planning"
   get "favorites" => "favorites#index"
+  patch "/slots/:id", to: "slots#update", as: :update_slot
 end
