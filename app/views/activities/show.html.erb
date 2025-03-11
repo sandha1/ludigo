@@ -5,3 +5,14 @@
 <p><%= @activity.setting %></p>
 <p><%= @activity.minimum_age ? @activity.minimum_age : "Aucun âge minimum requis" %></p>
 <p><%= @activity.duration ? @activity.duration : "durée indéterminée" %></p>
+
+<div data-controller="favorites">
+  <!-- <button class="btn btn-primary"
+      data-action="click->favorites#toggle"
+      data-url="<%= activity_path(@activity) %>"
+      data-favorites-target="favorite">
+        Ajouter aux favoris
+  </button> -->
+
+  <%= link_to "Ajouter aux favoris", activity_favorites_path(@activity), data: { turbo_method: :post }, class: "btn btn-primary" %>
+</div>

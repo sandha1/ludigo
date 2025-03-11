@@ -6,14 +6,18 @@ class FavoritesController < ApplicationController
     @favorites = Favorite.where(user: current_user)
   end
 
-  # def create
-  #   @favorite = favorite.activity.new(user: current_user)
-  #   if @favorite.save
-  #     redirect_to favorites_path, notice: 'Activitée ajoutée avec succès!'
-  #   else
-  #     render :new
-  #   end
-  # end
+  def create
+
+    @favorite = Favorite.new
+    @favorite.activity = Activity.find(params[:activity_id])
+    @favorite.user = current_user
+    
+    if @favorite.save
+      redirect_to favorites_path, notice: 'Activitée ajoutée avec succès!'
+    else
+      render :new
+    end
+  end
 
   # private
 

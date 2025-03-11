@@ -13,7 +13,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  resources :activities do
+    resources :favorites, only: [:create]
+  end
 
   get "/planning", to: "pages#planning"
   get "favorites" => "favorites#index"
+
 end
