@@ -2,8 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   get "activities", to: "activities#index"
-  get "activities/:id", to: "activities#show"
-
+  get "activities/:id", to: "activities#show", as: :activity
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
