@@ -19,6 +19,14 @@ class Activity < ApplicationRecord
   # validates :minimum_age, numericality: { only_integer: true }
   # validates :duration, numericality: { only_integer: true }
 
+  def Activity.search_with_filters(query, setting)
+    results = search_by_setting(query)
+
+    results = results.where(setting: setting) if setting.present?
+    results
+  end
+
+
   after_save :set_photo, if: -> { saved_change_to_name? || !photo.attached? }
 
   private

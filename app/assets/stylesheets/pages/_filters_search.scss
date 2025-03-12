@@ -1,0 +1,17 @@
+.settings {
+  margin-top: 10px;
+}
+
+.setting-link {
+  display: inline-block;
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 15px;
+  text-decoration: none;
+}
+
+.setting-link:hover {
+  background-color: #e0e0e0;
+}
