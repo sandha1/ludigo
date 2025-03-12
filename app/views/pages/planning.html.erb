@@ -1,37 +1,50 @@
-<h1>Planning de la semaine</h1>
+<h1 class="text-center mt-3">Planning de la semaine</h1>
 
 <%= render SimpleCalendar::BusinessWeekCalendar.new(self, number_of_days: 5, attribute: :start_at, end_attribute: :end_at) do |date| %>
-  <%= link_to date.day, "/planning?start_date=#{date}", class:"text-decoration-none" %>
+  <%= link_to date.day, "/planning?start_date=#{date}", class:"date-circle" %>
 <% end %>
 
 
-<div>
+<div class="container">
   <% @slots.each do |slot| %>
-    <div class="d-flex">
+
+    <div class="d-flex border justify-content-between py-4 mb-3 px-3 align-items-center">
+
       <div>
         <% ds = DateTime.parse((slot.start_at).to_s) %>
         <% de = DateTime.parse((slot.end_at).to_s) %>
-        <p>
-          <%= ds.hour %>h<%= ds.min %> - <%= de.hour %>h<%= de.min %>
+        <p class="mb-0 text-center">
+          <% if ds.min.zero? %>
+            <span><%= ds.hour %>h</span>
+          <% else %>
+            <span><%= ds.hour %>h<%= ds.min %></span>
+          <% end %>
+        </p>
+        <p class="mb-0 text-center">-</p>
+        <p class="mb-0 text-center">
+          <% if de.min.zero? %>
+            <span><%= de.hour %>h</span>
+          <% else %>
+            <span><%= de.hour %>h<%= de.min %></span>
+          <% end %>
         </p>
       </div>
-      <div>
-        <% if slot.activity.nil? %>
-          <%# <span class="ps-3">Add an activity</span> %>
-          <span class="ps-3">
-            <button type="button" class="btn btn-primary px-5" data-bs-toggle="modal" data-bs-target="#<%= dom_id(slot) %>">
-              +
-            </button>
-          </span>
-        <% else %>
-          <span class="ps-3">
-            <button type="button" class="btn btn-primary px-5" data-bs-toggle="modal" data-bs-target="#<%= dom_id(slot) %>">
+
+      <% if slot.activity.nil? %>
+        <div class="d-flex justify-content-center w-100">
+          <button type="button" style="background: #003049; color: white; width: 250px;" class="btn py-4" data-bs-toggle="modal" data-bs-target="#<%= dom_id(slot) %>">
+            +
+          </button>
+        </div>
+      <% else %>
+          <div class="d-flex justify-content-center w-100">
+            <button type="button" style="background: #003049; color: white; width: 250px;"  class="btn py-4" data-bs-toggle="modal" data-bs-target="#<%= dom_id(slot) %>">
               <%= slot.activity.name %>
             </button>
-          </span>
-        <% end %>
-      </div>
+          </div>
+      <% end %>
     </div>
+
   <% end %>
 </div>
 
