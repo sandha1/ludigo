@@ -12,9 +12,9 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find(params[:id])
   end
 
-  def create
-    raise
-  end
+  # def create
+  #   raise
+  # end
 
   def set_to_favorite
     @activity = Activity.find(params[:id])

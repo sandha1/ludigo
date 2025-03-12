@@ -54,6 +54,7 @@ gem "cloudinary"
 gem "simple_calendar"
 gem "pg_search"
 gem "nokogiri"
+gem "ruby-openai"
 
 group :development, :test do
   gem "dotenv-rails"
