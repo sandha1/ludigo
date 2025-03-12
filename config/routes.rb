@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   get "activities/:id", to: "activities#show", as: :activity
 
   resources :activities do
-    resources :favorites, only: [:create]
+    resources :favorites, only: [:create] do
+      collection do
+        post :toggle
+      end
+    end
   end
 
   resources :favorites, only: [:destroy]
