@@ -12,16 +12,36 @@
       <ul class="navbar-nav me-auto">
         <%# if user_signed_in? %>
           <li class="nav-item active">
-            <%= image_tag "home_navbar.png", class: "navbar-icon" %>
+            <%= link_to root_path, class: "nav-link" do %>
+            <%= image_tag "home-navbar.png", class: "navbar-icon" %>
+            <% end %>
           </li>
+
           <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
+            <%= link_to planning_path, class: "nav-link" do %>
+            <%= image_tag "calendar.png", class: "navbar-icon" %>
+            <% end %>
           </li>
+
+          <li class="nav-item">
+            <%= link_to activities_path, class: "nav-link" do %>
+            <%= image_tag "search.png", class: "navbar-icon" %>
+            <% end %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to favorites_path, class: "nav-link" do %>
+            <%= image_tag "empty-heart.png", class: "navbar-icon" %>
+            <% end %>
+          </li>
+
+
           <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <%= image_tag "settings.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
+              <%= link_to "Rechercher", activities_path, class: "dropdown-item" %>
+              <%= link_to "mon planning", planning_path, class: "dropdown-item" %>
+              <%= link_to "mes favoris", favorites_path, class: "dropdown-item" %>
               <%= link_to "Log out", "#", class: "dropdown-item", data: {turbo_method: :delete} %>
               <%# link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
             </div>
