@@ -13,7 +13,5 @@
       data-favorites-target="favorite">
         Ajouter aux favoris
   </button> -->
-
   <%= link_to "Ajouter aux favoris", activity_favorites_path(@activity), data: { turbo_method: :post }, class: "btn btn-primary" %>
-  <%= link_to "Retour à la liste d'activités", activities_path, class: "btn btn-primary" %>
 </div>
