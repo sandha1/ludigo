@@ -46,6 +46,14 @@ start_at_10 = DateTime.now.change({ hour: 10 })
 end_at_11h30 = DateTime.now.change({ hour: 11, min: 30 })
 slot2 = Slot.create!(start_at: start_at_10, end_at: end_at_11h30, user: Elisa)
 
+start_at_13h30 = DateTime.now.change({ hour: 13, min: 30 })
+end_at_15 = DateTime.now.change({ hour: 15 })
+slot3 = Slot.create!(start_at: start_at_13h30, end_at: end_at_15, user: Elisa)
+
+start_at_15 = DateTime.now.change({ hour: 15 })
+end_at_16h30 = DateTime.now.change({ hour: 16, min: 30 })
+slot4 = Slot.create!(start_at: start_at_15, end_at: end_at_16h30, user: Elisa)
+
 puts "Created #{Activity.count} activities and #{Favorite.count} favorites."
 
 # elisa_slot1 = Slot.new(start_at: )

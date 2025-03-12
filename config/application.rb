@@ -29,5 +29,7 @@ module Ludigo
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.time_zone = "Paris"
+    config.beginning_of_week = :monday
   end
 end
