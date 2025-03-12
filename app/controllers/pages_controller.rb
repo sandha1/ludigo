@@ -1,7 +1,22 @@
+require "open-uri"
+
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
+    location_url = "http://dataservice.accuweather.com/locations/v1/search?q=paris&apikey=#{ENV["APIKEY"]}"
+    location_key = JSON.parse(URI.parse(location_url).read)[0]["Key"]
+
+    daily_url = "http://dataservice.accuweather.com/forecasts/v1/daily/1day/623?apikey=#{ENV["APIKEY"]}"
+    @daily_weather = JSON.parse(URI.parse(daily_url).read)["DailyForecasts"][0]["Day"]
+
+    if @daily_weather["Icon"] < 10
+      @icon_url = "https://developer.accuweather.com/sites/default/files/0#{@daily_weather["Icon"]}-s.png"
+    else
+      @icon_url = "https://developer.accuweather.com/sites/default/files/#{@daily_weather["Icon"]}-s.png"
+    end
+
+    # @daily_temperature = @daily_weather["Temperature"]
   end
 
   def planning
