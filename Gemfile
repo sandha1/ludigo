@@ -53,6 +53,7 @@ gem "sassc-rails"
 gem "cloudinary"
 gem "simple_calendar"
 gem "pg_search"
+gem "nokogiri"
 
 group :development, :test do
   gem "dotenv-rails"
