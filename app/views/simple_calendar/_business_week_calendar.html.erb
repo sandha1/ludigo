@@ -1,37 +1,37 @@
 <div class="simple-calendar">
   <div class="calendar-heading">
     <span class="calendar-title">
-      <%= t('simple_calendar.week', default: 'Week') %>
+      <%= t('simple_calendar.week', default: '') %>
     </span>
 
-    <nav>
-      <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
-      <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view %>
-      <%#= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
-      <%= link_to t('simple_calendar.next', default: 'Next'), planning_path(start_date: date_range.first + 1.week) %>
-    </nav>
+    <div class="d-flex justify-content-between">
+      <%= link_to t('simple_calendar.previous', default: '<<'), calendar.url_for_previous_view, class:"text-decoration-none ms-2" %>
+      <%= link_to t('simple_calendar.today', default: ''), calendar.url_for_today_view, class:"text-decoration-none" %>
+      <%= link_to t('simple_calendar.next', default: '>>'), planning_path(start_date: date_range.first + 1.week), class:"text-decoration-none me-2" %>
+    </div>
   </div>
-  
 
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <% date_range.slice(0, 7).each do |day| %>
-          <th><%= t('date.abbr_day_names')[day.wday] %></th>
-        <% end %>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% date_range.each_slice(7) do |week| %>
+  <div class="container">
+    <table class="table table-striped">
+      <thead>
         <tr>
-          <% week.each do |day| %>
-            <%= content_tag :td, class: calendar.td_classes_for(day) do %>
-              <% instance_exec(day, calendar.sorted_events_for(day), &passed_block) %>
-            <% end %>
+          <% date_range.slice(0, 7).each do |day| %>
+            <th class="text-center"><%= t('date.abbr_day_names')[day.wday] %></th>
           <% end %>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+
+      <tbody>
+        <% date_range.each_slice(7) do |week| %>
+          <tr>
+            <% week.each do |day| %>
+              <%= content_tag :td, class: calendar.td_classes_for(day) do %>
+                <% instance_exec(day, calendar.sorted_events_for(day), &passed_block) %>
+              <% end %>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
