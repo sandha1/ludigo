@@ -27,7 +27,7 @@ class Activity < ApplicationRecord
   end
 
 
-  after_save :set_photo, if: -> { saved_change_to_name? || !photo.attached? }
+  # after_save :set_photo, if: -> { saved_change_to_name? || !photo.attached? }
 
   private
 
