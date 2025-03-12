@@ -17,6 +17,9 @@ class ActivitiesController < ApplicationController
     @activity.favorite = true
     @activity.save
     redirect_to activities_path
+
+    if @activity.favorite.user == true
+    end
   end
 
 end
