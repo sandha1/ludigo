@@ -7,9 +7,11 @@
     <nav>
       <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
       <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view %>
-      <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_today_view %>
+      <%#= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
+      <%= link_to t('simple_calendar.next', default: 'Next'), planning_path(start_date: date_range.first + 1.week) %>
     </nav>
   </div>
+  
 
   <table class="table table-striped">
     <thead>
