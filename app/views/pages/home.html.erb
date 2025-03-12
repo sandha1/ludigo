@@ -2,7 +2,7 @@
 <p>Find me in app/views/pages/home.html.erb</p>
 
 <%= @daily_weather["IconPhrase"] %>
-<img src="#{@icon_url}">
+<img src="<%= @icon_url %>">
 
 <%# https://developer.accuweather.com/sites/default/files/#{@daily_weather["Icon"]}-s.png %>
 <%# "Day"=>{"Icon"=>7, "IconPhrase"=>"Cloudy", "HasPrecipitation"=>true, "PrecipitationType"=>"Rain", "PrecipitationIntensity"=>"Light"} %>

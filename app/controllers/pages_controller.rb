@@ -10,7 +10,11 @@ class PagesController < ApplicationController
     daily_url = "http://dataservice.accuweather.com/forecasts/v1/daily/1day/623?apikey=#{ENV["APIKEY"]}"
     @daily_weather = JSON.parse(URI.parse(daily_url).read)["DailyForecasts"][0]["Day"]
 
-    @icon_url = "https://developer.accuweather.com/sites/default/files/#{@daily_weather["Icon"]}-s.png"
+    if @daily_weather["Icon"] < 10
+      @icon_url = "https://developer.accuweather.com/sites/default/files/0#{@daily_weather["Icon"]}-s.png"
+    else
+      @icon_url = "https://developer.accuweather.com/sites/default/files/#{@daily_weather["Icon"]}-s.png"
+    end
   end
 
   def planning
