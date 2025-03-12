@@ -15,6 +15,8 @@ class PagesController < ApplicationController
     else
       @icon_url = "https://developer.accuweather.com/sites/default/files/#{@daily_weather["Icon"]}-s.png"
     end
+
+    # @daily_temperature = @daily_weather["Temperature"]
   end
 
   def planning
