@@ -1,12 +1,30 @@
 class ActivitiesController < ApplicationController
 
-    def index
-      if params[:query].present?
-        @activities = Activity.search_by_name_and_description(params[:query])
-      else
-      @activities = Activity.all
-      end
+  # def index
+  #   @activities = Activity.all
+
+  #   if params[:query].present?
+  #     @activities = @activities.search_by_name_and_description(params[:query])
+  #   end
+
+  #   if params[:setting].present?
+  #     @activities = @activities.where(setting: params[:setting])
+  #   end
+  # end
+
+  def index
+    @activities = Activity.all
+    @settings = Activity.distinct.pluck(:setting)
+
+    if params[:query].present?
+      @activities = @activities.search_by_name_and_description(params[:query])
     end
+
+    if params[:setting].present?
+      @activities = @activities.where(setting: params[:setting])
+    end
+  end
+
 
   def show
     @activity = Activity.find(params[:id])
@@ -25,5 +43,9 @@ class ActivitiesController < ApplicationController
     if @activity.favorite.user == true
     end
   end
+
+
+
+
 
 end
