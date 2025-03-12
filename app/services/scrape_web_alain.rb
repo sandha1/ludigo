@@ -55,6 +55,6 @@ class ScrapeWebAlain
 
     game_doc = Nokogiri::HTML.parse(html)
     description = game_doc.search(".description").text.strip
-    # description.gsub("regex", "\r")
+    description.gsub(/\t/, "\r")
   end
 end
