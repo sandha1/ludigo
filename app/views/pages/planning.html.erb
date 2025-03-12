@@ -21,9 +21,14 @@
           <span class="ps-3">
             <button type="button" class="btn btn-primary px-5" data-bs-toggle="modal" data-bs-target="#<%= dom_id(slot) %>">
               +
-            </button></span>
+            </button>
+          </span>
         <% else %>
-          <span class="ps-3"><%= slot.activity.name %></span>
+          <span class="ps-3">
+            <button type="button" class="btn btn-primary px-5" data-bs-toggle="modal" data-bs-target="#<%= dom_id(slot) %>">
+              <%= slot.activity.name %>
+            </button>
+          </span>
         <% end %>
       </div>
     </div>
