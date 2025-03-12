@@ -1,7 +1,7 @@
 <h1>Planning de la semaine</h1>
 
 <%= render SimpleCalendar::BusinessWeekCalendar.new(self, number_of_days: 5, attribute: :start_at, end_attribute: :end_at) do |date| %>
-  <%= link_to date, "/planning?start_date=#{date}" %>
+  <%= link_to date.day, "/planning?start_date=#{date}", class:"text-decoration-none" %>
 <% end %>
 
 
