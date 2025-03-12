@@ -52,6 +52,8 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 gem "cloudinary"
 gem "simple_calendar"
+gem "pg_search"
+gem "nokogiri"
 
 group :development, :test do
   gem "dotenv-rails"

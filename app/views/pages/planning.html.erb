@@ -1,7 +1,7 @@
 <h1>Planning de la semaine</h1>
 
-<%= calendar(number_of_days: 5, attribute: :start_at, end_attribute: :end_at) do |date| %>
-  <%= date %>
+<%= render SimpleCalendar::BusinessWeekCalendar.new(self, number_of_days: 5, attribute: :start_at, end_attribute: :end_at) do |date| %>
+  <%= link_to date.day, "/planning?start_date=#{date}", class:"text-decoration-none" %>
 <% end %>
 
 
@@ -21,9 +21,14 @@
           <span class="ps-3">
             <button type="button" class="btn btn-primary px-5" data-bs-toggle="modal" data-bs-target="#<%= dom_id(slot) %>">
               +
-            </button></span>
+            </button>
+          </span>
         <% else %>
-          <span class="ps-3"><%= slot.activity.name %></span>
+          <span class="ps-3">
+            <button type="button" class="btn btn-primary px-5" data-bs-toggle="modal" data-bs-target="#<%= dom_id(slot) %>">
+              <%= slot.activity.name %>
+            </button>
+          </span>
         <% end %>
       </div>
     </div>
