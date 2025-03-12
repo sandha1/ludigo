@@ -1,0 +1,10 @@
+<div class="col-sm-8">
+              <%= form_with url: activities_path, method: :get, class: "d-flex" do %>
+                <%= text_field_tag :query,
+                      params[:query],
+                      class: "form-control",
+                      placeholder: "Rechercher une activité"
+                  %>
+                <%= submit_tag "Search", name: "", class: "btn-blue" %>
+              <% end %>
+            </div>
