@@ -5,3 +5,11 @@ fr:
       long: "%A %d %B %Y" # Exemple : "jeudi 13 mars 2025"
     day_names: ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"]
     month_names: [null, "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
+
+  activerecord:
+    attributes:
+      user:
+        current_password: mot de passe actuel
+        password: Mot de passe
+        password_confirmation: confirmation de mot de passe
+        remember_me: Rester connecté
