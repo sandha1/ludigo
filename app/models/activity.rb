@@ -42,7 +42,7 @@ class Activity < ApplicationRecord
       end
   end
 
-  # after_save :set_photo, if: -> { saved_change_to_name? || !photo.attached? }
+   after_save :set_photo, if: -> { saved_change_to_name? || !photo.attached? }
 
   private
 
@@ -54,7 +54,7 @@ class Activity < ApplicationRecord
     begin
       response = client.images.generate(
         parameters: {
-          prompt: "Can you generate an image that corresponds to the children game named #{name}. If however you find out that it does not follow content policy guidelines, please generate another image which has the same theme and that respects the content policy guidelines.",
+          prompt: "Generate a colorful, playful, and vibrant illustration based on the following children's camp activity #{name}. Each image should visually represent the essence of the #{name} in a fun, child-friendly way, without including people or anything strange. Keep the illustrations bright, inviting, and perfect for a children's camp atmosphere.",
           size: "256x256",
         }
       )
