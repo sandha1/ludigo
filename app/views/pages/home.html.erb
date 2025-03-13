@@ -9,21 +9,19 @@
 
   <h2 class="text-center mb-3"><%= I18n.l(Date.today, format: :long) %></h2>
 
-  <div class="d-flex justify-content-center">
-    <div class="d-flex flex-column align-items-center">
+    <div class="d-flex flex-column align-items-start">
       <% if @today_slots.blank? %>
         <p class="text-center">Rien de prévu pour le moment.</p>
       <% else %>
         <% @today_slots.each do |slot| %>
           <% if slot.activity.nil? %>
-            <p class="btn py-4">Pas d'activité prévue</p>
+            <p class="py-4">Pas d'activité prévue</p>
           <% else %>
-            <p class="slot-empty btn py-4"><%= slot.activity.name %></p>
+            <p class="py-4"><%= slot.activity.name %></p>
           <% end %>
         <% end %>
       <% end %>
     </div>
-  </div>
 
   <%#= @daily_weather %>
   <%# <img src="<%= @icon_url %>

@@ -32,13 +32,13 @@
 
       <% if slot.activity.nil? %>
         <div class="d-flex justify-content-center w-100">
-          <button type="button" style="background: #003049; color: white; width: 250px;" class="btn py-4" data-bs-toggle="modal" data-bs-target="#<%= dom_id(slot) %>">
+          <button type="button" class=" slot-empty btn py-4" data-bs-toggle="modal" data-bs-target="#<%= dom_id(slot) %>">
             +
           </button>
         </div>
       <% else %>
           <div class="d-flex justify-content-center w-100">
-            <button type="button" style="background: #003049; color: white; width: 250px;"  class="btn py-4" data-bs-toggle="modal" data-bs-target="#<%= dom_id(slot) %>">
+            <button type="button" class="slot-full btn py-4" data-bs-toggle="modal" data-bs-target="#<%= dom_id(slot) %>">
               <%= slot.activity.name %>
             </button>
           </div>
