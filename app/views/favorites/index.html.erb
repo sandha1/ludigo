@@ -6,7 +6,7 @@
 
 
     <% @favorites.each do |favorite| %>
-  <div class="d-grid gap-4" style="grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); max-width: 1000px; margin: auto; justify-content: center;">
+  <div class="d-grid gap-4" style="grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); max-width: 1000px; margin: 40px; justify-content: center;">
     <div class="card activity-card" style="width: 18rem; margin: auto;">
       <div class="image-container">
         <h2 class="h5"><%= link_to favorite.activity.name, activity_path(favorite.activity), class: "text-decoration-none d-block text-center mt-2" %></h2>
@@ -20,9 +20,12 @@
           <div class="circle"><%= favorite.activity.formatted_age %></div>
         </div>
 
-        <%= link_to "Delete",
-        favorite_path(favorite),
-        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        <div class="d-flex gap-3 mt-3">
+  <%= link_to favorite_path(favorite), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+    <%= image_tag "trash.png", alt: "Supprimer", class: "navbar-icon" %>
+  <% end %>
+</div>
+
       </div>
     </div>
   </div>
