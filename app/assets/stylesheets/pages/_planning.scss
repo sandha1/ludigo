@@ -1,27 +1,12 @@
 .simple-calendar {
-  .day {}
-
   td {
     vertical-align: middle;
     text-align: center;
   }
 
-  .wday-1 {}
-  .wday-2 {}
-  .wday-3 {}
-  .wday-4 {}
-  .wday-5 {}
-
-  .today { }
-  .past {}
-  .future {}
-
   .start-date {
     background-color: #FFECC8;
   }
-
-  .previous { }
-  .next { }
 }
 
 .date-circle {
