@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-4">
 <h1><%= @activity.name %></h1>
 
 <%= link_to toggle_activity_favorites_path(@activity),
@@ -16,14 +16,22 @@
     <i class="fa-regular fa-heart text-danger"></i>
   <% end %>
 <% end %>
-<div class="card activity-card">
+
+<div class="activity-card-description mt-3">
 <p class="card-text"><%= @activity.description %></p>
 </div>
 
-<div class="card activity-card-description">
-<p class><%= @activity.setting %></p>
-<p class><%= @activity.minimum_age ? @activity.minimum_age : "Aucun âge minimum requis" %></p>
-<p class><%= @activity.duration ? @activity.duration : "durée indéterminée" %></p>
+<div class="activity-card-description mt-3">
+  <div class="circle">
+    <%= image_tag @activity.image_for_setting, alt: @activity.setting, class: "activity-icon" %>
+  </div>
+  <p class><%= @activity.setting %></p>
+
+  <div class="circle"><%= @activity.formatted_duration %></div>
+  <p class><%= @activity.duration ? @activity.duration : "durée indéterminée" %></p>
+
+  <div class="circle"><%= @activity.formatted_age %></div>
+  <p class><%= @activity.minimum_age ? @activity.minimum_age : "Aucun âge minimum requis" %></p>
 <p class><%= @activity.material %></p>
 </div>
 
