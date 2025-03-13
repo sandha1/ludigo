@@ -1,3 +1,4 @@
+<div>
 <h1><%= @activity.name %></h1>
 
   <div>
@@ -12,6 +13,12 @@
 <%= link_to toggle_activity_favorites_path(@activity),
   data: { turbo_method: :post },
   id: "favorite_button_#{@activity.id}" do %>
+  <% if @activity.photo.attached? %>
+    <%= cl_image_tag @activity.photo.key %>
+  <% else %>
+    <%= image_tag "board-game.png" %>
+  <% end %>
+
   <% if current_user.favorites.exists?(activity: @activity) %>
     <i class="fa-solid fa-heart text-danger"></i>
   <% else %>
@@ -20,3 +27,4 @@
 <% end %>
 
 <%= link_to "Retour à la liste d'activités", activities_path, class: "btn btn-primary" %>
+</div>
