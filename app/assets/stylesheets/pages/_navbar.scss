@@ -7,3 +7,17 @@
   width: 30px;
   height: 30px;
 }
+
+#navbar-position {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: white; /* Assure un bon contraste */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Ajoute une ombre légère */
+  z-index: 1030; /* S'assure que la navbar passe au-dessus du contenu */
+}
+
+.navbar-nav .nav-item {
+  margin: 0 17px; /* Espacement horizontal */
+}
