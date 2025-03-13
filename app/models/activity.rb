@@ -47,22 +47,29 @@ class Activity < ApplicationRecord
   private
 
   def set_photo
+    puts name
     client = OpenAI::Client.new(api_key: ENV['OPENAI_ACCESS_TOKEN'])
 
-    response = client.images.generate(
-      parameters: {
-        prompt: "An image that corresponds to the activity based on #{name}",
-        size: "256x256",
-       }
-    )
+    file = nil
+    begin
+      response = client.images.generate(
+        parameters: {
+          prompt: "Can you generate an image that corresponds to the children game named #{name}. If however you find out that it does not follow content policy guidelines, please generate another image which has the same theme and that respects the content policy guidelines.",
+          size: "256x256",
+        }
+      )
 
-    url = response["data"][0]["url"]
-    file =  URI.parse(url).open
+      url = response["data"][0]["url"]
+      file =  URI.parse(url).open
+    rescue Faraday::BadRequestError
+      puts "bad request"
+      nil
+    rescue => error
+      puts error.message
+    end
 
     photo.purge if photo.attached?
-    photo.attach(io: file, filename: "ai_generated_image.jpg", content_type: "image/png")
 
-    return photo
+    photo.attach(io: file, filename: "#{name.parameterize}.png", content_type: "image/png") unless file.nil?
   end
-
 end

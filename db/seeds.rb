@@ -10,21 +10,12 @@
 
 
 User.destroy_all
-Activity.destroy_all
 Slot.destroy_all
 
 puts "Cleaned my database"
 
 Elisa = User.create!(email: "elisa@gmail.com", password: "ludigo")
 Frankie = User.create!(email: "frankie@gmail.com", password: "ludigo")
-
-ScrapeWebAlain.new.call
-
-favorite1 = Favorite.new(activity: Activity.first, user: Elisa)
-favorite1.save!
-
-favorite1 = Favorite.new(activity: Activity.second, user: Elisa)
-favorite1.save!
 
 start_at_8h30 = DateTime.now.change({ hour: 8, min: 30 })
 end_at_10 = DateTime.now.change({ hour: 10 })
@@ -41,5 +32,14 @@ slot3 = Slot.create!(start_at: start_at_13h30, end_at: end_at_15, user: Elisa)
 start_at_15 = DateTime.now.change({ hour: 15 })
 end_at_16h30 = DateTime.now.change({ hour: 16, min: 30 })
 slot4 = Slot.create!(start_at: start_at_15, end_at: end_at_16h30, user: Elisa)
+
+
+ScrapeWebAlain.new.call
+
+favorite1 = Favorite.new(activity: Activity.first, user: Elisa)
+favorite1.save!
+
+favorite1 = Favorite.new(activity: Activity.second, user: Elisa)
+favorite1.save!
 
 puts "Created #{Activity.count} activities."
