@@ -14,7 +14,7 @@
 
       <div class="image-container position-relative">
         <%= link_to activity_path(activity) do %>
-          <%= cl_image_tag activity.photo.key, alt: "AI-generated image of the activity" %>
+          <%# <%= cl_image_tag activity.photo.key, alt: "AI-generated image of the activity" %> 
         <% end %>
 
         <%= link_to toggle_activity_favorites_path(activity),
@@ -55,4 +55,3 @@
     <p class="text-center mt-3">👀 Sorry, there are no results for your query.</p>
   <% end %>
 </div>
-
