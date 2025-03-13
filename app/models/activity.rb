@@ -26,6 +26,21 @@ class Activity < ApplicationRecord
     results
   end
 
+  def formatted_duration
+    duration.to_s.scan(/[\d-]+/).join(' ') + " min"
+  end
+
+  def formatted_age
+    minimum_age == 0 ? "Tout âge" : minimum_age.to_s + " ans"
+  end
+
+  def image_for_setting
+      if setting == "extérieur"
+        "icons/sun.png"
+      else
+        "icons/lamp.png"
+      end
+  end
 
   # after_save :set_photo, if: -> { saved_change_to_name? || !photo.attached? }
 

@@ -1,13 +1,58 @@
 <div class="container">
 <%= render 'shared/searchbar' %>
-  <h1>Liste d'activités</h1>
-    <% if @activities %>
-      <% @activities.each do |activity| %>
-        <h2><%= activity.name %></h2>
-        <p><%= activity.description[0..110] %>...</p>
-        <%= link_to("More infos", activity_path(activity), class:"btn btn-primary") %>
+
+<h1>Liste d'activités</h1>
+
+<div class="container mt-4">
+  <% if @activities.any? %>
+
+    <div class="d-grid gap-4" style="grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); max-width: 1000px; margin: auto; justify-content: center;">
+
+<% @activities.each do |activity| %>
+  <div class="card activity-card" style="width: 18rem; margin: auto;">
+    <div class="card-body">
+
+      <div class="image-container position-relative">
+        <%= link_to activity_path(activity) do %>
+          <%= cl_image_tag activity.photo.key, alt: "AI-generated image of the activity" %>
+        <% end %>
+
+        <%= link_to toggle_activity_favorites_path(activity),
+                    data: { turbo_method: :post },
+                    id: "favorite_button_#{activity.id}",
+                    class: "favorite-button position-absolute top-0 end-0 p-2" do %>
+          <% if current_user.favorites.exists?(activity: activity) %>
+            <i class="fa-solid fa-heart text-danger"></i>
+          <% else %>
+            <i class="fa-regular fa-heart text-danger"></i>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%= link_to activity_path(activity), class: "text-decoration-none d-block text-center mt-2" do %>
+        <h2 class="h5"><%= activity.name %></h2>
       <% end %>
-    <% else %>
-      <p class="text-center mt-3">👀 Sorry, there are no results for your query.</p>
-    <% end %>
+
+      <div class="activity-icons d-flex justify-content-center gap-3 mt-3">
+        <div class="circle">
+          <%= image_tag activity.image_for_setting, alt: activity.setting, class: "activity-icon" %>
+        </div>
+        <div class="circle"><%= activity.formatted_duration %></div>
+        <div class="circle"><%= activity.formatted_age %></div>
+      </div>
+
+      <div class="activity-card-description mt-3">
+        <p class="card-text"><%= activity.description[0..110] %>...</p>
+      </div>
+
+    </div>
+  </div>
+<% end %>
+
+
+    </div>
+  <% else %>
+    <p class="text-center mt-3">👀 Sorry, there are no results for your query.</p>
+  <% end %>
 </div>
+
