@@ -2,26 +2,61 @@
 
   <%= render 'shared/searchbar' %>
 
-  <h2 class="text-center mt-5">Bonjour</h2>
-  <% if user_signed_in? %>
-    <h4 class="text-center mb-5"><%= current_user.email.split("@")[0] %></h4>
-  <% end %>
+  <h2 class="text-center mt-4 mb-3">Bonjour
+    <% if user_signed_in? %>
+      <span class="text-center mb-5"><%= current_user.email.split("@")[0] %></span>
+    <% end %>
+  </h2>
 
-  <h2 class="text-center mb-3"><%= I18n.l(Date.today, format: :long) %></h2>
+  <div class="inspiration-card py-2 px-3">
+      <div class="d-flex justify-content-between">
+        <span style="line-height: 30px"><strong><%= @random_activity.name %></strong></span>
+        <%= image_tag "inspiration.png", class:"inspiration-icon" %>
+      </div>
+      <div>
+        <%= @random_activity.description[0..110] %>...
+      </div>
+  </div>
 
-    <div class="d-flex flex-column align-items-start">
-      <% if @today_slots.blank? %>
-        <p class="text-center">Rien de prévu pour le moment.</p>
-      <% else %>
-        <% @today_slots.each do |slot| %>
-          <% if slot.activity.nil? %>
-            <p class="py-4">Pas d'activité prévue</p>
+  <h2 class="text-center mt-4"><%= I18n.l(Date.today, format: :long) %></h2>
+
+  <% if @today_slots.blank? %>
+    <p class="text-center">Rien de prévu pour le moment.</p>
+
+  <% else %>
+    <% @today_slots.each do |slot| %>
+      <div class="row my-3">
+        <div class="col-4">
+          <% ds = DateTime.parse((slot.start_at).to_s) %>
+          <% de = DateTime.parse((slot.end_at).to_s) %>
+
+          <% if ds.min.zero? %>
+            <p><%= ds.hour %>h -
+              <% if de.min.zero? %>
+                <%= de.hour %>h</p>
+              <% else %>
+                <%= de.hour %>h<%= de.min %></p>
+              <% end %>
           <% else %>
-            <p class="py-4"><%= slot.activity.name %></p>
+            <p><%= ds.hour %>h<%= ds.min %> -
+              <% if de.min.zero? %>
+                <%= de.hour %>h</p>
+              <% else %>
+                <%= de.hour %>h<%= de.min %></p>
+              <% end %>
           <% end %>
-        <% end %>
-      <% end %>
-    </div>
+        </div>
+
+        <div class="col-8">
+          <% if slot.activity.nil? %>
+            <p>Pas d'activité prévue</p>
+          <% else %>
+            <p><%= slot.activity.name %></p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 
   <%#= @daily_weather %>
   <%# <img src="<%= @icon_url %>
