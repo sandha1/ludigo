@@ -1,22 +1,13 @@
-<div>
+<div class="container">
 <h1><%= @activity.name %></h1>
-
-  <div>
-    <%= cl_image_tag @activity.photo.key, alt: "AI-generated image of the activity" if @activity.photo.attached? %>
-  </div>
-
-<p><%= @activity.description %></p>
-<p><%= @activity.setting %></p>
-<p><%= @activity.minimum_age ? @activity.minimum_age : "Aucun âge minimum requis" %></p>
-<p><%= @activity.duration ? @activity.duration : "durée indéterminée" %></p>
 
 <%= link_to toggle_activity_favorites_path(@activity),
   data: { turbo_method: :post },
   id: "favorite_button_#{@activity.id}" do %>
   <% if @activity.photo.attached? %>
-    <%= cl_image_tag @activity.photo.key %>
+    <%= cl_image_tag @activity.photo.key, class: "w-100 object-fit-cover position-center rounded-4", height: '200px' %>
   <% else %>
-    <%= image_tag "board-game.png" %>
+    <%= image_tag "board-game.png", class: "w-100 object-fit-cover position-center rounded-4", height: '200px' %>
   <% end %>
 
   <% if current_user.favorites.exists?(activity: @activity) %>
@@ -25,6 +16,17 @@
     <i class="fa-regular fa-heart text-danger"></i>
   <% end %>
 <% end %>
+<div class="card activity-card">
+<p class="card-text"><%= @activity.description %></p>
+</div>
 
-<%= link_to "Retour à la liste d'activités", activities_path, class: "btn btn-primary" %>
+<div class="card activity-card-description">
+<p class><%= @activity.setting %></p>
+<p class><%= @activity.minimum_age ? @activity.minimum_age : "Aucun âge minimum requis" %></p>
+<p class><%= @activity.duration ? @activity.duration : "durée indéterminée" %></p>
+<p class><%= @activity.material %></p>
+</div>
+
+
+<%= link_to "Retour à la liste d'activités", activities_path, class: "text-decoration-none d-block text-center mt-2" %>
 </div>
