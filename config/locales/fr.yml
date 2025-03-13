@@ -1,3 +1,7 @@
 fr:
   date:
     abbr_day_names: [dim, lun, mar, mer, jeu, ven, sam]
+    formats:
+      long: "%A %d %B %Y" # Exemple : "jeudi 13 mars 2025"
+    day_names: ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"]
+    month_names: [null, "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
