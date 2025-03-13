@@ -1,24 +1,19 @@
 .activity-card {
-  background-color: #FFECC8;
+  background-color: #FCBF49;
   border-radius: 4px;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
   border: none;
-  color: #003049;
-  display: flex;
-  flex-direction: column;
+  position: relative;
 }
 
 .activity-card-description {
-  background-color: #F1EEEE;
+  background-color: #FFECC8;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   margin-bottom: 10px;
   margin-top: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 10px;
 }
 
 .activity-card img {
@@ -28,10 +23,11 @@
 }
 
 .h5 {
-  font-size: 30px;
+  font-size: 25px;
   font-weight: bold;
   text-align: center;
   margin-top: 10px;
+  color: #003049;
 }
 
 .container {
@@ -42,18 +38,20 @@
   position: relative;
 }
 
-.favorite-button {
+.favorite-container {
   position: absolute;
   top: 10px;
   right: 10px;
   z-index: 10;
 }
 
-.favorite-button i {
-  font-size: 1.5rem;  
-  color: #fff;
-}
 
+.favorite-button {
+  padding: 5px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
 
 .circle {
   width: 50px;
