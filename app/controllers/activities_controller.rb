@@ -25,6 +25,18 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def toggle
+    @activity = Activity.find(params[:activity_id])
+    @favorite = current_user.favorites.find_by(activity: @activity)
+
+    if @favorite
+      @favorite.destroy
+    else
+      @favorite = current_user.favorites.create(activity: @activity)
+    end
+    redirect_to activities_path
+  end
+
 
   def show
     @activity = Activity.find(params[:id])
@@ -43,9 +55,5 @@ class ActivitiesController < ApplicationController
     if @activity.favorite.user == true
     end
   end
-
-
-
-
 
 end
