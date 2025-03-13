@@ -55,6 +55,8 @@ gem "simple_calendar"
 gem "pg_search"
 gem "nokogiri"
 gem "ruby-openai"
+gem 'rails-i18n'
+gem 'devise-i18n'
 
 group :development, :test do
   gem "dotenv-rails"

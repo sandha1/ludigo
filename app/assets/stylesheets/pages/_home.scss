@@ -2,8 +2,20 @@
 .inspiration-card {
   background-color: #FFECC8;
   border-radius: 25% 10%;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .home-icon {
   height: 30px;
 }
+
+// .home-container {
+//   margin-top: 1rem !important;
+//   min-height: 100vh;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-around;
+//   margin-top: 3rem !important;
+//   padding-bottom: 3rem !important;
+//   // background-color: #FFECC8;
+// }
