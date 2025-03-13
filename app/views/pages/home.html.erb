@@ -1,6 +1,29 @@
-<%= render 'shared/searchbar' %>
-<h1>Hello world</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container mt-3">
 
-<%= @daily_weather %>
-<img src="<%= @icon_url %>">
+  <%= render 'shared/searchbar' %>
+
+  <h2 class="text-center mt-5">Bonjour</h2>
+  <% if user_signed_in? %>
+    <h4 class="text-center mb-5"><%= current_user.email.split("@")[0] %></h4>
+  <% end %>
+
+  <h2 class="text-center mb-3"><%= I18n.l(Date.today, format: :long) %></h2>
+
+    <div class="d-flex flex-column align-items-start">
+      <% if @today_slots.blank? %>
+        <p class="text-center">Rien de prévu pour le moment.</p>
+      <% else %>
+        <% @today_slots.each do |slot| %>
+          <% if slot.activity.nil? %>
+            <p class="py-4">Pas d'activité prévue</p>
+          <% else %>
+            <p class="py-4"><%= slot.activity.name %></p>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+
+  <%#= @daily_weather %>
+  <%# <img src="<%= @icon_url %>
+
+</div>
