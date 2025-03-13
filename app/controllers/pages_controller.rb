@@ -1,7 +1,7 @@
 # require "open-uri"
 
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home ]
+  before_action :authenticate_user!
 
   def home
     # location_url = "http://dataservice.accuweather.com/locations/v1/search?q=paris&apikey=#{ENV["APIKEY"]}"

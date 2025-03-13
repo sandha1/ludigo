@@ -15,25 +15,21 @@ class ScrapeWebAlain
       end
 
     doc = Nokogiri::HTML.parse(html)
-    games = doc.search("#jeux-search-result-list tbody tr")
+    # games = doc.search("#jeux-search-result-list tbody tr")
+    games = doc.search("#jeux-search-result-list tbody tr").first(50)
 
     # TODO: retirer le take(1) quand on a fini
     games.each do |game|
-      #games.take(2).each do |game|
       # ["34 délivrance", "Dès 0 ans", "Extérieur", "Collectif", "5 - 30 min"]
       name, age, setting, _type, duration = game.search("td").map(&:text)
-      # p name
-      # p age.split[1].to_i
-      # p setting
-      # p duration
 
-      # TODO: mettre en forme la data : age, duree
-      # TODO: rescrapper la sous-page pour obtenir la description
+      # TODO:
+      # rescrapper la sous-page pour obtenir la description
       description = scrape_description(game)
-      # p description
+      material = scrape_material(game)
 
-      # TODO: creer l activity
-      Activity.find_or_create_by(name: name, minimum_age: age.split[1].to_i, setting: setting.downcase, duration: duration, description: description )
+      # creer l activity en mettqnt en forme la data : age, setting
+      Activity.find_or_create_by(name: name, minimum_age: age.split[1].to_i, setting: setting.downcase, duration: duration, description: description, material: material )
       puts "Created #{name}"
     end ; nil
   end
@@ -54,7 +50,45 @@ class ScrapeWebAlain
       end
 
     game_doc = Nokogiri::HTML.parse(html)
+
     description = game_doc.search(".description").text.strip
     description.gsub(/\t/, "\r")
+  end
+
+  def scrape_material(game)
+    @local = false
+    game_link = game.search("a").first["href"]
+    game_url = "https://jeux.webalain.ch/consultation/#{game_link}"
+
+    html =
+      if @local
+        filepath = Rails.root.join("app/services/scrapped_web_alain_game.html")
+        File.read(filepath)
+      else
+        URI.open(game_url).read
+      end
+
+    game_doc = Nokogiri::HTML.parse(html)
+
+    material_index = nil
+    game_doc.search("th").each_with_index do |th, index|
+      if th.text.include? "Matériel"
+        material_index = index
+      break
+      end
+    end
+
+    material = nil
+    if material_index
+      game_doc.search("tr").each do |tr|
+        cells = tr.search("td")
+        if cells.length > material_index
+          material = cells[material_index].text.strip
+          break
+        end
+      end
+    end
+
+  material
   end
 end
