@@ -5,16 +5,16 @@
 
   <div class="container mt-4">
     <% if @activities.any? %>
-      <div class="d-grid gap-4" style="grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); max-width: 1000px; margin: auto; justify-content: center;">
+      <div class="d-grid gap-4" style="grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); max-width: 1000px; margin: auto; justify-content: center;">
         <% @activities.each do |activity| %>
-          <div class="card activity-card" style="width: 18rem; margin: auto;">
+          <div class="card activity-card" style="width: 20rem; margin: auto;">
 
               <!-- Zone indépendante pour le cœur en haut de la carte -->
-              <div class="favorite-container position-relative">
+              <div class="favorite-container">
                 <%= link_to toggle_activity_favorites_path(activity),
                             data: { turbo_method: :post },
                             id: "favorite_button_#{activity.id}",
-                            class: "favorite-button p-2" do %>
+                            class: "favorite-button" do %>
                   <% if current_user.favorites.exists?(activity: activity) %>
                     <i class="fa-solid fa-heart text-danger"></i>
                   <% else %>
@@ -48,7 +48,7 @@
 
               <!-- Description -->
               <div class="activity-card-description mt-3">
-                <p class="card-text"><%= activity.description[0..110] %>...</p>
+                <p class="card-text"><%= activity.description[0..110] %> <strong>... afficher plus</strong> </p>
               </div>
 
             </div>
