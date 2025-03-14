@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :activities, only: [:index]
+
   resources :favorites, only: [:index, :destroy]
 
   get "/planning", to: "pages#planning"
