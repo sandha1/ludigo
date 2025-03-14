@@ -64,14 +64,29 @@
         <div class="modal-body">
           <% ds = DateTime.parse((slot.start_at).to_s) %>
           <% de = DateTime.parse((slot.end_at).to_s) %>
-          <h3><%= ds.hour %>h<%= ds.min %> - <%= de.hour %>h<%= de.min %></h3>
+
+          <% if ds.min.zero? %>
+                  <h3 class="text-center"><strong><%= ds.hour %>h -
+                    <% if de.min.zero? %>
+                      <%= de.hour %>h</strong></h3>
+                    <% else %>
+                      <%= de.hour %>h<%= de.min %></strong></h3>
+                    <% end %>
+                <% else %>
+                  <h3 class="text-center"><strong><%= ds.hour %>h<%= ds.min %> -
+                    <% if de.min.zero? %>
+                      <%= de.hour %>h</strong></h3>
+                    <% else %>
+                      <%= de.hour %>h<%= de.min %><strong></h3>
+                    <% end %>
+                <% end %>
 
           <% @favorites.each do |favorite| %>
             <div class="card mb-2">
               <div class="card-body">
 
                   <div class="d-flex justify-content-between">
-                    <h5 class="card-title"><%= favorite.activity.name %></h5>
+                    <h5 class="card-title"><strong><%= favorite.activity.name %></strong></h5>
                     <%= link_to update_slot_path(slot, activity_id: favorite.activity.id), data: { turbo_method: :patch } do %>
                       <i class="fa-solid fa-plus"></i>
                     <% end %>
@@ -82,10 +97,6 @@
             </div>
           <% end %>
 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
