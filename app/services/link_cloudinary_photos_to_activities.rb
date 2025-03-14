@@ -1,4 +1,5 @@
 require 'csv'
+require 'open-uri'
 
 class LinkCloudinaryPhotosToActivities
   def call
