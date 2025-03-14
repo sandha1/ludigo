@@ -9,12 +9,6 @@
     <% @favorites.each do |favorite| %>
       <div class="card activity-card" style="width: 18rem; margin: auto;">
 
-
-        <!-- Titre et lien -->
-        <h2 class="h5 text-center mt-2">
-          <%= link_to favorite.activity.name, activity_path(favorite.activity), class: "text-decoration-none" %>
-        </h2>
-
         <!-- Bouton de suppression -->
         <div class="text-end me-2">
           <%= link_to favorite_path(favorite), data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?" } do %>
@@ -22,6 +16,12 @@
             <span class="sr-only">Supprimer</span>
           <% end %>
         </div>
+
+        <!-- Titre et lien -->
+        <h2 class="h5 text-center mt-2">
+          <%= link_to favorite.activity.name, activity_path(favorite.activity), class: "text-decoration-none" %>
+        </h2>
+
 
         <!-- Image de l'activité -->
         <div class="image-container text-center">
