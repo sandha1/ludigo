@@ -53,7 +53,7 @@
 }
 
 .title {
-  font-size: 25px;
+  font-size: 30px;
   font-weight: bold;
   text-align: center;
   margin-top: 10px;
@@ -73,14 +73,15 @@
   position: absolute;
   top: 5px;
   right: 10px;
+  margin-bottom: 10px;
 }
 
 .favorite-button {
-  padding: 10px;
+  padding: 1px;
   background-color: transparent;
   border: none;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .circle {
@@ -92,7 +93,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-size: 10px;
+  font-size: 11px;
   color: #333;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
