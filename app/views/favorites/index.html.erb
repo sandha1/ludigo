@@ -22,11 +22,20 @@
           <%= link_to favorite.activity.name, activity_path(favorite.activity), class: "text-decoration-none" %>
         </h2>
 
-
         <!-- Image de l'activité -->
+        <%# <div class="image-container text-center"> %>
+          <%#= image_tag "board-game.png", class: "w-100 object-fit-cover rounded-4", height: '200px' %>
+        <%# </div> %>
+
+         <!-- Image de l'activité -->
         <div class="image-container text-center">
-          <%= image_tag "board-game.png", class: "w-100 object-fit-cover rounded-4", height: '200px' %>
+          <% if favorite.activity.photo.attached? %>
+            <%= cl_image_tag favorite.activity.photo.key, class: "w-100 object-fit-cover rounded-4", height: '200px', alt: "AI-generated image of the activity" %>
+          <% else %>
+            <%= image_tag "board-game.png", class: "w-100 object-fit-cover rounded-4", height: '200px', alt: "Default image for activity" %>
+          <% end %>
         </div>
+
 
           <!-- Icônes de l'activité -->
         <div class="activity-icons d-flex justify-content-center gap-3 mt-3 mb-3">
