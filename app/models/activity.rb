@@ -27,7 +27,7 @@ class Activity < ApplicationRecord
   end
 
   def formatted_duration
-    duration.to_s.scan(/[\d-]+/).join(' ') + " min"
+    duration.to_s.scan(/[\d-]+/).join(' ')
   end
 
   def formatted_age

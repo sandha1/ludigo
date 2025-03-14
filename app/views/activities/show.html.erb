@@ -1,40 +1,50 @@
 <div class="container mt-4">
-<h1><%= @activity.name %></h1>
+  <div class="activity-card-description mt-3">
+    <div class="title-favorite d-flex justify-content-between align-items-center">
+      <h1><%= @activity.name %></h1>
+      <%= link_to toggle_activity_favorites_path(@activity),
+      data: { turbo_method: :post },
+      id: "favorite_button_#{@activity.id}",
+      class: "favorite-button" do %>
+        <% if current_user.favorites.exists?(activity: @activity) %>
+          <i class="fa-solid fa-heart text-danger"></i>
+        <% else %>
+          <i class="fa-regular fa-heart text-danger"></i>
+        <% end %>
+      <% end %>
+    </div>
 
-<%= link_to toggle_activity_favorites_path(@activity),
-  data: { turbo_method: :post },
-  id: "favorite_button_#{@activity.id}" do %>
-  <% if @activity.photo.attached? %>
-    <%= cl_image_tag @activity.photo.key, class: "w-100 object-fit-cover position-center rounded-4", height: '200px' %>
-  <% else %>
-    <%= image_tag "board-game.png", class: "w-100 object-fit-cover position-center rounded-4", height: '200px' %>
-  <% end %>
+    <% if @activity.photo.attached? %>
+      <%= cl_image_tag @activity.photo.key, class: "w-100 object-fit-cover position-center rounded-4", height: '200px' %>
+    <% else %>
+      <%= image_tag "board-game.png", class: "w-100 object-fit-cover position-center rounded-4", height: '200px' %>
+    <% end %>
 
-  <% if current_user.favorites.exists?(activity: @activity) %>
-    <i class="fa-solid fa-heart text-danger"></i>
-  <% else %>
-    <i class="fa-regular fa-heart text-danger"></i>
-  <% end %>
-<% end %>
+    <div class="activity-icons d-flex justify-content-center gap-3 pt-2 my-1">
+      <div class="circle">
+        <%= image_tag @activity.image_for_setting, alt: @activity.setting, class: "activity-icon" %>
+      </div>
 
-<div class="activity-card-description mt-3">
-<p class="card-text"><%= @activity.description %></p>
-</div>
+      <div class="circle"><%= @activity.formatted_duration ? @activity.duration : "Durée indéterminée" %></div>
 
-<div class="activity-card-description mt-3">
-  <div class="circle">
-    <%= image_tag @activity.image_for_setting, alt: @activity.setting, class: "activity-icon" %>
+      <div class="circle"><%= @activity.formatted_age ? @activity.minimum_age : "Aucun âge minimum requis" %></div>
+    </div>
+
   </div>
-  <p class><%= @activity.setting %></p>
 
-  <div class="circle"><%= @activity.formatted_duration %></div>
-  <p class><%= @activity.duration ? @activity.duration : "durée indéterminée" %></p>
+  <div class="activity-card-description mt-3">
+    <h5>Description</h5>
+    <p class="card-text"><%= @activity.description[0..1000] %></p>
+  </div>
 
-  <div class="circle"><%= @activity.formatted_age %></div>
-  <p class><%= @activity.minimum_age ? @activity.minimum_age : "Aucun âge minimum requis" %></p>
-<p class><%= @activity.material %></p>
-</div>
+  <div class="activity-card-description mt-3">
+    <h5>Matériel</h5>
+    <% if @activity.material = "néant" %>
+        <p class="card-text">Aucun matériel</p>
+    <% else %>
+      <p class="card-text"><%= @activity.material %></p>
+    <% end %>
+  </div>
 
-
-<%= link_to "Retour à la liste d'activités", activities_path, class: "text-decoration-none d-block text-center mt-2" %>
+  <%= link_to "Retour à la liste d'activités", activities_path, class: "text-decoration-none d-block text-center mt-2" %>
 </div>
