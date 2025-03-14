@@ -1,13 +1,51 @@
-<h1>Mes activitées favorites</h1>
+<div class="container" >
+  <h1>Mes activitées favorites</h1>
 
-<p><%= link_to "Retour aux activités", activities_path %></p>
+  <div class="container mt-4">
+    <p><%= link_to "Retour aux activités", activities_path %></p>
 
-<% @favorites.each do |favorite| %>
-  <p><%= link_to favorite.activity.name, activity_path(favorite.activity) %></p>
-  <p><%= favorite.activity.minimum_age %></p>
-  <p><%= favorite.activity.duration %></p>
-  <p><%= favorite.activity.setting %></p>
-  <%= link_to "Delete",
-  favorite_path(favorite),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+
+    <% @favorites.each do |favorite| %>
+  <div class="d-grid gap-4" style="grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); max-width: 1000px; margin: 40px; justify-content: center;">
+    <div class="card activity-card" style="width: 18rem; margin: auto;">
+      <div class="image-container">
+        <h2 class="h5"><%= link_to favorite.activity.name, activity_path(favorite.activity), class: "text-decoration-none d-block text-center mt-2" %></h2>
+
+        <!-- Icônes de l'activité -->
+        <div class="activity-icons d-flex justify-content-center gap-3 mt-3">
+          <div class="circle">
+            <%= image_tag favorite.activity.image_for_setting, alt: favorite.activity.setting, class: "activity-icon" %>
+          </div>
+          <div class="circle"><%= favorite.activity.formatted_duration %></div>
+          <div class="circle"><%= favorite.activity.formatted_age %></div>
+        </div>
+
+        <div class="d-flex gap-3 mt-3">
+  <%= link_to favorite_path(favorite), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+    <%= image_tag "trash.png", alt: "Supprimer", class: "navbar-icon" %>
+  <% end %>
+</div>
+
+      </div>
+    </div>
+  </div>
 <% end %>
+
+
+
+
+
+
+<!-- Zone indépendante pour le cœur en haut de la carte -->
+<%# <div class="favorite-container position-relative">
+                <%= link_to toggle_activity_favorites_path(activity),
+                            data: { turbo_method: :post },
+                            id: "favorite_button_#{activity.id}",
+                            class: "favorite-button p-2" do %>
+                  <%# <% if current_user.favorites.exists?(activity: activity) %>
+                    <%# <i class="fa-solid fa-heart text-danger"></i>
+                  <% else %>
+                    <%# <i class="fa-regular fa-heart text-danger"></i>
+                  <% end %>
+                <%# <% end %>
+              <%# </div> %>

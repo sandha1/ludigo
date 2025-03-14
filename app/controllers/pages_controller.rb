@@ -17,6 +17,9 @@ class PagesController < ApplicationController
     # end
 
     # @daily_temperature = @daily_weather["Temperature"]
+    activities = Activity.all
+    @random_activity = activities.sample
+
     slots = Slot.all
     today = Date.today
 
