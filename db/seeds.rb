@@ -43,3 +43,7 @@ favorite1 = Favorite.new(activity: Activity.second, user: Elisa)
 favorite1.save!
 
 puts "Created #{Activity.count} activities."
+
+puts 'Chargement des images depuis Cloudinary'
+LinkCloudinaryPhotosToActivities.new.call
+puts 'Done!!!!'
