@@ -26,6 +26,12 @@ class PagesController < ApplicationController
     activities = Activity.all
     @random_activity = activities.sample
 
+    temperature_f = 40.3
+    @temperature_c = (temperature_f - 32) * 5 / 9
+
+    feel_temperature_f = 36.9
+    @feel_temperature_c = (feel_temperature_f - 32) * 5 / 9
+
     slots = Slot.all
     today = Date.today
 
