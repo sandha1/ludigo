@@ -11,6 +11,11 @@
       <div class="image-container">
         <h2 class="h5"><%= link_to favorite.activity.name, activity_path(favorite.activity), class: "text-decoration-none d-block text-center mt-2" %></h2>
 
+ <!-- Image de l'activité -->
+              <div class="image-container">
+                <%= image_tag "board-game.png", class: "w-100 object-fit-cover position-center rounded-4", height: '200px' %>
+              </div>
+
         <!-- Icônes de l'activité -->
         <div class="activity-icons d-flex justify-content-center gap-3 mt-3">
           <div class="circle">
@@ -22,7 +27,7 @@
 
         <div class="d-flex gap-3 mt-3">
   <%= link_to favorite_path(favorite), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-    <%= image_tag "trash.png", alt: "Supprimer", class: "navbar-icon" %>
+    <%= image_tag "trash.png", alt: "Supprimer",  class: "navbar-icon" %>
   <% end %>
 </div>
 
