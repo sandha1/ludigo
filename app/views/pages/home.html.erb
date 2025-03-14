@@ -3,11 +3,11 @@
     <div><%= render 'shared/searchbar' %><div>
 
     <div>
-      <h2 class="text-center mt-5 mb-3">Bonjour
+      <h1 class="text-center mt-5 mb-3">Bonjour
         <% if user_signed_in? %>
           <span class="text-center mb-5"><%= current_user.email.split("@")[0] %></span>
         <% end %>
-      </h2>
+      </h1>
 
       <div class="inspiration-card py-3 px-3">
           <div class="d-flex justify-content-between">
@@ -15,8 +15,8 @@
             <%= image_tag "inspiration.png", class:"home-icon" %>
           </div>
           <div>
-            <%= @random_activity.description[0..110] %>...
-            <span><strong><%= link_to "afficher plus", activity_path(@random_activity) %></strong></span>
+            <p><%= @random_activity.description[0..110] %>...</p>
+            <p><span><strong><%= link_to "afficher plus", activity_path(@random_activity) %></strong></span></p>
           </div>
       </div>
     </div>
