@@ -1,5 +1,5 @@
 <div class="container mt-4">
-  <div class="activity-card-description mt-3">
+  <div class="activity-card-show">
     <div class="title-favorite d-flex justify-content-between align-items-center">
       <h1><%= @activity.name %></h1>
       <%= link_to toggle_activity_favorites_path(@activity),
@@ -25,22 +25,26 @@
         <%= image_tag @activity.image_for_setting, alt: @activity.setting, class: "activity-icon" %>
       </div>
 
-      <div class="circle"><%= @activity.formatted_duration ? @activity.duration : "Durée indéterminée" %></div>
+       <div
+       class="duration-container circle">
+         <%= @activity.formatted_duration %>
+        <span class="break-min">min</span>
+      </div>
 
-      <div class="circle"><%= @activity.formatted_age ? @activity.minimum_age : "Aucun âge minimum requis" %></div>
+      <div class="circle"><%= @activity.formatted_age %></div>
     </div>
 
   </div>
 
-  <div class="activity-card-description mt-3">
-    <h5>Description</h5>
+  <div class="activity-card-show-description">
+    <h5 class="title text-start">Description</h5>
     <p class="card-text"><%= @activity.description[0..1000] %></p>
   </div>
 
-  <div class="activity-card-description mt-3">
-    <h5>Matériel</h5>
+  <div class="activity-card-show-description">
+    <h5 class="title text-start">Matériel</h5>
     <% if @activity.material = "néant" %>
-        <p class="card-text">Aucun matériel</p>
+        <p class="card-text">Aucun matériel nécessaire</p>
     <% else %>
       <p class="card-text"><%= @activity.material %></p>
     <% end %>
