@@ -32,7 +32,8 @@ class FavoritesController < ApplicationController
     else
       @favorite = current_user.favorites.create(activity: @activity)
     end
-    redirect_to activity_path(@activity)
+    
+    redirect_to request.referer
   end
 
   def destroy
