@@ -35,7 +35,7 @@ class PagesController < ApplicationController
     slots = Slot.all
     today = Date.today
 
-    @today_slots = slots.where(start_at: today.beginning_of_day..today.end_of_day)
+    @today_slots = current_user.slots.where(start_at: today.beginning_of_day..today.end_of_day)
   end
 
   def planning
