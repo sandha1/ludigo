@@ -32,13 +32,14 @@ class FavoritesController < ApplicationController
     else
       @favorite = current_user.favorites.create(activity: @activity)
     end
-    
+
     redirect_to request.referer
   end
 
   def destroy
     @favorite = Favorite.find(params[:id])
     @favorite.destroy
+    redirect_to favorites_path, status: :see_other
   end
 
   private
