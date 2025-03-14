@@ -1,9 +1,10 @@
-# require "open-uri"
+require "open-uri"
 
 class PagesController < ApplicationController
   before_action :authenticate_user!
 
   def home
+    # Old api meteo
     # location_url = "http://dataservice.accuweather.com/locations/v1/search?q=paris&apikey=#{ENV["APIKEY"]}"
     # location_key = JSON.parse(URI.parse(location_url).read)[0]["Key"]
 
@@ -17,8 +18,19 @@ class PagesController < ApplicationController
     # end
 
     # @daily_temperature = @daily_weather["Temperature"]
+
+    # New api meteo
+    # url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/paris?unitGroup=us&elements=temp%2Cfeelslike%2Cdescription%2Cicon&include=days&key=CYKUZT69SRDD4TWUXYDCSEMEY&contentType=json"
+    # @daily_weather = JSON.parse(URI.parse(url).read)["days"].first
+
     activities = Activity.all
     @random_activity = activities.sample
+
+    temperature_f = 40.3
+    @temperature_c = (temperature_f - 32) * 5 / 9
+
+    feel_temperature_f = 36.9
+    @feel_temperature_c = (feel_temperature_f - 32) * 5 / 9
 
     slots = Slot.all
     today = Date.today

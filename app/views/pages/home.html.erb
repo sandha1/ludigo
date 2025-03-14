@@ -9,19 +9,31 @@
         <% end %>
       </h2>
 
-      <div class="inspiration-card py-2 px-3">
+      <div class="inspiration-card py-3 px-3">
           <div class="d-flex justify-content-between">
-            <span style="line-height: 30px"><strong><%= @random_activity.name %></strong></span>
+            <h5 style="line-height: 30px"><strong><%= @random_activity.name %></strong></h5>
             <%= image_tag "inspiration.png", class:"home-icon" %>
           </div>
           <div>
             <%= @random_activity.description[0..110] %>...
+            <span><strong><%= link_to "afficher plus", activity_path(@random_activity) %></strong></span>
           </div>
       </div>
     </div>
 
     <div>
       <h2 class="text-center mt-5"><%= I18n.l(Date.today, format: :long) %></h2>
+
+        <div class="d-flex justify-content-center mb-2">
+          <div>
+            <%= image_tag "weather/partly-cloudy-day" %>
+          </div>
+
+          <div class="d-flex flex-column ms-2 justify-content-center">
+              <p class="mb-0"><%= @temperature_c.round %> °C</p>
+              <p class="mb-0">ressenti <%= @feel_temperature_c.round %> °C</p>
+          </div>
+        </div>
 
       <% if @today_slots.blank? %>
         <p class="text-center">Rien de prévu pour le moment.</p>
@@ -38,27 +50,28 @@
                 <% de = DateTime.parse((slot.end_at).to_s) %>
 
                 <% if ds.min.zero? %>
-                  <p><%= ds.hour %>h -
+                  <p><strong><%= ds.hour %>h -
                     <% if de.min.zero? %>
-                      <%= de.hour %>h</p>
+                      <%= de.hour %>h</strong></p>
                     <% else %>
-                      <%= de.hour %>h<%= de.min %></p>
+                      <%= de.hour %>h<%= de.min %></strong></p>
                     <% end %>
                 <% else %>
-                  <p><%= ds.hour %>h<%= ds.min %> -
+                  <p><strong><%= ds.hour %>h<%= ds.min %> -
                     <% if de.min.zero? %>
-                      <%= de.hour %>h</p>
+                      <%= de.hour %>h</strong></p>
                     <% else %>
-                      <%= de.hour %>h<%= de.min %></p>
+                      <%= de.hour %>h<%= de.min %><strong></p>
                     <% end %>
                 <% end %>
               </div>
 
               <div class="col-8">
                 <% if slot.activity.nil? %>
-                  <p><strong>Pas d'activité prévue</strong></p>
+                  <p>Pas d'activité prévue<strong>
+                    <%= link_to " (+)", planning_path %></strong></p>
                 <% else %>
-                  <p><strong><%= slot.activity.name %></strong></p>
+                  <p><strong><%= link_to slot.activity.name, activity_path(slot.activity) %></strong></p>
                 <% end %>
               </div>
             </div>
@@ -67,7 +80,11 @@
       <% end %>
     </div>
 
-    <%#= @daily_weather %>
-    <%# <img src="<%= @icon_url %>
+    <%# <div>
+      <%= @daily_weather %>
+      <%#= @daily_weather["temp"] %>
+      <%#= @daily_weather["description"] %>
+      <%#= @daily_weather["icon"] %>
+    <%# </div> %>
 
   </div>
