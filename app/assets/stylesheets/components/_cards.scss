@@ -18,6 +18,10 @@
   border-radius: 8px;
 }
 
+.activity-card-description p {
+  color: #003049;
+}
+
 .activity-card img {
   width: 100%;
   height: 200px;
@@ -74,4 +78,16 @@
   width: 30px !important;
   height: 30px !important;
   object-fit: cover;
+}
+
+.duration-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.break_min {
+  display: block;
+  text-align: center;
+  white-space: nowrap;
 }

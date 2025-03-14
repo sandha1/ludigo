@@ -27,7 +27,7 @@ class Activity < ApplicationRecord
   end
 
   def formatted_duration
-    duration.to_s.scan(/[\d-]+/).join(' ') + " min"
+    duration.to_s.scan(/[\d-]+/).join(' ')
   end
 
   def formatted_age
@@ -42,7 +42,8 @@ class Activity < ApplicationRecord
       end
   end
 
-   after_save :set_photo, if: -> { saved_change_to_name? || !photo.attached? }
+
+  after_save :set_photo, if: -> { saved_change_to_name? || !photo.attached? }
 
   private
 
