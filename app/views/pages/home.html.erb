@@ -16,12 +16,14 @@
           </div>
           <div>
             <%= @random_activity.description[0..110] %>...
+            <span><strong><%= link_to "afficher plus", activity_path(@random_activity) %></strong></span>
           </div>
       </div>
     </div>
 
     <div>
       <h2 class="text-center mt-5"><%= I18n.l(Date.today, format: :long) %></h2>
+      <p class="text-center"><%= image_tag "weather/partly-cloudy-day" %></p>
 
       <% if @today_slots.blank? %>
         <p class="text-center">Rien de prévu pour le moment.</p>

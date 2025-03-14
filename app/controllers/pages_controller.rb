@@ -23,13 +23,13 @@ class PagesController < ApplicationController
     # url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/paris?unitGroup=us&elements=temp%2Cfeelslike%2Cdescription%2Cicon&include=days&key=CYKUZT69SRDD4TWUXYDCSEMEY&contentType=json"
     # @daily_weather = JSON.parse(URI.parse(url).read)["days"].first
 
-    # activities = Activity.all
-    # @random_activity = activities.sample
+    activities = Activity.all
+    @random_activity = activities.sample
 
-    # slots = Slot.all
-    # today = Date.today
+    slots = Slot.all
+    today = Date.today
 
-    # @today_slots = slots.where(start_at: today.beginning_of_day..today.end_of_day)
+    @today_slots = slots.where(start_at: today.beginning_of_day..today.end_of_day)
   end
 
   def planning
