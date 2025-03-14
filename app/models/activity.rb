@@ -49,7 +49,6 @@ class Activity < ApplicationRecord
   def set_photo
     puts name
     client = OpenAI::Client.new(api_key: ENV['OPENAI_ACCESS_TOKEN'])
-    binding.pry
     file = nil
     begin
       response = client.images.generate(
