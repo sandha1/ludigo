@@ -4,7 +4,8 @@
       <h1><%= @activity.name %></h1>
       <%= link_to toggle_activity_favorites_path(@activity),
       data: { turbo_method: :post },
-      id: "favorite_button_#{@activity.id}" do %>
+      id: "favorite_button_#{@activity.id}",
+      class: "favorite-button" do %>
         <% if current_user.favorites.exists?(activity: @activity) %>
           <i class="fa-solid fa-heart text-danger"></i>
         <% else %>
