@@ -29,7 +29,13 @@
               <!-- Image de l'activité (sans lien pour ne pas interférer avec le cœur) -->
               <div class="image-container">
                 <%= link_to activity_path(activity) do %>
-                  <% cl_image_tag activity.photo.key, alt: "AI-generated image of the activity", class: "card-img-top" %>
+                  <% if activity.photo.attached? %>
+                    <%= cl_image_tag activity.photo.key, alt: "AI-generated image of the activity", class: "card-img-top" %>
+                  <% else %>
+                    <%= image_tag "board-game.png", class: "card-img-top", height: '200px' %>
+
+                  <% end %>
+
                 <% end %>
               </div>
 
