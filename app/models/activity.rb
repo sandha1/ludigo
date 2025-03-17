@@ -32,21 +32,21 @@ class Activity < ApplicationRecord
   #   Activity.first.duration.split(' ').third.to_i
   # end
 
-  def formatted_duration
-    duration.to_s.scan(/[\d-]+/).join(' ')
-  end
+  # def formatted_duration
+  #   max_duration.positive? ? "#{max_duration} min" : "N/A"
+  # end
 
   def formatted_age
-    minimum_age == 0 ? "Tout âge" : "> " + minimum_age.to_s + " ans"
+    minimum_age == 0 ? "Tout âge" : minimum_age.to_s + "+"
   end
 
-  def image_for_setting
-      if setting == "extérieur"
-        "icons/sun.png"
-      else
-        "icons/house.png"
-      end
-  end
+  # def image_for_setting
+  #     # if setting == "extérieur"
+  #     #   "icons/soleil.png"
+  #     # else
+  #     #   "icons/maison.png"
+  #     # end
+  # end
 
 
   def image_path

@@ -10,7 +10,7 @@
 
 
 User.destroy_all
-# Activity.destroy_all
+Activity.destroy_all
 Slot.destroy_all
 
 puts "Cleaned my database"
