@@ -1,20 +1,23 @@
 .activity-card {
-  background-color: #FCBF49;
+  background-color: #ffd000;
   border-radius: 8px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   border: none;
   position: relative;
-  padding: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
+  padding: 5px;
+  margin-left: 3px;
+  margin-right: 3px;
+  width: 100%;
+  max-width: 350px;
+  height: auto;
 }
 
 .activity-card-description {
-  background-color: #FFECC8;
-  margin-bottom: 10px;
-  margin-top: 20px;
-  padding: 10px;
+  background-color: #ffeaae;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  padding: 5px;
   border-radius: 8px;
 }
 
@@ -42,27 +45,30 @@
 }
 
 .activity-card-description p {
-  color: #003049;
+  color: #3a0ca3;
 }
 
-.activity-card img {
-  width: 100%;
-  height: 200px;
+.card-img-top{
+  width: 90%;
+  height: 150px;
   object-fit: cover;
   border-radius: 8px;
+  padding-top: 10px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .title {
   font-size: 30px;
   font-weight: bold;
   text-align: center;
-  margin-top: 10px;
-  color: #003049;
+  margin-top: 20px;
+  color: #3a0ca3;
   font-weight: bold;
-}
-
-.container {
-  background-color: white;
+  font-family: 'Borel', serif;
 }
 
 .image-container {
@@ -71,17 +77,21 @@
 
 .favorite-container {
   position: absolute;
-  top: 5px;
+  top: 10px;
   right: 10px;
   margin-bottom: 10px;
 }
 
-.favorite-button {
-  padding: 1px;
+.favorite-btn {
+  padding: 0px;
   background-color: transparent;
   border: none;
   cursor: pointer;
-  font-size: 22px;
+  font-size: 24px;
+  color: #f00000;
+  position: absolute;
+  right: 1px;
+  top: 1px;
 }
 
 .circle {
