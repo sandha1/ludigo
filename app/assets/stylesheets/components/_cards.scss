@@ -22,30 +22,29 @@
 }
 
 .activity-card-show {
-  background-color: #FCBF49;
+  background-color: #ffd000;
   border-radius: 8px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  margin-top: -10px;
   border: none;
   position: relative;
-  padding: 20px;
-  margin-left: 10px;
-  margin-right: 10px;
+  padding: 15px;
+  margin-left: 3px;
+  margin-right: 3px;
+  height: auto;
 }
 
 .activity-card-show-description {
-  background-color: #FFECC8;
-  margin-bottom: 10px;
-  margin-top: 20px;
-  padding: 10px;
+  background-color: #ffeaae;
+  margin-bottom: 15px;
+  margin-top: 5px;
+  padding: 15px;
   border-radius: 8px;
-  margin-left: 10px;
-  margin-right: 10px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .activity-card-description p {
   color: #3a0ca3;
+  font-weight: lighter;
 }
 
 .card-img-top{
@@ -92,6 +91,18 @@
   position: absolute;
   right: 1px;
   top: 1px;
+}
+
+.favorite-btn-show {
+  padding: 5px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 40px;
+  color: #f00000;
+  position: absolute;
+  right: 15px;
+  top: 8px;
 }
 
 .circle {
