@@ -4,8 +4,8 @@ p {
 }
 
 h1 {
-  font-family: 'bitter', serif;
-  color: #003049;
+  font-family: 'borel', serif;
+  color: #3a0ca3;
   font-weight: bold;
   margin-top: 10px;
   text-align: center;
@@ -13,8 +13,8 @@ h1 {
 }
 
 h2 {
-  font-family: 'bitter', serif;
-  color: #003049;
+  font-family: 'borel', serif;
+  color: #3a0ca3;
   font-weight: bold;
   margin-top: 10px;
   text-align: center;
@@ -29,4 +29,9 @@ a {
 body {
   font-family: 'poppins', sans-serif;
   padding-bottom: 80px;
+  background-color: #fff5eb;
+}
+
+.container {
+  background-color: #fff5eb;
 }
