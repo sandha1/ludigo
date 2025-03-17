@@ -23,7 +23,7 @@ class Activity < ApplicationRecord
     results = search_by_name_and_description(filters[:query]) if filters[:query]
 
     results = results.where(setting: filters[:setting]) if filters[:setting].present?
-    results = results.where("minimum_age >= ?", filters[:minimum_age]) if filters[:minimum_age].present?
+    # results = results.where("minimum_age >= ?", filters[:minimum_age]) if filters[:minimum_age].present?
     results = results.where("? <= max_duration", filters[:max_duration]) if filters[:max_duration].present?
 
     if filters[:minimum_age].present?
@@ -55,14 +55,14 @@ class Activity < ApplicationRecord
   end
 
 
-  def image_path
-    filename = "#{name.downcase.gsub(' ', '-')}.jpg"
-    if Rails.application.assets.find_asset("illustrations/#{filename}").present?
-      "/assets/illustrations/#{filename}"
-    else
-      "/assets/board-game.png"
-    end
-  end
+  # def image_path
+  #   filename = "#{name.downcase.gsub(' ', '-')}.jpg"
+  #   if Rails.application.assets.find_asset("illustrations/#{filename}").present?
+  #     "/assets/illustrations/#{filename}"
+  #   else
+  #     "/assets/board-game.png"
+  #   end
+  # end
 
 
   # after_save :set_photo, if: -> { saved_change_to_name? || !photo.attached? }

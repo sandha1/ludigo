@@ -15,7 +15,13 @@
     </div>
 
     <%= link_to activity_path(@activity) do %>
-      <%= image_tag @activity.image_path, class: "w-100 object-fit-cover position-center h-auto rounded-4" %>
+      <% filename = "#{@activity.name.downcase.gsub(' ', '-')}.jpg" %>
+      <% if Rails.application.assets.find_asset("illustrations/#{filename}").present? %>
+        <% file = "/assets/illustrations/#{filename}" %>
+      <% else %>
+        <% file = "/assets/board-game.png" %>
+      <% end %>
+      <%= image_tag file, class: "w-100 object-fit-cover position-center h-auto rounded-4" %>
     <% end %>
 
 
