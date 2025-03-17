@@ -38,7 +38,7 @@ class Activity < ApplicationRecord
       if setting == "extérieur"
         "icons/sun.png"
       else
-        "icons/lamp.png"
+        "icons/house.png"
       end
   end
 
