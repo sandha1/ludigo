@@ -74,7 +74,7 @@ class PagesController < ApplicationController
   end
 
   def daily_weather
-    url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/paris?unitGroup=us&elements=name%2Ctemp%2Cfeelslike%2Cdescription%2Cicon&include=fcst%2Cdays%2Ccurrent&key=#{ENV["WEATHER_KEY"]}&contentType=json"
+    url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/paris?unitGroup=us&elements=datetimeEpoch%2Ctemp%2Cfeelslike%2Cconditions%2Cdescription%2Cicon&include=days%2Ccurrent&key=#{ENV["WEATHER_KEY"]}&contentType=json"
     response = JSON.parse(URI.parse(url).read)
 
     if response["days"].present?
@@ -90,7 +90,5 @@ class PagesController < ApplicationController
     else
       @daily_weather = []
     end
-
-    @current_weather = response["currentConditions"]
   end
 end
