@@ -38,13 +38,11 @@
               <!-- Image de l'activité image manuelle -->
               <div class="image-container">
                 <%= link_to activity_path(activity) do %>
-                  <% filename = "#{activity.name.downcase.gsub(' ', '-')}.jpg" %>
-                  <% if Rails.application.assets.find_asset("illustrations/#{filename}").present? %>
-                    <% file = "/assets/illustrations/#{filename}" %>
+                  <% if activity.photo.attached? %>
+                    <%= cl_image_tag activity.photo.key, class: "card-img-top" %>
                   <% else %>
-                    <% file = "/assets/board-game.png" %>
+                    <%= image_tag "board-game.png", class: "card-img-top" %>
                   <% end %>
-                  <%= image_tag file, class: "card-img-top" %>
                 <% end %>
               </div>
 
