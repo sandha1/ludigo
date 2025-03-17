@@ -14,11 +14,10 @@
       <% end %>
     </div>
 
-    <% if @activity.photo.attached? %>
-      <%= cl_image_tag @activity.photo.key, class: "w-100 object-fit-cover position-center rounded-4", height: '200px' %>
-    <% else %>
-      <%= image_tag "board-game.png", class: "w-100 object-fit-cover position-center rounded-4", height: '200px' %>
+    <%= link_to activity_path(@activity) do %>
+      <%= image_tag @activity.image_path, class: "w-100 object-fit-cover position-center h-auto rounded-4" %>
     <% end %>
+
 
     <div class="activity-icons d-flex justify-content-center gap-3 pt-2 my-1">
       <div class="circle">
