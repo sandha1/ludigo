@@ -40,6 +40,7 @@ class PagesController < ApplicationController
 
   def planning
     selected_date = params.fetch(:start_date, DateTime.now).to_datetime.in_time_zone('Paris')
+    @selected_month = I18n.l(selected_date, format: "%B %Y").capitalize
 
     @slots = current_user.slots.where(start_at: selected_date.beginning_of_day()..selected_date.end_of_day).order(:start_at)
     day_slots = [ selected_date.change({ hour: 8, min: 30 }), selected_date.change({ hour: 10 }), selected_date.change({ hour: 13, min: 30 }), selected_date.change({ hour: 15 })]
