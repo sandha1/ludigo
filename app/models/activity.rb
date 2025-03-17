@@ -55,14 +55,14 @@ class Activity < ApplicationRecord
   end
 
 
-  def image_path
-    filename = "#{name.downcase.gsub(' ', '-')}.jpg"
-    if Rails.application.assets.find_asset("illustrations/#{filename}").present?
-      "/assets/illustrations/#{filename}"
-    else
-      "/assets/board-game.png"
-    end
-  end
+  # def image_path
+  #   filename = "#{name.downcase.gsub(' ', '-')}.jpg"
+  #   if Rails.application.assets.find_asset("illustrations/#{filename}").present?
+  #     "/assets/illustrations/#{filename}"
+  #   else
+  #     "/assets/board-game.png"
+  #   end
+  # end
 
 
   # after_save :set_photo, if: -> { saved_change_to_name? || !photo.attached? }
