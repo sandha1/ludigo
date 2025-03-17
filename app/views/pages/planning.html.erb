@@ -31,16 +31,19 @@
       </div>
 
       <% if slot.activity.nil? %>
-        <div class="d-flex justify-content-center w-100">
+        <div class="d-flex">
           <button type="button" class=" slot-empty btn py-4" data-bs-toggle="modal" data-bs-target="#<%= dom_id(slot) %>">
             +
           </button>
         </div>
       <% else %>
-          <div class="d-flex justify-content-center w-100">
+          <div class="d-flex relative" style="position: relative">
             <button type="button" class="slot-full btn py-4" data-bs-toggle="modal" data-bs-target="#<%= dom_id(slot) %>">
               <%= slot.activity.name %>
             </button>
+            <%= link_to reset_slot_path(slot), style:"position: absolute; top: 5px; right: 10px;", data: { turbo_method: :patch, turbo_confirm: 'Enlever cette activité ?' } do %>
+              <i class="fa-solid fa-xmark absolute top-0 right-0"></i>
+            <% end %>
           </div>
       <% end %>
     </div>
@@ -87,7 +90,7 @@
 
                   <div class="d-flex justify-content-between">
                     <h5 class="card-title"><strong><%= favorite.activity.name %></strong></h5>
-                    <%= link_to update_slot_path(slot, activity_id: favorite.activity.id), data: { turbo_method: :patch } do %>
+                    <%= link_to slot_path(slot, activity_id: favorite.activity.id), data: { turbo_method: :patch } do %>
                       <i class="fa-solid fa-plus"></i>
                     <% end %>
                   </div>
