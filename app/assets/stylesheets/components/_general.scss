@@ -1,32 +1,38 @@
 p {
   font-family: 'poppins', sans-serif;
-  font-size: 15px;
+  font-size: 16px;
+  color: #3a0ca3;
 }
 
 h1 {
-  font-family: 'bitter', serif;
-  color: #003049;
+  font-family: 'borel', serif;
+  color: #3a0ca3;
   font-weight: bold;
-  margin-top: 10px;
+  margin-top: 20px;
   text-align: center;
   font-size: 40px;
 }
 
 h2 {
-  font-family: 'bitter', serif;
-  color: #003049;
+  font-family: 'borel', serif;
+  color: #3a0ca3;
   font-weight: bold;
-  margin-top: 10px;
+  margin-top: 20px;
   text-align: center;
   font-size: 35px;
 }
 
 a {
-  text-decoration: none;
-  color: black;
+  color: #3a0ca3;
+  font-weight: bold;
 }
 
 body {
   font-family: 'poppins', sans-serif;
   padding-bottom: 80px;
+  background-color: #fff5eb;
+}
+
+.container {
+  background-color: #fff5eb;
 }

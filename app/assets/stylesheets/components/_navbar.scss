@@ -1,12 +1,26 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
-}
+#navbar-position {
+  .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+  }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
+  .navbar-nav {
+    display: flex;
+    justify-content: space-around; /* Ensure even spacing */
+    align-items: center;
+    width: 100%;
+    padding: 0; /* Remove any default padding */
+    margin: 0; /* Remove any default margin */
+  }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+  .nav-item {
+    flex: 1;
+    text-align: center;
+  }
+
+  .navbar-icon {
+    width: 30px; /* Adjust the size as needed */
+    height: auto;
+    margin: 0; /* Ensure no margin */
+  }
 }

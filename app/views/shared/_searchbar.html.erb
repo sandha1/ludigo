@@ -9,8 +9,24 @@
               <% end %>
             </div>
 
-<%# <div class="settings">
-  <% @settings.each do |setting| %>
-    <%# <%= link_to setting.titleize, activities_path(setting: setting), class: "setting-link" %>
-  <%# <% end %>
-<%# </div> %>
+<div class="settings">
+  <% @settings.to_a.select { |setting| ["intérieur", "extérieur"].include?(setting) }.each do |setting| %>
+    <%= link_to setting.titleize, activities_path(setting: setting), class: "setting-link" %>
+  <% end %>
+</div>
+
+
+<div class="minimum_age">
+  <% @minimum_age.to_a.each do |minimum_age| %>
+    <%= link_to ">#{minimum_age} ans", activities_path(minimum_age: minimum_age), class: "minimum_age-link" %>
+  <% end %>
+</div>
+
+<div class="max_duration">
+  <% @max_duration.to_a.each do |max_duration| %>
+    <%= link_to "<#{max_duration} min", activities_path(max_duration: max_duration), class: "max_duration-link" %>
+  <% end %>
+</div>
+
+<%# faire un turbo pour garder en mémoire un des filtres et ajouter un autre%>
+<%# mettre tout dans un form, fair appel de l'action controller en javascript %>
