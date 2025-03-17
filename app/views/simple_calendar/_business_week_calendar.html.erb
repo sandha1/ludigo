@@ -22,7 +22,7 @@
                 <% if daily_weather_data %>
                   <%= image_tag "weather/#{daily_weather_data["icon"]}.png", height:"30px", class:"mb-1" %>
                 <% else %>
-                  <span>-</span>
+                   <%= image_tag "weather/partly-cloudy-day.png", height: "30px", class: "mb-1", style: "opacity: 0;" %>
                 <% end %>
               <% end %>
             </th>
