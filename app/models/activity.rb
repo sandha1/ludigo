@@ -43,7 +43,7 @@ class Activity < ApplicationRecord
   # end
 
   def formatted_age
-    minimum_age == 0 ? "Tout âge" : minimum_age.to_s + "+"
+    minimum_age == 0 ? "3+" : minimum_age.to_s + "+"
   end
 
   # def image_for_setting
