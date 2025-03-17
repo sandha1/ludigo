@@ -10,7 +10,7 @@
 
 
 User.destroy_all
-# Activity.destroy_all
+Activity.destroy_all
 Slot.destroy_all
 
 puts "Cleaned my database"
@@ -37,11 +37,11 @@ slot4 = Slot.create!(start_at: start_at_15, end_at: end_at_16h30, user: Elisa)
 
 ScrapeWebAlain.new.call
 
-favorite1 = Favorite.new(activity: Activity.first, user: Elisa)
-favorite1.save!
+# favorite1 = Favorite.new(activity: Activity.first, user: Elisa)
+# favorite1.save!
 
-favorite1 = Favorite.new(activity: Activity.second, user: Elisa)
-favorite1.save!
+# favorite1 = Favorite.new(activity: Activity.second, user: Elisa)
+# favorite1.save!
 
 puts "Created #{Activity.count} activities."
 
