@@ -16,7 +16,16 @@
       <thead>
         <tr>
           <% date_range.slice(0, 7).each do |day| %>
-            <th class="text-center"><%= t('date.abbr_day_names')[day.wday] %></th>
+            <th class="text-center"><%= t('date.abbr_day_names')[day.wday] %><br>
+              <% if @daily_weather.present? %>
+                <% daily_weather_data = @daily_weather.find { |weather| weather["datetime"] == day.strftime('%Y-%m-%d') } %>
+                <% if daily_weather_data %>
+                  <%= image_tag "weather/#{daily_weather_data["icon"]}.png", height:"30px", class:"mb-1" %>
+                <% else %>
+                   <%= image_tag "weather/partly-cloudy-day.png", height: "30px", class: "mb-1", style: "opacity: 0;" %>
+                <% end %>
+              <% end %>
+            </th>
           <% end %>
         </tr>
       </thead>

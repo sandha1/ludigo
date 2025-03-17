@@ -26,11 +26,7 @@ class PagesController < ApplicationController
     activities = Activity.all
     @random_activity = activities.sample
 
-    temperature_f = 40.3
-    @temperature_c = (temperature_f - 32) * 5 / 9
-
-    feel_temperature_f = 36.9
-    @feel_temperature_c = (feel_temperature_f - 32) * 5 / 9
+    current_weather
 
     slots = Slot.all
     today = Date.today
@@ -39,6 +35,9 @@ class PagesController < ApplicationController
   end
 
   def planning
+    current_weather
+    daily_weather
+
     selected_date = params.fetch(:start_date, DateTime.now).to_datetime.in_time_zone('Paris')
     @selected_month = I18n.l(selected_date, format: "%B %Y").capitalize
 
@@ -55,5 +54,41 @@ class PagesController < ApplicationController
     end
 
     @favorites = current_user.favorites
+  end
+
+  private
+
+  def current_weather
+    url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/paris?unitGroup=us&elements=name%2Ctemp%2Cfeelslike%2Cdescription%2Cicon&include=fcst%2Cdays%2Ccurrent&key=#{ENV["WEATHER_KEY"]}&contentType=json"
+    response = JSON.parse(URI.parse(url).read)
+
+    if response["currentConditions"].present?
+      @current_weather = response["currentConditions"]
+    end
+
+    temperature_f =  @current_weather["temp"]
+    @temperature_c = (temperature_f - 32) * 5 / 9
+
+    feel_temperature_f = @current_weather["feelslike"]
+    @feel_temperature_c = (feel_temperature_f - 32) * 5 / 9
+  end
+
+  def daily_weather
+    url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/paris?unitGroup=us&elements=datetimeEpoch%2Ctemp%2Cfeelslike%2Cconditions%2Cdescription%2Cicon&include=days%2Ccurrent&key=#{ENV["WEATHER_KEY"]}&contentType=json"
+    response = JSON.parse(URI.parse(url).read)
+
+    if response["days"].present?
+      @daily_weather = response["days"].map do |day|
+        {
+        "datetime" => Time.at(day["datetimeEpoch"]).to_date.to_s,
+        "temp" => day["temp"],
+        "feelslike" => day["feelslike"],
+        "description" => day["description"],
+        "icon" => day["icon"]
+        }
+      end
+    else
+      @daily_weather = []
+    end
   end
 end

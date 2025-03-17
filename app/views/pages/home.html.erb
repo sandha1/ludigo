@@ -3,7 +3,7 @@
     <div><%= render 'shared/searchbar' %><div>
 
     <div>
-      <h1 class="text-center mt-5 mb-3">Bonjour
+      <h1 class="text-center mt-4 mb-3">Bonjour
         <% if user_signed_in? %>
           <span class="text-center mb-5"><%= current_user.email.split("@")[0] %></span>
         <% end %>
@@ -24,16 +24,29 @@
     <div>
       <h2 class="text-center mt-5"><%= I18n.l(Date.today, format: :long) %></h2>
 
-        <div class="d-flex justify-content-center mb-2">
-          <div>
-            <%= image_tag "weather/partly-cloudy-day.png" %>
-          </div>
+        <% if @current_weather.present? %>
+          <div class="d-flex justify-content-center mb-2">
+            <div>
+              <%= image_tag "weather/#{@current_weather["icon"]}.png" %>
+            </div>
 
-          <div class="d-flex flex-column ms-2 justify-content-center">
-            <p class="mb-0"><%= @temperature_c.round %> °C</p>
-            <p class="mb-0">ressenti <%= @feel_temperature_c.round %> °C</p>
+            <div class="d-flex flex-column ms-2 justify-content-center">
+              <p class="mb-0"><%= @temperature_c.round %> °C</p>
+              <p class="mb-0">ressenti <%= @feel_temperature_c.round %> °C</p>
+            </div>
           </div>
-        </div>
+        <% else %>
+          <div class="d-flex justify-content-center mb-2">
+            <div>
+              <%= image_tag "weather/partly-cloudy-day.png" %>
+            </div>
+
+            <div class="d-flex flex-column ms-2 justify-content-center">
+              <p class="mb-0">10 °C</p>
+              <p class="mb-0">ressenti 8 °C</p>
+            </div>
+          </div>
+        <% end %>
 
       <% if @today_slots.blank? %>
         <p class="text-center">Rien de prévu pour le moment.</p>
@@ -80,11 +93,5 @@
       <% end %>
     </div>
 
-    <%# <div>
-      <%= @daily_weather %>
-      <%#= @daily_weather["temp"] %>
-      <%#= @daily_weather["description"] %>
-      <%#= @daily_weather["icon"] %>
-    <%# </div> %>
 
   </div>
