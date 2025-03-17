@@ -4,12 +4,12 @@
       <h1><%= @activity.name %></h1>
       <%= link_to toggle_activity_favorites_path(@activity),
       data: { turbo_method: :post },
-      id: "favorite_button_#{@activity.id}",
-      class: "favorite-button" do %>
+      id: "favorite_btn_#{@activity.id}",
+      class: "favorite-btn" do %>
         <% if current_user.favorites.exists?(activity: @activity) %>
-          <i class="fa-solid fa-heart text-danger"></i>
+          <i class="fa-solid fa-heart favorite-btn-show"></i>
         <% else %>
-          <i class="fa-regular fa-heart text-danger"></i>
+          <i class="fa-regular fa-heart favorite-btn-show"></i>
         <% end %>
       <% end %>
     </div>
@@ -37,7 +37,7 @@
 
   <div class="activity-card-show-description">
     <h5 class="title text-start">Description</h5>
-    <p class="card-text"><%= @activity.description[0..1000] %></p>
+    <p class="card-text activity-card-description"><%= @activity.description[0..1000] %></p>
   </div>
 
   <div class="activity-card-show-description">
