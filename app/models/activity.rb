@@ -31,7 +31,7 @@ class Activity < ApplicationRecord
   end
 
   def formatted_age
-    minimum_age == 0 ? "Tout âge" : minimum_age.to_s + " ans"
+    minimum_age == 0 ? "Tout âge" : "> " + minimum_age.to_s + " ans"
   end
 
   def image_for_setting
