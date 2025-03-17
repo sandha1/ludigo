@@ -26,11 +26,7 @@ class PagesController < ApplicationController
     activities = Activity.all
     @random_activity = activities.sample
 
-    temperature_f = 40.3
-    @temperature_c = (temperature_f - 32) * 5 / 9
-
-    feel_temperature_f = 36.9
-    @feel_temperature_c = (feel_temperature_f - 32) * 5 / 9
+    current_weather
 
     slots = Slot.all
     today = Date.today
@@ -39,6 +35,9 @@ class PagesController < ApplicationController
   end
 
   def planning
+    current_weather
+    daily_weather
+
     selected_date = params.fetch(:start_date, DateTime.now).to_datetime.in_time_zone('Paris')
 
     @slots = current_user.slots.where(start_at: selected_date.beginning_of_day()..selected_date.end_of_day).order(:start_at)
@@ -54,5 +53,24 @@ class PagesController < ApplicationController
     end
 
     @favorites = current_user.favorites
+  end
+
+  private
+
+  def current_weather
+    url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/paris?unitGroup=us&elements=name%2Ctemp%2Cfeelslike%2Cdescription%2Cicon&include=fcst%2Cdays%2Ccurrent&key=CYKUZT69SRDD4TWUXYDCSEMEY&contentType=json"
+    @current_weather = JSON.parse(URI.parse(url).read)["currentConditions"]
+
+    temperature_f =  @current_weather["temp"]
+    @temperature_c = (temperature_f - 32) * 5 / 9
+
+    feel_temperature_f = @current_weather["feelslike"]
+    @feel_temperature_c = (feel_temperature_f - 32) * 5 / 9
+  end
+
+  def daily_weather
+    url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/paris?unitGroup=us&elements=name%2Ctemp%2Cfeelslike%2Cdescription%2Cicon&include=fcst%2Cdays%2Ccurrent&key=CYKUZT69SRDD4TWUXYDCSEMEY&contentType=json"
+    @current_weather = JSON.parse(URI.parse(url).read)["currentConditions"]
+    @daily_weather = JSON.parse(URI.parse(url).read)["days"]
   end
 end
