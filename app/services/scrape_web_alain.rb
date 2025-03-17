@@ -16,7 +16,7 @@ class ScrapeWebAlain
 
     doc = Nokogiri::HTML.parse(html)
     # games = doc.search("#jeux-search-result-list tbody tr")
-    games = doc.search("#jeux-search-result-list tbody tr").first(5)
+    games = doc.search("#jeux-search-result-list tbody tr").first(50)
 
     # TODO: retirer le take(1) quand on a fini
     games.each do |game|
