@@ -16,11 +16,17 @@
 </div>
 
 
-<div class="minimum_age">
+<%# <div class="minimum_age">
   <% @minimum_age.to_a.each do |minimum_age| %>
-    <%= link_to ">#{minimum_age} ans", activities_path(minimum_age: minimum_age), class: "minimum_age-link" %>
+    <%# <%= link_to ">#{minimum_age} ans", activities_path(minimum_age: minimum_age), class: "minimum_age-link" %>
+  <%# <% end %>
+<%# </div> %> 
+<div class="minimum_age">
+  <% @age_ranges.each do |label, range| %>
+    <%= link_to label, activities_path(minimum_age: label), class: "minimum_age-link" %>
   <% end %>
 </div>
+
 
 <div class="max_duration">
   <% @max_duration.to_a.each do |max_duration| %>

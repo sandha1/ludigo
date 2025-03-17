@@ -15,8 +15,16 @@ class ActivitiesController < ApplicationController
   def index
     @activities = Activity.all
     @settings = Activity.distinct.pluck(:setting)
-    @minimum_age = Activity.distinct.pluck(:minimum_age)
     @max_duration = Activity.distinct.pluck(:max_duration)
+
+    @age_ranges = {
+      "3-6 ans" => (3..6),
+      "6-10 ans" => (6..10),
+      "+11 ans" => (11..Float::INFINITY)
+    }
+
+    @minimum_age = Activity.distinct.pluck(:minimum_age)
+
 
     if params[:query] || params[:setting] || params[:minimum_age] || params[:max_duration]
       @activities = Activity.search_with_filters(@activities, {query: params[:query], setting: params[:setting], minimum_age: params[:minimum_age], max_duration: params[:max_duration]})
