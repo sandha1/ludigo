@@ -28,11 +28,11 @@
 </div>
 
 
-<div class="max_duration">
+<%# <div class="max_duration">
   <% @max_duration.to_a.each do |max_duration| %>
-    <%= link_to "<#{max_duration} min", activities_path(max_duration: max_duration), class: "max_duration-link" %>
-  <% end %>
-</div>
+    <%# <%= link_to "<#{max_duration} min", activities_path(max_duration: max_duration), class: "max_duration-link" %>
+  <%# <% end %>
+<%# </div> %>
 
 <%# faire un turbo pour garder en mémoire un des filtres et ajouter un autre%>
 <%# mettre tout dans un form, fair appel de l'action controller en javascript %>
