@@ -16,7 +16,16 @@
       <thead>
         <tr>
           <% date_range.slice(0, 7).each do |day| %>
-            <th class="text-center"><%= t('date.abbr_day_names')[day.wday] %></th>
+            <th class="text-center"><%= t('date.abbr_day_names')[day.wday] %><br>
+              <% if @daily_weather.present? %>
+                <% daily_weather_data = @daily_weather.find { |weather| weather["datetime"] == day.strftime('%Y-%m-%d') } %>
+                <% if daily_weather_data %>
+                  <%= image_tag "weather/#{daily_weather_data["icon"]}.png", height:"30px", class:"mb-1" %>
+                <% else %>
+                  <span>-</span>
+                <% end %>
+              <% end %>
+            </th>
           <% end %>
         </tr>
       </thead>
@@ -26,13 +35,6 @@
           <tr>
             <% week.each do |day| %>
               <%= content_tag :td, class: calendar.td_classes_for(day) do %>
-                <% if day = Date.today %>
-                  <div><%= image_tag "weather/#{@current_weather["icon"]}.png", height:"30px", class:"mb-1" %></div>
-                <%# elsif day > Date.today && Date.today.strftime('%A') == %>
-                  <div><%#= image_tag "weather/#{@daily_weather[0]["icon"]}.png", height:"30px", class:"mb-1" %></div>
-                <% else %>
-                  <div height="30px" class="mb-1"> </div>
-                <% end %>
                 <% instance_exec(day, calendar.sorted_events_for(day), &passed_block) %>
               <% end %>
             <% end %>

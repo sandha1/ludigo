@@ -59,8 +59,12 @@ class PagesController < ApplicationController
   private
 
   def current_weather
-    url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/paris?unitGroup=us&elements=name%2Ctemp%2Cfeelslike%2Cdescription%2Cicon&include=fcst%2Cdays%2Ccurrent&key=CYKUZT69SRDD4TWUXYDCSEMEY&contentType=json"
-    @current_weather = JSON.parse(URI.parse(url).read)["currentConditions"]
+    url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/paris?unitGroup=us&elements=name%2Ctemp%2Cfeelslike%2Cdescription%2Cicon&include=fcst%2Cdays%2Ccurrent&key=#{ENV["WEATHER_KEY"]}&contentType=json"
+    response = JSON.parse(URI.parse(url).read)
+
+    if response["currentConditions"].present?
+      @current_weather = response["currentConditions"]
+    end
 
     temperature_f =  @current_weather["temp"]
     @temperature_c = (temperature_f - 32) * 5 / 9
@@ -70,8 +74,23 @@ class PagesController < ApplicationController
   end
 
   def daily_weather
-    url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/paris?unitGroup=us&elements=name%2Ctemp%2Cfeelslike%2Cdescription%2Cicon&include=fcst%2Cdays%2Ccurrent&key=CYKUZT69SRDD4TWUXYDCSEMEY&contentType=json"
-    @current_weather = JSON.parse(URI.parse(url).read)["currentConditions"]
-    @daily_weather = JSON.parse(URI.parse(url).read)["days"]
+    url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/paris?unitGroup=us&elements=name%2Ctemp%2Cfeelslike%2Cdescription%2Cicon&include=fcst%2Cdays%2Ccurrent&key=#{ENV["WEATHER_KEY"]}&contentType=json"
+    response = JSON.parse(URI.parse(url).read)
+
+    if response["days"].present?
+      @daily_weather = response["days"].map do |day|
+        {
+        "datetime" => Time.at(day["datetimeEpoch"]).to_date.to_s,
+        "temp" => day["temp"],
+        "feelslike" => day["feelslike"],
+        "description" => day["description"],
+        "icon" => day["icon"]
+        }
+      end
+    else
+      @daily_weather = []
+    end
+
+    @current_weather = response["currentConditions"]
   end
 end
