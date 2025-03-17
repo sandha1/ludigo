@@ -1,4 +1,4 @@
-<h1 class="text-center mt-3">Planning de la semaine</h1>
+<h1 class="text-center mt-3"><%= @selected_month %></h1>
 
 <%= render SimpleCalendar::BusinessWeekCalendar.new(self, number_of_days: 5, attribute: :start_at, end_attribute: :end_at) do |date| %>
   <%= link_to date.day, "/planning?start_date=#{date}", class:"date-circle" %>
@@ -37,12 +37,12 @@
           </button>
         </div>
       <% else %>
-          <div class="d-flex relative" style="position: relative">
+          <div class="d-flex position-relative">
             <button type="button" class="slot-full btn py-4" data-bs-toggle="modal" data-bs-target="#<%= dom_id(slot) %>">
               <%= slot.activity.name %>
             </button>
-            <%= link_to reset_slot_path(slot), style:"position: absolute; top: 5px; right: 10px;", data: { turbo_method: :patch, turbo_confirm: 'Enlever cette activité ?' } do %>
-              <i class="fa-solid fa-xmark absolute top-0 right-0"></i>
+            <%= link_to reset_slot_path(slot), class:"position-absolute", style:"top: 5px; right: 10px;", data: { turbo_method: :patch, turbo_confirm: 'Enlever cette activité ?' } do %>
+              <i class="fa-solid fa-xmark"></i>
             <% end %>
           </div>
       <% end %>
