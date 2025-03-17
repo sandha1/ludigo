@@ -9,8 +9,8 @@
               <% end %>
             </div>
 
-<%# <div class="settings">
-  <% @settings.each do |setting| %>
-    <%# <%= link_to setting.titleize, activities_path(setting: setting), class: "setting-link" %>
-  <%# <% end %>
-<%# </div> %>
+<div class="settings">
+  <% @settings.to_a.select { |setting| ["intérieur", "extérieur"].include?(setting) }.each do |setting| %>
+    <%= link_to setting.titleize, activities_path(setting: setting), class: "setting-link" %>
+  <% end %>
+</div>
