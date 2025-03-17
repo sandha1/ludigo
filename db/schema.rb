@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_13_130914) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_17_104926) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +51,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_13_130914) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "material"
+    t.integer "max_duration", default: 0
   end
 
   create_table "favorites", force: :cascade do |t|
