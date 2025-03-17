@@ -26,10 +26,10 @@ class Activity < ApplicationRecord
     # results = results.where("minimum_age >= ?", filters[:minimum_age]) if filters[:minimum_age].present?
     results = results.where("? <= max_duration", filters[:max_duration]) if filters[:max_duration].present?
 
-    if params[:minimum_age].present?
-      selected_range = @age_ranges[params[:minimum_age]]
-      @activities = @activities.where(minimum_age: selected_range) if selected_range
-    end
+    # if filters[:minimum_age].present?
+    #   selected_range = @age_ranges[filters[:minimum_age]]
+    #   @activities = @activities.where(minimum_age: selected_range) if selected_range
+    # end
 
     results
   end
