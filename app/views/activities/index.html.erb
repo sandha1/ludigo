@@ -26,16 +26,24 @@
 
                <div class="card-body">
 
-              <!-- Image de l'activité -->
+              <%# <!-- Image de l'activité AI -->
               <div class="image-container">
                 <%= link_to activity_path(activity) do %>
-                  <% if activity.photo.attached? %>
-                    <%= cl_image_tag activity.photo.key, alt: "AI-generated image of the activity", class: "card-img-top" %>
-                  <% else %>
-                    <%= image_tag "board-game.png", alt: "Default image for activity", class: "card-img-top" %>
-                  <% end %>
+                  <%# <% if activity.photo.attached? %>
+                    <%# <%= cl_image_tag activity.photo.key, alt: "AI-generated image of the activity", class: "card-img-top" %>
+                  <%# <% else %>
+                    <%# <%= image_tag "board-game.png", alt: "Default image for activity", class: "card-img-top" %>
+                  <%# <% end %>
+                <%# <% end %>
+              <%# </div> %>
+
+              <!-- Image de l'activité image manuelle -->
+              <div class="image-container">
+                <%= link_to activity_path(activity) do %>
+                  <%= image_tag activity.image_path, class: "card-img-top" %>
                 <% end %>
               </div>
+
 
               <!-- Nom de l'activité -->
               <h2 class="title"><%= activity.name %></h2>

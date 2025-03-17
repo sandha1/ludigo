@@ -42,33 +42,44 @@ class Activity < ApplicationRecord
       end
   end
 
-  after_save :set_photo, if: -> { saved_change_to_name? || !photo.attached? }
+
+  def image_path
+    filename = "#{name.downcase.gsub(' ', '-')}.jpg"
+    if Rails.application.assets.find_asset("illustrations/#{filename}").present?
+      "/assets/illustrations/#{filename}"
+    else
+      "/assets/board-game.png"
+    end
+  end
+
+
+  # after_save :set_photo, if: -> { saved_change_to_name? || !photo.attached? }
 
   # private
 
-  def set_photo
-    puts name
-    client = OpenAI::Client.new(api_key: ENV['OPENAI_ACCESS_TOKEN'])
-    file = nil
-    begin
-      response = client.images.generate(
-        parameters: {
-          prompt: "Generate a colorful, playful, and vibrant illustration based on the following children's camp activity #{name}. Each image should visually represent the essence of the #{name} in a fun, child-friendly way, without including people or anything strange. Keep the illustrations bright, inviting, and perfect for a children's camp atmosphere.",
-          size: "256x256",
-        }
-      )
+  # def set_photo
+  #   puts name
+  #   client = OpenAI::Client.new(api_key: ENV['OPENAI_ACCESS_TOKEN'])
+  #   file = nil
+  #   begin
+  #     response = client.images.generate(
+  #       parameters: {
+  #         prompt: "Generate a colorful, playful, and vibrant illustration based on the following children's camp activity #{name}. Each image should visually represent the essence of the #{name} in a fun, child-friendly way, without including people or anything strange. Keep the illustrations bright, inviting, and perfect for a children's camp atmosphere.",
+  #         size: "256x256",
+  #       }
+  #     )
 
-      url = response["data"][0]["url"]
-      file =  URI.parse(url).open
-    rescue Faraday::BadRequestError
-      puts "bad request"
-      nil
-    rescue => error
-      puts error.message
-    end
+  #     url = response["data"][0]["url"]
+  #     file =  URI.parse(url).open
+  #   rescue Faraday::BadRequestError
+  #     puts "bad request"
+  #     nil
+  #   rescue => error
+  #     puts error.message
+  #   end
 
-    photo.purge if photo.attached?
+  #   photo.purge if photo.attached?
 
-    photo.attach(io: file, filename: "#{name.parameterize}.png", content_type: "image/png") unless file.nil?
-  end
+  #   photo.attach(io: file, filename: "#{name.parameterize}.png", content_type: "image/png") unless file.nil?
+  # end
 end
