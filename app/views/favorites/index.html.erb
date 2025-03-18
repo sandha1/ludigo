@@ -3,19 +3,15 @@
 
    <div class="d-grid gap-4 mt-4" style="grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); max-width: 1000px; margin: auto;">
     <% @favorites.each do |favorite| %>
-      <div class="activity-card">
+      <div class="activity-card" id=<%= dom_id(favorite) %>>
 
        <div class="favorite-container">
-          <%= link_to toggle_activity_favorites_path(favorite.activity),
-                      data: { turbo_method: :post },
-                      id: "favorite_btn_#{favorite.activity.id}",
-                      class: "favorite-btn" do %>
-            <% if current_user.favorites.exists?(activity: favorite.activity) %>
-              <i class="fa-solid fa-heart favorite-btn"></i>
-            <% else %>
-              <i class="fa-regular fa-heart favorite-btn"></i>
-            <% end %> 
-          <% end %>
+
+       <%= link_to toggle_activity_favorites_path(favorite.activity),
+                  data: { turbo_method: :post },
+                  class: "favorite-btn" do %>
+         <%= render "favorites/favorite", favorite: favorite, activity: favorite.activity %>
+       <% end %>
         </div>
 
         <!-- Bouton de suppression -->
@@ -76,7 +72,6 @@
     <% end %>
   </div>
 </div>
-  <%= link_to "Retour à la liste d'activités", activities_path, class: "text-decoration-none d-block text-center mt-2" %>
 
 <!-- Zone indépendante pour le cœur en haut de la carte -->
 <%# <div class="favorite-container position-relative">

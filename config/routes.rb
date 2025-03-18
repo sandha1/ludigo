@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create] do
       collection do
         post :toggle
+        post :toggle_show
       end
     end
   end

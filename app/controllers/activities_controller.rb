@@ -21,14 +21,21 @@ class ActivitiesController < ApplicationController
       @activities = Activity.search_with_filters(@activities, {query: params[:query], setting: params[:setting], minimum_age: params[:minimum_age]})
     end
 
+ 
+    # if params[:query].present?
+    #   @activities = @activities.search_by_name_and_description(params[:query])
+    # end
+
+    # if params[:setting].present?
+    #   @activities = @activities.where(setting: params[:setting])
+    # end
+    # @activities = @activities.where(minimum_age: params[:minimum_age]) if params[:minimum_age].present?
+    
     respond_to do |format|
       format.html
       format.turbo_stream
     end
 
-
-
-  end
 
   def show
     @activity = Activity.find(params[:id])
