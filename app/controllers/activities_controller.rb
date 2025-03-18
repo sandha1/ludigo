@@ -23,6 +23,7 @@ class ActivitiesController < ApplicationController
     end
 
 
+
     # if params[:query].present?
     #   @activities = @activities.search_by_name_and_description(params[:query])
     # end

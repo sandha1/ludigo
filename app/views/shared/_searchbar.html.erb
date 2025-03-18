@@ -12,9 +12,8 @@
 
  <%= form_with url: activities_path, method: :get, data: { controller: "activities-form" } do %>
 
-    <div class="d-flex">
+    <div class="col-sm-8">
       <input type="text" name="query" value="<%= params[:query] %>" class="form-control searchbar" data-action="input->activities-form#updateFilters" placeholder="Taper un mot clé..." />
-      <%= submit_tag "Rechercher", name: "", class: "btn-search" %>
     </div>
 
     <div class="settings">
