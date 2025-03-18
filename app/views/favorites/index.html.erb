@@ -6,6 +6,7 @@
       <div class="activity-card" id=<%= dom_id(favorite) %>>
 
        <div class="favorite-container">
+
        <%= link_to toggle_activity_favorites_path(favorite.activity),
                   data: { turbo_method: :post },
                   class: "favorite-btn" do %>

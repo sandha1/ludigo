@@ -1,11 +1,15 @@
 .slot-empty {
   background-color: #003049;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
   color: white;
   width: 250px;
 }
 
 .slot-full {
-  background-color: #FCBF49;
+  background-color: #ffd000;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
   color: #003049;
   width: 250px;
   font-weight: bold;
