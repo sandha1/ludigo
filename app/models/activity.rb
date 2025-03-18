@@ -19,18 +19,21 @@ class Activity < ApplicationRecord
   # validates :minimum_age, numericality: { only_integer: true }
   # validates :duration, numericality: { only_integer: true }
 
+  AGE_RANGES = {
+    "3-6 ans" => (3..5),
+    "6-10 ans" => (6..10),
+    "+11 ans" => (11..Float::INFINITY)
+  }
+
   def self.search_with_filters(results, filters = {})
     results = search_by_name_and_description(filters[:query]) if filters[:query]
-
     results = results.where(setting: filters[:setting]) if filters[:setting].present?
     # results = results.where("minimum_age >= ?", filters[:minimum_age]) if filters[:minimum_age].present?
-    results = results.where("? <= max_duration", filters[:max_duration]) if filters[:max_duration].present?
+    # results = results.where("? <= max_duration", filters[:max_duration]) if filters[:max_duration].present?
 
-    # if filters[:minimum_age].present?
-    #   selected_range = @age_ranges[filters[:minimum_age]]
-    #   @activities = @activities.where(minimum_age: selected_range) if selected_range
-    # end
-
+    if filters[:minimum_age].present? && AGE_RANGES.key?(filters[:minimum_age])
+      results = results.where(minimum_age: AGE_RANGES[filters[:minimum_age]])
+    end
     results
   end
 
