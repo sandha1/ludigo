@@ -1,0 +1,7 @@
+<%= turbo_stream.replace("favorite_btn_#{@favorite.id}") do %>
+  <%= render partial: "favorites/favorite", locals: { favorite: @favorite } %>
+<% end %>
+
+<% if request.referer == "http://127.0.0.1:3000#{favorites_path()}"%>
+  <%= turbo_stream.remove(dom_id(@favorite)) %>
+<% end %>

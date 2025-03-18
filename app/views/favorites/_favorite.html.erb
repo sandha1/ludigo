@@ -1,0 +1,5 @@
+<% if current_user.favorites.exists?(activity: favorite.activity) %>
+  <i id="favorite_btn_<%=favorite.activity.id %>" class="fa-solid fa-heart favorite-btn"></i>
+<% else %>
+  <i id="favorite_btn_<%=favorite.activity.id %>" class="fa-regular fa-heart favorite-btn"></i>
+<% end %>

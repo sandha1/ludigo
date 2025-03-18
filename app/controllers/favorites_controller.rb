@@ -23,6 +23,20 @@ class FavoritesController < ApplicationController
     render json: { is_favorite: is_favorite }
   end
 
+  def toggle_show
+    @activity = Activity.find(params[:activity_id])
+    @favorite = current_user.favorites.find_by(activity: @activity)
+
+    if @favorite
+      @favorite.destroy
+    else
+      @favorite = current_user.favorites.create(activity: @activity)
+    end
+
+    redirect_to activity_path(@activity)
+
+  end
+
   def toggle
     @activity = Activity.find(params[:activity_id])
     @favorite = current_user.favorites.find_by(activity: @activity)
@@ -33,7 +47,11 @@ class FavoritesController < ApplicationController
       @favorite = current_user.favorites.create(activity: @activity)
     end
 
-    redirect_to request.referer
+    respond_to do |format|
+      format.turbo_stream
+    end
+
+
   end
 
   def destroy

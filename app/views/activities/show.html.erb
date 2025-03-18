@@ -2,7 +2,8 @@
   <div class="activity-card-show">
     <div class="title-favorite d-flex justify-content-between align-items-center">
       <h1 class="title-show"><%= @activity.name %></h1>
-      <%= link_to toggle_activity_favorites_path(@activity),
+
+      <%= link_to toggle_show_activity_favorites_path(@activity),
       data: { turbo_method: :post },
       id: "favorite_btn_#{@activity.id}",
       class: "favorite-btn" do %>
@@ -46,16 +47,6 @@
   </div>
 
   <div class="activity-card-show-description">
-    <h5 class="title text-start">Description</h5>
-    <p class="card-text activity-card-description"><%= @activity.description[0..1000] %></p>
-  </div>
-
-  <div class="activity-card-show-description">
-    <h5 class="title text-start">Durée</h5>
-    <p class="card-text"><%= @activity.duration %></p>
-  </div>
-
-  <div class="activity-card-show-description">
     <h5 class="title text-start">Matériel</h5>
     <% if @activity.material = "néant" %>
         <p class="card-text">Aucun matériel nécessaire</p>
@@ -64,5 +55,14 @@
     <% end %>
   </div>
 
-  <%= link_to "Retour à la liste d'activités", activities_path, class: "text-decoration-none d-block text-center mt-2" %>
+  <div class="activity-card-show-description">
+    <h5 class="title text-start">Durée</h5>
+    <p class="card-text"><%= @activity.duration %></p>
+  </div>
+
+   <div class="activity-card-show-description">
+    <h5 class="title text-start">Description</h5>
+    <p class="card-text activity-card-description"><%= @activity.description[0..1000] %></p>
+  </div>
+
 </div>

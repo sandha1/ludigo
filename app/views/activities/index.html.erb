@@ -10,15 +10,14 @@
 
               <!-- Zone indépendante pour le cœur en haut de la carte -->
               <div class="favorite-container">
+                <% favorite = current_user.favorites.find_by(activity: activity) %>
+
                 <%= link_to toggle_activity_favorites_path(activity),
                             data: { turbo_method: :post },
-                            id: "favorite_btn_#{activity.id}",
                             class: "favorite-btn" do %>
-                  <% if current_user.favorites.exists?(activity: activity) %>
-                    <i class="fa-solid fa-heart favorite-btn"></i>
-                  <% else %>
-                    <i class="fa-regular fa-heart favorite-btn"></i>
-                  <% end %>
+
+                  <%=  render "favorites/favorite", favorite: favorite %>
+
                 <% end %>
               </div>
 
