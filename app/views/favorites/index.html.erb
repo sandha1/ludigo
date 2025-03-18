@@ -48,13 +48,19 @@
 
           <!-- Icônes de l'activité -->
         <div class="activity-icons d-flex justify-content-center gap-3 mt-3 mb-3">
+      <div class="circle">
+        <% if favorite.activity.setting == "extérieur" %>
+          <i class="fa-solid fa-sun setting-icon activity-icon"></i>
+        <% else %>
+          <i class="fa-solid fa-house setting-icon activity-icon"></i>
+        <% end %>
+      </div>
+          <%# <div class="duration-container circle">
+            <%= activity.formatted_duration %>
+          <%# </div> %>
           <div class="circle">
-            <%= image_tag favorite.activity.image_for_setting, alt: favorite.activity.setting, class: "activity-icon" %>
+            <span class="age-icon"><%= favorite.activity.formatted_age %></span>
           </div>
-          <div class="duration-container circle">
-            <%= favorite.activity.formatted_duration %> <span class="break-min">min</span>
-          </div>
-          <div class="circle"><%= favorite.activity.formatted_age %></div>
         </div>
 
 

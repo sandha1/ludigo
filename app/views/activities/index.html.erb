@@ -48,19 +48,28 @@
 
 
               <!-- Nom de l'activité -->
-              <h2 class="title"><%= activity.name %></h2>
+              <h2 class="title-show"><%= activity.name %></h2>
 
 
               <!-- Icônes de l'activité -->
               <div class="activity-icons d-flex justify-content-center gap-3 mt-3">
                 <div class="circle">
-                  <%= image_tag activity.image_for_setting, alt: activity.setting, class: "activity-icon" %>
+                 <% if activity.setting == "extérieur" %>
+                    <i class="fa-solid fa-sun setting-icon activity-icon"></i>
+                  <% else %>
+                    <i class="fa-solid fa-house setting-icon activity-icon"></i>
+                  <% end %>
+                  <%# <%= image_tag activity.image_for_setting, alt: activity.setting, class: "activity-icon" %>
                 </div>
-                <div class="duration-container circle">
-                  <%= activity.formatted_duration %>
-                  <span class="break-min">min</span>
+
+                <%# <div class="duration-container circle">
+                  <span class="duration"><%= activity.max_duration %></span>
+                  <%# <span class="break-min">min</span> %>
+                <%# </div> %>
+
+                <div class="circle">
+                  <span class="age-icon"><%= activity.formatted_age %></span>
                 </div>
-                <div class="circle"><%= activity.formatted_age %></div>
               </div>
 
               <!-- Description -->
