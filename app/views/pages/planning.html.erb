@@ -84,21 +84,52 @@
                     <% end %>
                 <% end %>
 
-          <% @favorites.each do |favorite| %>
-            <div class="card mb-2">
-              <div class="card-body">
+          <div class="d-grid gap-4 mt-4" style="grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); max-width: 1000px; margin: auto;">
+            <% if @favorites %>
+                <% @favorites.each do |favorite| %>
+                  <div class="activity-card">
+                    <div class="favorite-container">
+                      <div class="card mb-2">
+                        <div class="card-body">
 
-                  <div class="d-flex justify-content-between">
-                    <h5 class="card-title"><strong><%= favorite.activity.name %></strong></h5>
-                    <%= link_to slot_path(slot, activity_id: favorite.activity.id), data: { turbo_method: :patch } do %>
-                      <i class="fa-solid fa-plus"></i>
-                    <% end %>
+                            <div class="d-flex justify-content-between">
+                              <h2 class="title"><%= favorite.activity.name %><h2>
+                              <%= link_to slot_path(slot, activity_id: favorite.activity.id), data: { turbo_method: :patch } do %>
+                                <i class="fa-solid fa-plus"></i>
+                              <% end %>
+                            </div>
+
+                            <div class="activity-icons d-flex justify-content-center gap-3 mt-3 mb-3">
+                              <div class="circle">
+                                <% if favorite.activity.setting == "extérieur" %>
+                                  <i class="fa-solid fa-sun setting-icon activity-icon"></i>
+                                <% else %>
+                                  <i class="fa-solid fa-house setting-icon activity-icon"></i>
+                                <% end %>
+                              </div>
+
+                              <div class="circle">
+                                <span class="age-icon"><%= favorite.activity.formatted_age %></span>
+                              </div>
+                            </div>
+
+                            <div class="activity-card-description mx-2">
+                              <%= link_to activity_path(favorite.activity), class: "text-decoration-none" do %>
+                                <p class="card-text">
+                                  <%= favorite.activity.description[0..110] %> <strong>... afficher plus</strong>
+                                </p>
+                              <% end %>
+                            </div>
+
+                        </div>
+                      </div>
+                    </div>
                   </div>
-
-                  <p class="card-text"><%= favorite.activity.description[0..110] %></p>
-              </div>
-            </div>
-          <% end %>
+                <% end %>
+              <% else %>
+                <p>Vous n'avez pas encore de favoris.</p>
+            <% end %>
+          </div>
 
         </div>
       </div>
