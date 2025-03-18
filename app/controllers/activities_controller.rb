@@ -17,7 +17,7 @@ class ActivitiesController < ApplicationController
     @settings = Activity.distinct.pluck(:setting)
     # @max_duration = Activity.distinct.pluck(:max_duration)
     # @minimum_age = Activity.distinct.pluck(:minimum_age)
-    @age_ranges = Activity::AGE_RANGES.key
+    @age_ranges = Activity::AGE_RANGES.keys
 
 
     if params[:query] || params[:setting] || params[:minimum_age]

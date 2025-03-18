@@ -20,7 +20,7 @@ class Activity < ApplicationRecord
   # validates :duration, numericality: { only_integer: true }
 
   AGE_RANGES = {
-    "3-6 ans" => (3..6),
+    "3-6 ans" => (3..5),
     "6-10 ans" => (6..10),
     "+11 ans" => (11..Float::INFINITY)
   }
