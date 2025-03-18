@@ -9,7 +9,7 @@
        <%= link_to toggle_activity_favorites_path(favorite.activity),
                   data: { turbo_method: :post },
                   class: "favorite-btn" do %>
-         <%= render "favorites/favorite", favorite: favorite %>
+         <%= render "favorites/favorite", favorite: favorite, activity: favorite.activity %>
        <% end %>
         </div>
 
