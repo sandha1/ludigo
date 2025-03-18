@@ -1,4 +1,4 @@
-<div id="navbar-position" class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-bottom">
+<div id="navbar-position" class="navbar navbar-expand-sm navbar-lewagon fixed-bottom">
   <div class="container-fluid">
     <div id="navbarSupportedContent">
       <ul class="navbar-nav vw-100 d-flex justify-content-center flex-row">
@@ -6,31 +6,36 @@
         <% if user_signed_in? %>
           <li class="nav-item active">
             <%= link_to root_path, class: "nav-link" do %>
-            <%= image_tag "ludigo.png", class: "navbar-icon" %>
+            <%# <%= image_tag "ludigo.png", class: "navbar-icon" %>
+            <i class="fa-solid fa-house navbar-icon"></i>
             <% end %>
           </li>
 
           <li class="nav-item">
             <%= link_to planning_path, class: "nav-link" do %>
-            <%= image_tag "calendar.png", class: "navbar-icon" %>
+            <i class="fa-solid fa-calendar-days navbar-icon"></i>
+            <%# <%= image_tag "calendar.png", class: "navbar-icon" %>
             <% end %>
           </li>
 
           <li class="nav-item">
             <%= link_to activities_path, class: "nav-link" do %>
-            <%= image_tag "search.png", class: "navbar-icon" %>
+            <i class="fa-solid fa-magnifying-glass navbar-icon"></i>
+            <%# <%= image_tag "search.png", class: "navbar-icon" %>
             <% end %>
           </li>
 
           <li class="nav-item">
             <%= link_to favorites_path, class: "nav-link" do %>
-            <%= image_tag "empty-heart.png", class: "navbar-icon" %>
+            <%# <%= image_tag "empty-heart.png", class: "navbar-icon" %>
+            <i class="fa-solid fa-heart navbar-icon"></i>
             <% end %>
           </li>
 
           <li class="nav-item">
             <%= link_to destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "nav-link" do %>
-            <%= image_tag "user.png", class: "navbar-icon" %>
+            <%# <%= image_tag "user.png", class: "navbar-icon" %>
+            <i class="fa-solid fa-user navbar-icon"></i>
             <% end %>
             <%# <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"> %>
             <%# <%= link_to "Log out", "#", class: "dropdown-item", data: {turbo_method: :delete} %>

@@ -1,7 +1,15 @@
-#navbar-position {
+// #navbar-position
+
   .container-fluid {
     padding-left: 0;
     padding-right: 0;
+  }
+
+  .navbar {
+    background-color: #fff5eb !important;
+    border: none;
+    margin: 0;
+    width: 100%;
   }
 
   .navbar-nav {
@@ -22,5 +30,13 @@
     width: 30px; /* Adjust the size as needed */
     height: auto;
     margin: 0; /* Ensure no margin */
-  }
+    color: #f00000;
+    font-size: 30px;
+
+}
+
+.fixed-bottom {
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
