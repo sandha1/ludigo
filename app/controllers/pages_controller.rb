@@ -74,12 +74,14 @@ class PagesController < ApplicationController
   end
 
   def daily_weather
-    if Rails.cache.fetch("daily_weather") == nil
-      GetWeatherJob.perform_now
-    else
-      GetWeatherJob.set(wait_until: Date.today.beginning_of_day + 6.hours).perform_later
-    end
+    record = Weather.for_today
 
-    @daily_weather = Rails.cache.fetch("daily_weather") || []
+    if record
+      @daily_weather = record.data
+    else
+      Weather.delete_all
+      GetWeatherJob.perform_now
+      @daily_weather = Weather.last.data
+    end
   end
 end
