@@ -37,7 +37,6 @@ class ActivitiesController < ApplicationController
       format.turbo_stream
     end
 
-
   def show
     @activity = Activity.find(params[:id])
   end
