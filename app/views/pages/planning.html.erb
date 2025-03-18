@@ -1,4 +1,4 @@
-<h1 class="text-center mt-3"><%= @selected_month %></h1>
+<h1 class="text-center"><%= @selected_month %></h1>
 
 <%= render SimpleCalendar::BusinessWeekCalendar.new(self, number_of_days: 5, attribute: :start_at, end_attribute: :end_at) do |date| %>
   <%= link_to date.day, "/planning?start_date=#{date}", class:"date-circle" %>
@@ -64,7 +64,7 @@
           <h1 id="exampleModalLabel">Ajouter une activité</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-       
+
         <div class="modal-body">
           <% ds = DateTime.parse((slot.start_at).to_s) %>
           <% de = DateTime.parse((slot.end_at).to_s) %>
