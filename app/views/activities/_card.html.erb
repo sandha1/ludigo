@@ -1,0 +1,56 @@
+<div class="card activity-card">
+
+    <!-- Zone indépendante pour le cœur en haut de la carte -->
+  <div class="favorite-container">
+    <%= link_to toggle_activity_favorites_path(activity),
+                data: { turbo_method: :post },
+                id: "favorite_btn_#{activity.id}",
+                class: "favorite-btn" do %>
+      <% if current_user.favorites.exists?(activity: activity) %>
+        <i class="fa-solid fa-heart favorite-btn"></i>
+      <% else %>
+        <i class="fa-regular fa-heart favorite-btn"></i>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="card-body">
+    <!-- Image de l'activité image manuelle -->
+    <div class="image-container">
+      <%= link_to activity_path(activity) do %>
+        <% if activity.photo.attached? %>
+          <%= cl_image_tag activity.photo.key, class: "card-img-top" %>
+        <% else %>
+          <%= image_tag "board-game.png", class: "card-img-top" %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <!-- Nom de l'activité -->
+    <h2 class="title-show"><%= activity.name %></h2>
+
+    <!-- Icônes de l'activité -->
+    <div class="activity-icons d-flex justify-content-center gap-3 mt-3">
+      <div class="circle">
+        <% if activity.setting == "extérieur" %>
+          <i class="fa-solid fa-sun setting-icon activity-icon"></i>
+        <% else %>
+          <i class="fa-solid fa-house-chimney setting-icon activity-icon"></i>
+        <% end %>
+        <%# <%= image_tag activity.image_for_setting, alt: activity.setting, class: "activity-icon" %>
+      </div>
+
+      <div class="circle">
+        <span class="age-icon"><%= activity.formatted_age %></span>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="activity-card-description mt-3">
+      <%= link_to activity_path(activity), class: "text-decoration-none" do %>
+      <p class="card-text"><%= activity.description[0..110] %><strong> ... afficher plus</strong> </p>
+      <% end %>
+    </div>
+
+  </div>
+</div>
