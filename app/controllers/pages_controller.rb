@@ -4,25 +4,6 @@ class PagesController < ApplicationController
   before_action :authenticate_user!
 
   def home
-    # Old api meteo
-    # location_url = "http://dataservice.accuweather.com/locations/v1/search?q=paris&apikey=#{ENV["APIKEY"]}"
-    # location_key = JSON.parse(URI.parse(location_url).read)[0]["Key"]
-
-    # daily_url = "http://dataservice.accuweather.com/forecasts/v1/daily/1day/623?apikey=#{ENV["APIKEY"]}"
-    # @daily_weather = JSON.parse(URI.parse(daily_url).read)["DailyForecasts"][0]["Day"]
-
-    # if @daily_weather["Icon"] < 10
-      # @icon_url = "https://developer.accuweather.com/sites/default/files/0#{@daily_weather["Icon"]}-s.png"
-    # else
-      # @icon_url = "https://developer.accuweather.com/sites/default/files/#{@daily_weather["Icon"]}-s.png"
-    # end
-
-    # @daily_temperature = @daily_weather["Temperature"]
-
-    # New api meteo
-    # url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/paris?unitGroup=us&elements=temp%2Cfeelslike%2Cdescription%2Cicon&include=days&key=CYKUZT69SRDD4TWUXYDCSEMEY&contentType=json"
-    # @daily_weather = JSON.parse(URI.parse(url).read)["days"].first
-
     activities = Activity.all
     @random_activity = activities.sample
 
@@ -79,7 +60,7 @@ class PagesController < ApplicationController
     if record
       @daily_weather = record.data
     else
-      Weather.delete_all
+      # Weather.delete_all
       GetWeatherJob.perform_now
       @daily_weather = Weather.last.data
     end

@@ -21,6 +21,9 @@ class GetWeatherJob < ApplicationJob
         end
 
         Weather.create!(date: Date.today, data: daily_weather)
+
+      else
+        daily_weather = []
       end
 
     rescue StandardError => erreur
