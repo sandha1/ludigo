@@ -60,10 +60,11 @@
   <div class="modal fade" id="<%= dom_id(slot) %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header" style="align-items: start;">
           <h1 id="exampleModalLabel">Ajouter une activité</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+       
         <div class="modal-body">
           <% ds = DateTime.parse((slot.start_at).to_s) %>
           <% de = DateTime.parse((slot.end_at).to_s) %>
