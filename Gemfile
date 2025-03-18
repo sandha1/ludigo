@@ -57,6 +57,7 @@ gem "nokogiri"
 gem "ruby-openai"
 gem 'rails-i18n'
 gem 'devise-i18n'
+gem 'solid_queue'
 
 group :development, :test do
   gem "dotenv-rails"
