@@ -30,7 +30,7 @@
 
           <li class="nav-item">
             <%= link_to destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "nav-link" do %>
-            <%= image_tag "user.png", class: "navbar-icon" %>
+            <i class="fa-solid fa-user"></i>
             <% end %>
             <%# <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"> %>
             <%# <%= link_to "Log out", "#", class: "dropdown-item", data: {turbo_method: :delete} %>
@@ -38,6 +38,7 @@
         <% else %>
           <li class="nav-item">
             <%= link_to "Se connecter", new_user_session_path, class: "nav-link" %>
+            <i class="fa-regular fa-user"></i>
           </li>
         <% end %>
       </ul>
