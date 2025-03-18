@@ -74,21 +74,14 @@ class PagesController < ApplicationController
   end
 
   def daily_weather
-    url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/paris?unitGroup=us&elements=datetimeEpoch%2Ctemp%2Cfeelslike%2Cconditions%2Cdescription%2Cicon&include=days%2Ccurrent&key=#{ENV["WEATHER_KEY"]}&contentType=json"
-    response = JSON.parse(URI.parse(url).read)
+    record = Weather.for_today
 
-    if response["days"].present?
-      @daily_weather = response["days"].map do |day|
-        {
-        "datetime" => Time.at(day["datetimeEpoch"]).to_date.to_s,
-        "temp" => day["temp"],
-        "feelslike" => day["feelslike"],
-        "description" => day["description"],
-        "icon" => day["icon"]
-        }
-      end
+    if record
+      @daily_weather = record.data
     else
-      @daily_weather = []
+      Weather.delete_all
+      GetWeatherJob.perform_now
+      @daily_weather = Weather.last.data
     end
   end
 end
