@@ -20,16 +20,14 @@ class Activity < ApplicationRecord
   # validates :duration, numericality: { only_integer: true }
 
   AGE_RANGES = {
-    "3-6 ans" => (3..5),
-    "6-10 ans" => (6..10),
-    "+11 ans" => (11..Float::INFINITY)
+    "3-5" => (3..5),
+    "6-10" => (6..10),
+    "11-13" => (11..Float::INFINITY)
   }
 
   def self.search_with_filters(results, filters = {})
     results = search_by_name_and_description(filters[:query]) if filters[:query]
     results = results.where(setting: filters[:setting]) if filters[:setting].present?
-    # results = results.where("minimum_age >= ?", filters[:minimum_age]) if filters[:minimum_age].present?
-    # results = results.where("? <= max_duration", filters[:max_duration]) if filters[:max_duration].present?
 
     if filters[:minimum_age].present? && AGE_RANGES.key?(filters[:minimum_age])
       results = results.where(minimum_age: AGE_RANGES[filters[:minimum_age]])
@@ -37,13 +35,6 @@ class Activity < ApplicationRecord
     results
   end
 
-  # def duration_time
-  #   Activity.first.duration.split(' ').third.to_i
-  # end
-
-  # def formatted_duration
-  #   max_duration.positive? ? "#{max_duration} min" : "N/A"
-  # end
 
   def formatted_age
     minimum_age == 0 ? "3+" : minimum_age.to_s + "+"

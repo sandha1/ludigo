@@ -1,0 +1,7 @@
+<%= turbo_stream.update("activities_list") do %>
+  <% if @activities.empty? %>
+    <p class="text-center mt-3">👀 Désolé, il n'y a pas de résultats à votre recherche.</p>
+  <% else %>
+    <%= render partial: 'activities/card', collection: @activities, as: :activity %>
+  <% end %>
+<% end %>

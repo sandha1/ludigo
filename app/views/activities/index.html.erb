@@ -2,9 +2,11 @@
 
   <%= render 'shared/searchbar' %>
 
+  <%#= render @activities %>
   <div class="container mt-4">
     <% if @activities.any? %>
-      <div class="d-flex flex-wrap justify-content-center gap-4 row row-cols-1 row-cols-md-3">
+      <div id="activities_list" class="d-flex flex-wrap justify-content-center gap-4 row row-cols-1 row-cols-md-3">
+
         <% @activities.each do |activity| %>
           <div class="card activity-card">
 
@@ -24,16 +26,7 @@
 
                <div class="card-body">
 
-              <%# <!-- Image de l'activité AI -->
-              <div class="image-container">
-                <%= link_to activity_path(activity) do %>
-                  <%# <% if activity.photo.attached? %>
-                    <%# <%= cl_image_tag activity.photo.key, alt: "AI-generated image of the activity", class: "card-img-top" %>
-                  <%# <% else %>
-                    <%# <%= image_tag "board-game.png", alt: "Default image for activity", class: "card-img-top" %>
-                  <%# <% end %>
-                <%# <% end %>
-              <%# </div> %>
+
 
               <!-- Image de l'activité image manuelle -->
               <div class="image-container">
@@ -84,7 +77,9 @@
         <% end %>
       </div>
     <% else %>
-      <p class="text-center mt-3">👀 Désolé, il n'y a pas de résultats à votre recherche.</p>
+      <div id="activities_list" class="d-flex flex-wrap justify-content-center gap-4 row row-cols-1 row-cols-md-3">
+        <p class="text-center mt-3">👀 Désolé, il n'y a pas de résultats à votre recherche.</p>
+      </div>
     <% end %>
   </div>
 </div>
