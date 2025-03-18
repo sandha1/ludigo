@@ -1,10 +1,10 @@
-<div class="col-sm-8">
 <% if false %>
+<div class="col-sm-8">
   <%= form_with url: activities_path, method: :get, class: "d-flex", data: { turbo_frame: "_top" } do %>
     <%= text_field_tag :query,
           params[:query],
           class: "form-control searchbar",
-          placeholder: "Tape un mot clé..."
+          placeholder: "Taper un mot clé..."
       %>
     <%= submit_tag "Rechercher", name: "", class: "btn-search" %>
   <% end %>
@@ -12,21 +12,27 @@
 
  <%= form_with url: activities_path, method: :get, class: "d-flex", data: { controller: "activities-form" } do %>
 
-    <input type="text" name="query" value="<%= params[:query] %>" class="form-control searchbar" data-action="input->activities-form#updateFilters" placeholder="Tape un mot clé..." />
+    <div>
+      <input type="text" name="query" value="<%= params[:query] %>" class="form-control searchbar" data-action="input->activities-form#updateFilters" placeholder="Taper un mot clé..." />
+    </div>
 
-    <% @settings.to_a.select { |setting| ["intérieur", "extérieur"].include?(setting) }.each do |setting| %>
-      <label for=<%= setting %> data-action="click->activities-form#updateFilters">
-        <%= setting %>
-        <input type="radio" id=<%= setting %> name="setting" value=<%= setting %>>
-      </label>
-    <% end %>
+    <div class="settings">
+      <% @settings.to_a.select { |setting| ["intérieur", "extérieur"].include?(setting) }.each do |setting| %>
+        <label for=<%= setting %> data-action="click->activities-form#updateFilters">
+          <span class="setting-link"><%= setting %></span>
+          <input type="radio" id=<%= setting %> name="setting" value=<%= setting %>>
+        </label>
+      <% end %>
+    </div>
 
-    <% @age_ranges.to_a.select { |age_range| ["3-5", "6-10", "11-13"].include?(age_range) }.each do |age_range| %>
-      <label for=<%= age_range %> data-action="click->activities-form#updateFilters">
-        <%= age_range %> ans
-        <input type="radio" id=<%= age_range %> name="minimum_age" value=<%= age_range %>>
-      </label>
-    <% end %>
+    <div class="minimum_age">
+      <% @age_ranges.to_a.select { |age_range| ["3-5", "6-10", "11-13"].include?(age_range) }.each do |age_range| %>
+        <label for=<%= age_range %> data-action="click->activities-form#updateFilters">
+          <span class="minimum_age-link"><%= age_range %> ans</span>
+          <input type="radio" id=<%= age_range %> name="minimum_age" value=<%= age_range %>>
+        </label>
+      <% end %>
+    </div>
 <% end %>
 
 <% if false %>
