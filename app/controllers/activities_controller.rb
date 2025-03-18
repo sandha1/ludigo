@@ -34,8 +34,8 @@ class ActivitiesController < ApplicationController
     # @activities = @activities.where(minimum_age: params[:minimum_age]) if params[:minimum_age].present?
 
     respond_to do |format|
-      format.html
       format.turbo_stream
+      format.html
     end
 
 

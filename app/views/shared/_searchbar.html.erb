@@ -1,58 +1,23 @@
-<% if false %>
-<div class="col-sm-8">
-  <%= form_with url: activities_path, method: :get, class: "d-flex", data: { turbo_frame: "_top" } do %>
-    <%= text_field_tag :query,
-          params[:query],
-          class: "form-control searchbar",
-          placeholder: "Taper un mot clé..."
-      %>
-    <%= submit_tag "Rechercher", name: "", class: "btn-search" %>
-  <% end %>
-<% end %>
+<%= form_with url: activities_path, method: :get, data: { controller: "activities-form" } do %>
+  <div class="col-sm-8">
+    <input type="text" name="query" value="<%= params[:query] %>" class="form-control searchbar" data-action="input->activities-form#updateFilters" placeholder="Taper un mot clé..." />
+  </div>
 
- <%= form_with url: activities_path, method: :get, data: { controller: "activities-form" } do %>
-
-    <div class="col-sm-8">
-      <input type="text" name="query" value="<%= params[:query] %>" class="form-control searchbar" data-action="input->activities-form#updateFilters" placeholder="Taper un mot clé..." />
-    </div>
-
-    <div class="settings">
-      <% @settings.to_a.select { |setting| ["intérieur", "extérieur"].include?(setting) }.each do |setting| %>
-        <label for=<%= setting %> data-action="click->activities-form#updateFilters">
-          <span class="setting-link"><%= setting %></span>
-          <input type="radio" id=<%= setting %> name="setting" value=<%= setting %>>
-        </label>
-      <% end %>
-    </div>
-
-    <div class="minimum_age">
-      <% @age_ranges.to_a.select { |age_range| ["3-5", "6-10", "11-13"].include?(age_range) }.each do |age_range| %>
-        <label for=<%= age_range %> data-action="click->activities-form#updateFilters">
-          <span class="minimum_age-link"><%= age_range %> ans</span>
-          <input type="radio" id=<%= age_range %> name="minimum_age" value=<%= age_range %>>
-        </label>
-      <% end %>
-    </div>
-<% end %>
-
-<% if false %>
-  <div class="settings">
+  <div class="settings" data-controller="filter">
     <% @settings.to_a.select { |setting| ["intérieur", "extérieur"].include?(setting) }.each do |setting| %>
-      <%= link_to setting.titleize, activities_path(request.query_parameters.merge(setting: setting)), class: "setting-link", data: { turbo_stream: true } %>
-      <%# <%= link_to setting.titleize, activities_path(setting: setting), class: "setting-link" %>
+      <label for=<%= setting %> data-action="change->activities-form#updateFilters" class="label-filter">
+        <span><%= setting %></span>
+        <input type="checkbox" id=<%= setting %> name="setting" value=<%= setting %> data-filter-target="input" data-action="change->filter#check">
+      </label>
     <% end %>
-
-  <div class="minimum_age">
-    <% @age_ranges.to_a.each do |label, range| %>
-    <%# <%= link_to label, activities_path(minimum_age: label), class: "minimum_age-link" %>
-      <%= link_to label, activities_path(request.query_parameters.merge(minimum_age: label)), class: "minimum_age-link", data: { turbo_stream: true } %>
-  <% end %>
   </div>
 
+  <div class="minimum_age" data-controller="filter">
+    <% @age_ranges.to_a.select { |age_range| ["3-5", "6-10", "11-13"].include?(age_range) }.each do |age_range| %>
+      <label for=<%= age_range %> data-action="change->activities-form#updateFilters" class="label-filter">
+        <span><%= age_range %> ans</span>
+        <input type="checkbox" id=<%= age_range %> name="minimum_age" value=<%= age_range %> data-filter-target="input" data-action="change->filter#check">
+      </label>
+    <% end %>
   </div>
 <% end %>
-</div>
-
-
-<%# faire un turbo pour garder en mémoire un des filtres et ajouter un autre%>
-<%# mettre tout dans un form, fair appel de l'action controller en javascript %>

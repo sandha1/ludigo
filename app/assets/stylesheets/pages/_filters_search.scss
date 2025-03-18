@@ -2,7 +2,7 @@
   margin-top: 10px;
 }
 
-.setting-link {
+.label-filter {
   display: inline-block;
   background-color: #c30e0e;
   color: #FFECC8;
@@ -10,30 +10,37 @@
   margin: 5px;
   border-radius: 15px;
   text-decoration: none;
+
+  &:has(input:checked) {
+    background-color: #e0e0e0;
+    color: #3a0ca3;
+  }
 }
 
-.setting-link:hover {
-  background-color: #e0e0e0;
-}
+// .setting-link:hover {
+//   background-color: #e0e0e0;
+// }
 
 // .minimum_age {
 //   margin-top: 10px;
 // }
 
-.minimum_age-link {
-  display: inline-block;
-  background-color: #c30e0e;
-  color: #FFECC8;
-  padding: 5px 10px;
-  margin: 5px;
-  border-radius: 15px;
-  text-decoration: none;
-}
+// .minimum_age-link {
+//   display: inline-block;
+//   background-color: #c30e0e;
+//   color: #FFECC8;
+//   padding: 5px 10px;
+//   margin: 5px;
+//   border-radius: 15px;
+//   text-decoration: none;
+// }
 
-.minimum_age-link:hover {
-  background-color: #e0e0e0;
-}
 
-input[type="radio"] {
+
+// .minimum_age-link:hover {
+//   background-color: #e0e0e0;
+// }
+
+input[type="checkbox"] {
   display: none;
 }
