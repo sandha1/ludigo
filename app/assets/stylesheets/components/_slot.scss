@@ -1,10 +1,10 @@
-.slot-empty {
-  background-color: #ffeaae;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  border-radius: 8px;
-  color: #3a0ca3;
-  width: 250px;
-}
+// .slot-empty {
+//   background-color: #ffeaae;
+//   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+//   border-radius: 8px;
+//   color: #3a0ca3;
+//   width: 250px;
+// }
 
 .slot-full {
   background-color: #ffd000;
@@ -13,4 +13,21 @@
   color: #003049;
   width: 250px;
   font-weight: bold;
+}
+
+.slot-empty {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #ffd000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 32px;
+  color: #3a0ca3;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  margin-top: -5px;
+  flex-direction: column;
+  line-height: 1.2
 }
