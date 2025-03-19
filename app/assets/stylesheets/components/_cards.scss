@@ -2,23 +2,27 @@
   background-color: #ffd000;
   border-radius: 8px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  margin-bottom: 15px;
   border: none;
   position: relative;
-  padding: 5px;
-  margin-left: 3px;
-  margin-right: 3px;
+  overflow: hidden;
+}
+
+.container-activity-card {
   width: 100%;
   max-width: 350px;
-  height: auto;
+  max-height: 450px;
+  margin-left: 3px;
+  margin-right: 3px;
+  margin-bottom: 15px;
 }
 
 .activity-card-description {
-  background-color: #ffeaae;
-  margin-bottom: 5px;
-  margin-top: 5px;
+  // background-color: #ffeaae;
+  // margin-bottom: 5px;
+  // margin-top: 5px;
   padding: 5px;
   border-radius: 8px;
+  text-align: center;
 }
 
 .activity-card-show {
@@ -48,30 +52,33 @@
 }
 
 .card-img-top{
-  width: 90%;
-  height: 150px;
+  width: 100%;
+  height: 180px;
   object-fit: cover;
-  border-radius: 8px;
-  padding-top: 10px;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
+  padding: 0;
+  margin: 0;
+  display: block;
+  object-position: top;
 }
 
 .title {
   font-size: 30px;
   font-weight: bold;
-  text-align: center;
-  margin-top: 20px;
+  margin-top: 30px;
   color: #3a0ca3;
   font-weight: bold;
   font-family: 'Borel', serif;
+  line-height: 1,2;
+  margin-left: 0;
+  padding: 0;
+  margin-left: 0;
+  flex-grow: 1;
 }
 
 .image-container {
-  position: relative;
+  padding: 0;
+  margin: 0;
+  border: none;
 }
 
 .favorite-container {
@@ -83,21 +90,23 @@
 
 .favorite-btn {
   padding: 0px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 24px;
+  border: solid 2px #f00000;
+  background-color: #fff5eb;
+  border-radius: 50%;
+  font-size: 30px;
   color: #f00000;
   position: absolute;
+  padding: 15px;
   right: 1px;
   top: 1px;
 }
 
 .favorite-btn-show {
   padding: 5px;
-  background-color: transparent;
+  border: solid 2px #f00000;
+  background-color: #fff5eb;
+  border-radius: 50%;
   border: none;
-  cursor: pointer;
   font-size: 40px;
   color: #f00000;
   position: absolute;
@@ -106,26 +115,13 @@
 }
 
 .circle {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background-color: #fff5eb;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  font-size: 11px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-top: -5px;
-  border: solid 2px #f00000;
-  flex-direction: column;
-  line-height: 1.2
-}
-
-.activity-icon {
-  width: 40px !important;
-  height: 40px !important;
-  object-fit: cover;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  margin: 0;
 }
 
 .duration-container {
@@ -141,29 +137,43 @@
   align-items: center;
 }
 
-.setting-icon {
-  font-size: 30px;
+.d-flex {
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
-  padding-top: 5px;
+  gap: 10px;
+}
+
+.activity-icons {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+
+}
+
+.setting-icon {
+  font-size: 22px;
   color: #f00000;
-  text-align: center;
+  line-height: 1;
 }
 
 .age-icon {
-  font-size: 20px;
-  align-items: center;
+  font-size: 22px;
   color: #f00000;
-  text-align: center;
   font-weight: bold;
   line-height: 0.8;
 }
 
 .title-show {
-  font-size: 35px;
+  font-size: 30px;
   font-weight: bold;
-  text-align: center;
-  margin-top: 40px;
+  margin-top: 30px;
   color: #3a0ca3;
   font-weight: bold;
   font-family: 'Borel', serif;
+  line-height: 1,2;
+  margin-left: 0;
+  padding: 0;
+  margin-left: 0;
+  flex-grow: 1;
 }
