@@ -14,13 +14,13 @@
       </div>
   </div>
 
-    <%= form_with url: activities_path, method: :get, class: "d-flex", data: { turbo_frame: "_top" } do %>
+    <%= form_with url: activities_path, method: :get, class: "d-flex align-items-center", data: { turbo_frame: "_top" } do %>
       <%= text_field_tag :query,
-            params[:query],
-            class: "form-control searchbar",
-            placeholder: "Chercher une activité..."
-        %>
-      <%= submit_tag "Rechercher", name: "", class: "btn-search" %>
+        params[:query],
+        class: "form-control searchbar",
+        placeholder: "Chercher une activité..."
+      %>
+      <%= submit_tag "Rechercher", name: "", class: "btn-search ms-2" %>
     <% end %>
 
     <div class="inspiration">
