@@ -19,7 +19,6 @@ export default class extends Controller {
     }
 
     const finalUrl = url + paramsArray.join('&')
-    console.log(finalUrl)
     fetch(finalUrl, {
       method: 'GET',
       headers: {
@@ -34,8 +33,3 @@ export default class extends Controller {
     })
   }
 }
-
-// EN RUBY
-// formData.entries().each do |pair|
-//   paramsArray << pair.join('=')
-// end
