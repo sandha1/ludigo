@@ -60,7 +60,6 @@ class PagesController < ApplicationController
     if record
       @daily_weather = record.data
     else
-      # Weather.delete_all
       GetWeatherJob.perform_now
       @daily_weather = Weather.last.data
     end
