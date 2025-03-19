@@ -1,6 +1,6 @@
-<div class="container home-container mt-3">
+<div class="container home-container">
 
-  <div class= "topbar row">
+  <div class= "topbar row mt-3">
     <div class= "logo col-2" >
       <%= render 'shared/topbar' %>
     </div>
@@ -93,7 +93,7 @@
 
             <div class="col-12">
               <% if slot.activity.nil? %>
-                <p>Pas d'activité prévue
+                <p class="no-activity">Pas d'activité prévue
                   <%= link_to planning_path, class: "add-activity" do %>
                     <span class="fa-stack" style="display: inline-flex; align-items: center; vertical-align: middle;">
                       <i class="fa-solid fa-circle fa-stack-2x"></i>
@@ -102,7 +102,7 @@
                   <% end %></p>
 
               <% else %>
-                <p><strong><%= link_to slot.activity.name, activity_path(slot.activity), class: "activity" %></strong></p>
+                <p><strong><%= link_to slot.activity.name, activity_path(slot.activity), class: "activity mt-2 d-inline-block" %></strong></p>
               <% end %>
             </div>
 
