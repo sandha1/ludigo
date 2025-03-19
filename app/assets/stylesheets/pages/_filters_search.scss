@@ -16,10 +16,10 @@
     color: #3a0ca3;
   }
 
-  &:has(input:not(:checked)) {
-    background-color: #c30e0e;
-    color: #FFECC8;
-  }
+  // &:has(input:not(:checked)) {
+  //   background-color: #c30e0e;
+  //   color: #FFECC8;
+  // }
 }
 
 // .setting-link:hover {

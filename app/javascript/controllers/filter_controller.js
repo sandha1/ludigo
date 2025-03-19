@@ -6,9 +6,9 @@ export default class extends Controller {
 
   check(e) {
     this.inputTargets.forEach(input => {
-      input.checked = false
+      if (input !== e.currentTarget) {
+        input.checked = false
+      }
     });
-
-    e.currentTarget.checked = !e.currentTarget.checked
   }
 }
