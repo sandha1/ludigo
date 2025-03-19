@@ -100,6 +100,30 @@
   margin-top: 2px;
 }
 
+
+// .position-topbar {
+//   display: inline-block;
+//   vertical-align: middle
+// }
+
+// .container-topbar {
+//   display: flex;
+//   align-items: bottom;
+//   justify-content: bottom;
+// }
+
+.topbar {
+  // display: flex;
+  // flex-wrap: wrap;
+  // padding: 0px;
+}
+
+.bonjour-user {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
 // .home-container {
 //   margin-top: 1rem !important;
 //   min-height: 100vh;

@@ -1,13 +1,17 @@
 <div class="container home-container mt-3">
 
-  <div class= >
+  <div class= "topbar row">
+    <div class= "logo col-2" >
+      <%= render 'shared/topbar' %>
+    </div>
 
-    <%= render 'shared/topbar' %>
-   <h1>Bonjour
-      <% if user_signed_in? %>
-        <span class="text-center mb-5"><%= current_user.email.split("@")[0] %></span>
-      <% end %>
-    </h1>
+      <div class= "bonjour-user col-10">
+        <h3>Bonjour
+          <% if user_signed_in? %>
+            <span class="text-center mb-5"><%= current_user.email.split("@")[0] %></span>
+          <% end %>
+        </h3>
+      </div>
   </div>
 
     <%= form_with url: activities_path, method: :get, class: "d-flex", data: { turbo_frame: "_top" } do %>
