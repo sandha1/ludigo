@@ -16,16 +16,16 @@ class GetWeatherJob < ApplicationJob
         today = Date.today
 
         daily_weather = response["days"]
-                          .select { |day| Time.at(day["datetimeEpoch"]).utc.to_date >= today }
-                          .map do |day|
+        .select { |day| Time.at(day["datetimeEpoch"]).utc.to_date >= today }
+        .map do |day|
           {
-            "datetime" => Time.at(day["datetimeEpoch"]).utc.to_date.to_s,
-            "temp" => day["temp"],
-            "feelslike" => day["feelslike"],
-            "description" => day["description"].empty? ? "Pas de description disponible" : day["description"],
-            "icon" => day["icon"]
+          "datetime" => Time.at(day["datetimeEpoch"]).utc.to_date.to_s,
+          "temp" => day["temp"],
+          "feelslike" => day["feelslike"],
+          "description" => day["description"].empty? ? "Pas de description disponible" : day["description"],
+          "icon" => day["icon"]
           }
-        end
+          end
 
         Weather.create!(date: Date.today, data: daily_weather)
 
