@@ -41,7 +41,7 @@
 
   <div class="activity-card-show-description">
     <h5 class="title text-start">Matériel</h5>
-    <% if @activity.material = "néant" %>
+    <% if @activity.material == "Néant" %>
         <p class="card-text">Aucun matériel nécessaire</p>
     <% else %>
       <p class="card-text"><%= @activity.material %></p>
