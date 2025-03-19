@@ -23,6 +23,7 @@ class ActivitiesController < ApplicationController
     end
 
 
+
     # if params[:query].present?
     #   @activities = @activities.search_by_name_and_description(params[:query])
     # end
@@ -33,8 +34,8 @@ class ActivitiesController < ApplicationController
     # @activities = @activities.where(minimum_age: params[:minimum_age]) if params[:minimum_age].present?
 
     respond_to do |format|
-      format.html
       format.turbo_stream
+      format.html
     end
 
   def show
