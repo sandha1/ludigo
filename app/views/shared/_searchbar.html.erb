@@ -1,6 +1,6 @@
 <%= form_with url: activities_path, method: :get, data: { controller: "activities-form" } do %>
   <div class="col-sm-8">
-    <input type="text" name="query" value="<%= params[:query] %>" class="form-control searchbar" data-action="input->activities-form#updateFilters" placeholder="Taper un mot clé..." />
+    <input type="text" name="query" value="<%= params[:query] %>" class="form-control searchbar" data-action="input->activities-form#updateFilters" placeholder="Chercher une activité..." />
   </div>
 
   <div class="settings" data-controller="filter">
