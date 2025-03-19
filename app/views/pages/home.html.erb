@@ -1,4 +1,10 @@
   <div class="container home-container mt-3">
+ 
+   <h1>Bonjour
+      <% if user_signed_in? %>
+        <span class="text-center mb-5"><%= current_user.email.split("@")[0] %></span>
+      <% end %>
+    </h1>
 
     <%= form_with url: activities_path, method: :get, class: "d-flex", data: { turbo_frame: "_top" } do %>
       <%= text_field_tag :query,
@@ -10,11 +16,6 @@
     <% end %>
 
     <div class="inspiration">
-      <h1>Bonjour
-        <% if user_signed_in? %>
-          <span class="text-center mb-5"><%= current_user.email.split("@")[0] %></span>
-        <% end %>
-      </h1>
 
       <div class="inspiration-card">
           <div class="d-flex justify-content-between">
