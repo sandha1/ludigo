@@ -8,7 +8,7 @@
       <div class= "bonjour-user col-10">
         <h3>Bonjour
           <% if user_signed_in? %>
-            <span class="text-center mb-5"><%= current_user.email.split("@")[0] %></span>
+            <span class="text-center mb-5"><%= current_user.email.split("@")[0].capitalize %></span>
           <% end %>
         </h3>
       </div>
@@ -27,7 +27,7 @@
 
       <div class="inspiration-card">
           <div class="d-flex justify-content-between">
-            <h3><%= @random_activity.name %></h3>
+            <h3><%= @random_activity.name.capitalize %></h3>
             <%= image_tag "inspiration.png", class:"home-icon" %>
           </div>
           <div>

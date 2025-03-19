@@ -90,7 +90,7 @@
                 <% @favorites.each do |favorite| %>
                   <div class="activity-card">
 
-                    <h2 class="title"><%= favorite.activity.name %><h2>
+                    <h2 class="title"><%= favorite.activity.name.capitalize %><h2>
 
                     <div class="favorite-container">
                       <%= link_to slot_path(slot, activity_id: favorite.activity.id), data: { turbo_method: :patch } do %>
