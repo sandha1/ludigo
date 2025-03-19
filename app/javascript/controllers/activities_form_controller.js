@@ -28,6 +28,7 @@ export default class extends Controller {
         'Content-Type': 'application/json'
       }
     }).then((response) => {
+      console.log(response)
       return response.text().then((response) => {
         Turbo.renderStreamMessage(response)
       })

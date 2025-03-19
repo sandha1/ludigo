@@ -29,13 +29,12 @@
   background-color: #ffd000;
   border-radius: 8px;
   margin-bottom: 15px;
-  margin-top: -10px;
   border: none;
-  position: relative;
-  padding: 15px;
+  // position: relative;
+  // padding: 15px;
   margin-left: 3px;
   margin-right: 3px;
-  height: auto;
+  max-height: 850px;
 }
 
 .activity-card-show-description {
@@ -75,6 +74,18 @@
   flex-grow: 1;
 }
 
+.title-show {
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 20px;
+  padding-top: 30px;
+  color: #3a0ca3;
+  font-weight: bold;
+  font-family: 'Borel', serif;
+  line-height: 0;
+  flex-grow: 1;
+}
+
 .image-container {
   padding: 0;
   margin: 0;
@@ -110,8 +121,9 @@
   font-size: 40px;
   color: #f00000;
   position: absolute;
-  right: 15px;
-  top: 8px;
+  padding: 15px;
+  right: 20px;
+  top: 30px;
 }
 
 .circle {
@@ -148,7 +160,8 @@
   display: flex;
   align-items: center;
   margin-right: 15px;
-
+  margin-bottom: 15px;
+  padding-bottom: 20px;
 }
 
 .setting-icon {
@@ -162,18 +175,4 @@
   color: #f00000;
   font-weight: bold;
   line-height: 0.8;
-}
-
-.title-show {
-  font-size: 30px;
-  font-weight: bold;
-  margin-top: 30px;
-  color: #3a0ca3;
-  font-weight: bold;
-  font-family: 'Borel', serif;
-  line-height: 1,2;
-  margin-left: 0;
-  padding: 0;
-  margin-left: 0;
-  flex-grow: 1;
 }

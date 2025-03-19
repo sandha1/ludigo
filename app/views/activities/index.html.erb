@@ -5,63 +5,7 @@
   <div class="container mt-4">
     <% if @activities.any? %>
       <div id="activities_list" class="d-flex flex-wrap justify-content-center gap-4 row row-cols-1 row-cols-md-3">
-
-        <% @activities.each do |activity| %>
-        <div class="container-activity-card">
-           <div class="card activity-card">
-              <div class="favorite-container">
-                <% favorite = current_user.favorites.find_by(activity: activity) %>
-                <%= link_to toggle_activity_favorites_path(activity),
-                            data: { turbo_method: :post } do %>
-                  <%= render("favorites/favorite", favorite: favorite, activity: activity) %>
-                <% end %>
-              </div>
-
-              <!-- Image de l'activité image manuelle -->
-              <div class="image-container">
-                <%= link_to activity_path(activity) do %>
-                  <% if activity.photo.attached? %>
-                    <%= cl_image_tag activity.photo.key, class: "card-img-top img-fluid" %>
-                  <% else %>
-                    <%= image_tag "board-game.png", class: "card-img-top img-fluid" %>
-                  <% end %>
-                <% end %>
-              </div>
-
-
-              <!-- Zone indépendante pour le cœur en haut de la carte -->
-
-              <div class="card-body">
-                <!-- Nom de l'activité -->
-                <div class="d-flex justify-content-between align-items-center justify-content-center">
-                  <h2 class="title"><%= activity.name %></h2>
-
-                  <div class="activity-icons d-flex gap-3 align-items-center">
-                    <% if activity.setting == "extérieur" %>
-                      <i class="fa-solid fa-sun setting-icon"></i>
-                    <% else %>
-                      <i class="fa-solid fa-house-chimney setting-icon"></i>
-                    <% end %>
-                    <div class="circle">
-                      <span class="age-icon"><%= activity.formatted_age %></span>
-                    </div>
-                  </div>
-                </div>
-
-
-                <!-- Description -->
-                <div class="activity-card-description">
-                <%= link_to activity_path(activity), class: "text-decoration-none" do %>
-                  <p class="card-text"><%= activity.description[0..110] %><strong> ...</strong> </p>
-                  <% end %>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-
-        <% end %>
+        <%= render partial: 'activities/card', collection:  @activities, as: :activity %>
       </div>
     <% else %>
       <div id="activities_list" class="d-flex flex-wrap justify-content-center gap-4 row row-cols-1 row-cols-md-3">
