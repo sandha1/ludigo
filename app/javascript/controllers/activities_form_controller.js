@@ -19,7 +19,6 @@ export default class extends Controller {
     }
 
     const finalUrl = url + paramsArray.join('&')
-    console.log(finalUrl)
     fetch(finalUrl, {
       method: 'GET',
       headers: {
@@ -28,15 +27,9 @@ export default class extends Controller {
         'Content-Type': 'application/json'
       }
     }).then((response) => {
-      console.log(response)
       return response.text().then((response) => {
         Turbo.renderStreamMessage(response)
       })
     })
   }
 }
-
-// EN RUBY
-// formData.entries().each do |pair|
-//   paramsArray << pair.join('=')
-// end
