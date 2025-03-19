@@ -38,7 +38,6 @@ class ActivitiesController < ApplicationController
       format.html
     end
 
-
   def show
     @activity = Activity.find(params[:id])
   end

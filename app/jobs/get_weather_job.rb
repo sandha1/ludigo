@@ -12,7 +12,7 @@ class GetWeatherJob < ApplicationJob
       if response["days"].present?
         daily_weather = response["days"].map do |day|
           {
-          "datetime" => Time.at(day["datetimeEpoch"]).to_date.to_s,
+          "datetime" => Time.at(day["datetimeEpoch"]).utc.to_date.to_s,
           "temp" => day["temp"],
           "feelslike" => day["feelslike"],
           "description" => day["description"],
