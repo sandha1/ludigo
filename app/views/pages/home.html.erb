@@ -27,8 +27,7 @@
             <%= image_tag "inspiration.png", class:"home-icon" %>
           </div>
           <div>
-            <p><%= @random_activity.description[0..110] %>...</p>
-            <p><span><strong><%= link_to "afficher plus", activity_path(@random_activity) %></strong></span></p>
+            <p><%= @random_activity.description[0..110] %>... <strong><%= link_to "voir plus", activity_path(@random_activity) %></strong></p>
           </div>
       </div>
     </div>
@@ -48,7 +47,7 @@
 
           <div class="d-flex flex-column ms-2 justify-content-center">
             <p class="mb-0">10 °C</p>
-            <p class="mb-0">ressenti 8 °C</p>
+            <%# <p class="mb-0">ressenti 8 °C</p> %>
           </div>
         </div>
       <% end %>
@@ -91,7 +90,13 @@
             <div class="col-12">
               <% if slot.activity.nil? %>
                 <p>Pas d'activité prévue
-                  <%= link_to "+", planning_path, class: "add-activity" %></p>
+                  <%= link_to planning_path, class: "add-activity" do %>
+                    <span class="fa-stack" style="display: inline-flex; align-items: center; vertical-align: middle;">
+                      <i class="fa-solid fa-circle fa-stack-2x"></i>
+                      <i class="fa-solid a-solid fa-arrow-up-right-from-square fa-stack-1x fa-inverse" style="color: #ffeaae;"></i>
+                    </span>
+                  <% end %></p>
+
               <% else %>
                 <p><strong><%= link_to slot.activity.name, activity_path(slot.activity), class: "activity" %></strong></p>
               <% end %>
