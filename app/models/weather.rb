@@ -1,7 +1,7 @@
 class Weather < ApplicationRecord
   serialize :data, JSON
-  
+
   def self.for_today
-    find_by(date: Date.today)
+    where(date: Date.today).order(created_at: :desc).first
   end
 end
