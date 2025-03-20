@@ -28,15 +28,24 @@
     <div class="inspiration">
 
       <div class="inspiration-card">
+            <%= link_to activity_path(@random_activity) do %>
           <div class="d-flex justify-content-between text-start">
             <h3><%= @random_activity.name.capitalize %></h3>
             <%= image_tag "inspiration.png", class:"home-icon" %>
           </div>
           <div>
-            <p><%= @random_activity.description[0..110] %>... <strong><%= link_to "voir plus", activity_path(@random_activity) %></strong></p>
+            <p><%= @random_activity.description[0..110] %><strong> ...</strong> </p>
           </div>
+            <% end %>
       </div>
     </div>
+
+
+    <%# <div class="activity-card-description">
+      <%= link_to activity_path(activity), class: "text-decoration-none" do %>
+        <%# <p class="card-text text-start"><%= activity.description[0..110]<strong> ...</strong> </p> %>
+        <%# <% end %>
+      <%# </div> %>
 
     <div class="planning-card">
     <div class="d-flex justify-content-between align-items-center">
