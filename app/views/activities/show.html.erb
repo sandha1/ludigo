@@ -16,16 +16,16 @@
 
     <%= link_to activity_path(@activity) do %>
       <% if @activity.photo.attached? %>
-        <%= cl_image_tag @activity.photo.key, class: "w-100 object-fit-cover position-center h-auto" %>
+        <%= cl_image_tag @activity.photo.key, class: "w-100 object-fit-cover position-center h-auto card-img-top-show" %>
       <% else %>
-        <%= image_tag "board-game.png", class: "w-100 object-fit-cover position-center h-auto" %>
+        <%= image_tag "board-game.png", class: "w-100 object-fit-cover position-center h-auto card-img-top-show" %>
       <% end %>
     <% end %>
 
     <h1 class="title-show"><%= @activity.name %></h1>
 
 
-    <div class="activity-icons d-flex justify-content-center gap-3 mt-3">
+    <div class="activity-icons-show d-flex justify-content-center gap-3 mt-3">
       <div class="circle">
         <% if @activity.setting == "extérieur" %>
           <i class="fa-solid fa-sun setting-icon activity-icon"></i>
