@@ -1,19 +1,21 @@
 class ActivitiesController < ApplicationController
 
   def index
-    @activities = Activity.all
+    @activities = Activity.left_joins(:photo_attachment).order('active_storage_attachments.id ASC')
+
+    # raise
     @settings = Activity.distinct.pluck(:setting)
     @age_ranges = Activity::AGE_RANGES.keys
 
     if params[:query] || params[:setting] || params[:minimum_age]
       @activities = Activity.search_with_filters(@activities, {query: params[:query], setting: params[:setting], minimum_age: params[:minimum_age]})
-      end
     end
 
     respond_to do |format|
       format.turbo_stream
       format.html
     end
+  end
 
   def show
     @activity = Activity.find(params[:id])
