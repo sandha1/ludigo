@@ -50,8 +50,6 @@ class FavoritesController < ApplicationController
     respond_to do |format|
       format.turbo_stream
     end
-
-
   end
 
   def destroy

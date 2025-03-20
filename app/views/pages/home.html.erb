@@ -43,8 +43,8 @@
         <h3 class="date mb-0"><%= I18n.l(Date.today, format: "%A %d %B") %></h3>
       <div class="d-flex flex-column align-items-center me-3">
         <% if @current_weather.present? %>
-        <div><%= image_tag "weather/#{@current_weather["icon"]}.png" %></div>
-        <div><p class="mb-0 mx-2"><%= @temperature_c.round %> °C</p>
+        <div><%= image_tag "weather/#{@current_weather["icon"]}.png", class: "weather-img" %></div>
+        <div><p class="mb-0 mx-2"><strong><%= @temperature_c.round %>°C</strong></p>
             <%# <p class="mb-0 mx-2">ressenti <%= @feel_temperature_c.round °C</p> %>
           </div>
         </div>
