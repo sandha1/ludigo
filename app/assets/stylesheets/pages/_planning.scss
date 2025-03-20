@@ -7,7 +7,7 @@
   }
 
   .start-date {
-    background-color: #FFF5EB;
+    background-color: #d0cef6;
   }
 }
 
@@ -27,6 +27,15 @@
   color: #3a0ca3 !important;
   background-color: #ffd000;
 }
+
+.simple-calendar .today  {
+  background-color: #FFF5EB;
+}
+
+.simple-calendar .today.start-date  {
+  background-color: #d0cef6;
+}
+
 
 .simple-calendar .today .date-circle  {
   background-color: #c30e0e;
