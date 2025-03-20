@@ -16,8 +16,6 @@ class Activity < ApplicationRecord
   validates :name, presence: true, uniqueness: { case_sensitive: true }
   validates :description, presence: true
   validates :setting, presence: true
-  # validates :minimum_age, numericality: { only_integer: true }
-  # validates :duration, numericality: { only_integer: true }
 
   AGE_RANGES = {
     "3-5" => (3..5),
@@ -35,17 +33,7 @@ class Activity < ApplicationRecord
     results
   end
 
-
   def formatted_age
     minimum_age == 0 ? "3+" : minimum_age.to_s + "+"
   end
-
-  # def image_for_setting
-  #     # if setting == "extérieur"
-  #     #   "icons/soleil.png"
-  #     # else
-  #     #   "icons/maison.png"
-  #     # end
-  # end
-
 end
