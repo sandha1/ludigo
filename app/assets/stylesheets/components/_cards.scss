@@ -24,7 +24,7 @@
 .favorite-header {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Répartit correctement les éléments */
+  justify-content: space-between;
   width: 100%;
   margin-bottom: 15px;
 }
@@ -74,9 +74,9 @@
 .activity-card-show-description {
   background-color: #ffeaae;
   margin-bottom: 15px;
-  margin-top: 5px;
+  margin-top: 8px;
   padding: 8px;
-  padding-top: 1px;
+  padding-top: 10px;
   border-radius: 8px;
 }
 
@@ -117,7 +117,7 @@
   font-size: 30px;
   font-weight: bold;
   margin-top: 20px;
-  padding-top: 30px;
+  padding-top: 10px;
   color: #3a0ca3;
   font-weight: bold;
   font-family: 'Borel', serif;
@@ -164,10 +164,6 @@
   top: 30px;
 }
 
-// .d-flex {
-//   display: flex;
-//   margin-top: 2px;
-// }
 
 .activity-icons {
   display: flex;
