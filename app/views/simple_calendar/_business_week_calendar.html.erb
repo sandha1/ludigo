@@ -4,9 +4,9 @@
       <%= t('simple_calendar.week', default: '') %>
     </span>
 
-    <div class="d-flex justify-content-between fs-4">
+    <div class="d-flex justify-content-between fs-4 mb-2">
       <%= link_to t('simple_calendar.previous', default: '<<'), calendar.url_for_previous_view, class:"text-decoration-none ms-2" %>
-      <%= link_to t('simple_calendar.today', default: 'Aujourd\'hui'), calendar.url_for_today_view, class:"text-decoration-none" %>
+      <%= link_to t('simple_calendar.today', default: 'Aujourd\'hui'), calendar.url_for_today_view, class:"text-decoration-none link-today" %>
       <%= link_to t('simple_calendar.next', default: '>>'), planning_path(start_date: date_range.first + 1.week), class:"text-decoration-none me-2" %>
     </div>
   </div>
