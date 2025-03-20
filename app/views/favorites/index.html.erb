@@ -3,38 +3,42 @@
 
    <div class="d-grid">
   <% @favorites.each do |favorite| %>
-    <div class="favorite-card container-favorite-card d-flex flex-column" id="<%= dom_id(favorite) %>">
+    <div class="favorite-card container-favorite-card" id="<%= dom_id(favorite) %>">
+      <h2 class="title mb-0 text-start" style="width: 82%;"><%= favorite.activity.name.capitalize %></h2>
 
       <!-- Icône de cœur en haut -->
-      <div class="favorite-header d-flex justify-content-end">
+      <div class="favorite-header d-flex">
         <div class="favorite-container">
           <%= link_to toggle_activity_favorites_path(favorite.activity),
                       data: { turbo_method: :post } do %>
             <%= render "favorites/favorite", favorite: favorite, activity: favorite.activity %>
           <% end %>
         </div>
+
+        <div class="d-flex align-items-center w-100">
+
+          <div class="activity-icons-favorite d-flex gap-3 align-items-center">
+            <% if favorite.activity.setting == "extérieur" %>
+              <i class="fa-solid fa-sun setting-icon"></i>
+            <% else %>
+              <i class="fa-solid fa-house-chimney setting-icon"></i>
+            <% end %>
+            <div class="circle">
+              <span class="age-icon"><%= favorite.activity.formatted_age %></span>
+            </div>
+          </div>
+        </div>
+
+
+
       </div>
 
       <!-- Contenu principal (nom + icônes) -->
-      <div class="d-flex align-items-center">
-        <h2 class="title mb-0"><%= favorite.activity.name.capitalize %></h2>
-
-        <div class="activity-icons-favorite d-flex gap-2 align-items-center">
-          <% if favorite.activity.setting == "extérieur" %>
-            <i class="fa-solid fa-sun setting-icon"></i>
-          <% else %>
-            <i class="fa-solid fa-house-chimney setting-icon"></i>
-          <% end %>
-          <div class="circle">
-            <span class="age-icon"><%= favorite.activity.formatted_age %></span>
-          </div>
-        </div>
-      </div>
 
       <!-- Description qui prend l'espace disponible -->
       <div class="activity-card-description flex-grow-1 d-flex align-items-end">
         <%= link_to activity_path(favorite.activity), class: "text-decoration-none" do %>
-          <p class="card-text">
+          <p class="card-text text-start">
             <%= favorite.activity.description[0..200] %> <strong>...</strong>
           </p>
         <% end %>

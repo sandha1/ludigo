@@ -1,18 +1,20 @@
 <div class="container home-container">
 
-  <div class= "topbar row mt-3">
-    <div class= "logo col-2" >
-      <%= render 'shared/topbar' %>
-    </div>
+  <div class="topbar row mt-3 d-flex align-items-center">
 
-      <div class= "bonjour-user col-10">
-        <h3>Bonjour
+  <div class="logo col-auto">
+    <%= render 'shared/topbar' %>
+  </div>
+
+      <div class="bonjour-user col">
+        <h3 class="mb-1">Bonjour
           <% if user_signed_in? %>
-            <span class="text-center mb-5"><%= current_user.email.split("@")[0].capitalize %></span>
+            <span class="text-center"><%= current_user.email.split("@")[0].capitalize %></span>
           <% end %>
         </h3>
       </div>
-  </div>
+    </div>
+
 
     <%= form_with url: activities_path, method: :get, class: "d-flex align-items-center search-container", data: { turbo_frame: "_top" } do %>
       <%= text_field_tag :query,
@@ -26,7 +28,7 @@
     <div class="inspiration">
 
       <div class="inspiration-card">
-          <div class="d-flex justify-content-between">
+          <div class="d-flex justify-content-between text-start">
             <h3><%= @random_activity.name.capitalize %></h3>
             <%= image_tag "inspiration.png", class:"home-icon" %>
           </div>
