@@ -2,25 +2,32 @@
   td {
     vertical-align: middle;
     text-align: center;
+    background-color: #FFF5EB;
+    box-shadow: none !important;
   }
 
   .start-date {
-    background-color: #FFECC8;
+    background-color: #FFF5EB;
   }
 }
 
 .date-circle {
   display: inline-block;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
   text-align: center;
   border-radius: 50%;
   background-color: #3a0ca3;
-  color: #FFECC8;
+  color: #FFF5EB;
   text-decoration: none;
 }
 
 .simple-calendar table th {
   color: #3a0ca3 !important;
+  background-color: #ffd000;
+}
+
+.simple-calendar .today .date-circle  {
+  background-color: #c30e0e;
 }

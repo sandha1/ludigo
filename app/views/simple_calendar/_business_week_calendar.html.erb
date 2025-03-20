@@ -4,7 +4,7 @@
       <%= t('simple_calendar.week', default: '') %>
     </span>
 
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between fs-4">
       <%= link_to t('simple_calendar.previous', default: '<<'), calendar.url_for_previous_view, class:"text-decoration-none ms-2" %>
       <%= link_to t('simple_calendar.today', default: 'Aujourd\'hui'), calendar.url_for_today_view, class:"text-decoration-none" %>
       <%= link_to t('simple_calendar.next', default: '>>'), planning_path(start_date: date_range.first + 1.week), class:"text-decoration-none me-2" %>
@@ -22,7 +22,7 @@
                 <% if daily_weather_data %>
                   <%= image_tag "weather/#{daily_weather_data["icon"]}.png", height:"30px", class:"mb-1" %>
                 <% else %>
-                   <%= image_tag "weather/partly-cloudy-day.png", height: "30px", class: "mb-1", style: "opacity: 0;" %>
+                   <%= image_tag "weather/partly-cloudy-day.png", height: "30px", class: "mb-1", style: "opacity: 0.3;" %>
                 <% end %>
               <% end %>
             </th>
