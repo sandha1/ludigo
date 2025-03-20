@@ -9,10 +9,10 @@
 .inspiration-card {
   background-color: #ffd000;
   margin-bottom: 5px;
-  margin-top: 20px;
+  margin-top: 10px;
   margin-left: 10px;
   margin-right: 10px;
-  padding-top: 10px;
+  padding-top: 20px;
   padding-bottom: 5px;
   padding-left: 10px;
   padding-right: 10px;
@@ -127,7 +127,10 @@
 .bonjour-user {
   display: flex;
   justify-content: center;
-  margin: auto;
+  margin: 0;
+  width: 100%;
+  margin-right: 40px;
+  margin-top: 5px;
 }
 
 // .home-container {

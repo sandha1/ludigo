@@ -21,7 +21,7 @@
     <div class="card-body">
 
       <div class="d-flex justify-content-between align-items-center justify-content-center">
-        <h2 class="title"><%= activity.name.capitalize %></h2>
+        <h2 class="title text-start"><%= activity.name.capitalize %></h2>
 
         <div class="activity-icons d-flex gap-3 align-items-center">
           <% if activity.setting == "extérieur" %>
@@ -37,7 +37,7 @@
 
       <div class="activity-card-description">
       <%= link_to activity_path(activity), class: "text-decoration-none" do %>
-        <p class="card-text"><%= activity.description[0..110] %><strong> ...</strong> </p>
+        <p class="card-text text-start"><%= activity.description[0..110] %><strong> ...</strong> </p>
         <% end %>
       </div>
 
