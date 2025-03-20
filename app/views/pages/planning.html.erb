@@ -85,20 +85,20 @@
               <% end %>
           <% end %>
 
-          <div class="d-grid gap-4 mt-4" style="grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); max-width: 1000px; margin: auto;">
+          <div class="d-grid gap-4" style="grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); max-width: 1000px;">
             <% if @favorites %>
                 <% @favorites.each do |favorite| %>
-                  <div class="activity-card">
+                  <div class="activity-card-modal">
 
-                    <h2 class="title"><%= favorite.activity.name.capitalize %><h2>
+                    <h2 class="title-modal text-start px-2" style="width: 82%;"><%= favorite.activity.name.capitalize %><h2>
 
-                    <div class="favorite-container">
+                    <div class="modal-add-container">
                       <%= link_to slot_path(slot, activity_id: favorite.activity.id), data: { turbo_method: :patch } do %>
-                        <i class="fa-solid fa-plus"></i>
+                        <i class="fa-solid fa-plus modal-btn"></i>
                       <% end %>
                     </div>
 
-                    <div class="activity-icons d-flex justify-content-center gap-3 mt-3 mb-3">
+                    <div class="activity-icons-modal d-flex justify-content-center gap-3 align-items-center">
                       <div class="circle">
                         <% if favorite.activity.setting == "extérieur" %>
                           <i class="fa-solid fa-sun setting-icon activity-icon"></i>
@@ -114,8 +114,8 @@
 
                     <div class="activity-card-description mx-2">
                       <%= link_to activity_path(favorite.activity), class: "text-decoration-none" do %>
-                        <p class="card-text">
-                          <%= favorite.activity.description[0..110] %> <strong>... afficher plus</strong>
+                        <p class="card-text text-start">
+                          <%= favorite.activity.description[0..110] %> <strong>...</strong>
                         </p>
                       <% end %>
                     </div>

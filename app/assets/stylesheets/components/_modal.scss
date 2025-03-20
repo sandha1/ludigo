@@ -1,0 +1,60 @@
+.activity-card-modal {
+  background-color: #ffd000;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  border: none;
+  position: relative;
+  overflow: hidden;
+  // padding-bottom: 8px;
+  padding-top: 15px;
+  padding-left: 10px;
+}
+
+.activity-icons-modal {
+  display: flex;
+  align-items: center;
+  padding-top: 0;
+  margin-right: 10px;
+  margin-top: -10px;
+  margin-bottom: -8px;
+  padding-bottom: 0px;
+}
+
+.modal-add-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  margin-bottom: 10px;
+}
+
+.modal-btn {
+  padding: 0px;
+  border: solid 2px #3a0ca3;
+  background-color: #fff5eb;
+  border-radius: 50%;
+  font-size: 22px;
+  color: #3a0ca3;
+  position: absolute;
+  padding: 10px;
+  right: 8px;
+  top: 8px;
+}
+
+.title-modal {
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 0 !important;
+  color: #3a0ca3;
+  font-weight: bold;
+  font-family: 'Borel', serif;
+  line-height: 1,2;
+  margin-left: 0;
+  padding: 0;
+  padding-bottom: 0 !important;
+  flex-grow: 1;
+}
+
+.modal-body {
+  padding-top: 0;
+}
