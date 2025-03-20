@@ -6,29 +6,29 @@
         <% if user_signed_in? %>
           <li class="nav-item active">
             <%= link_to root_path, class: "nav-link" do %>
-            <%# <%= image_tag "ludigo.png", class: "navbar-icon" %>
-            <i class="fa-solid fa-house navbar-icon"></i>
+            <%= image_tag "simple-house.png", class: "navbar-icon" %>
+            <%# <i class="fa-solid fa-house navbar-icon"></i> %>
             <% end %>
           </li>
 
           <li class="nav-item">
             <%= link_to planning_path, class: "nav-link" do %>
-            <i class="fa-solid fa-calendar-days navbar-icon"></i>
-            <%# <%= image_tag "calendar.png", class: "navbar-icon" %>
+            <%# <i class="fa-solid fa-calendar-days navbar-icon"></i> %>
+            <%= image_tag "calendar.png", class: "navbar-icon" %>
             <% end %>
           </li>
 
           <li class="nav-item">
             <%= link_to activities_path, class: "nav-link" do %>
-            <i class="fa-solid fa-magnifying-glass navbar-icon"></i>
-            <%# <%= image_tag "search.png", class: "navbar-icon" %>
+            <%# <i class="fa-solid fa-magnifying-glass navbar-icon"></i> %>
+            <%= image_tag "search.png", class: "navbar-icon" %>
             <% end %>
           </li>
 
           <li class="nav-item">
             <%= link_to favorites_path, class: "nav-link" do %>
-            <%# <%= image_tag "empty-heart.png", class: "navbar-icon" %>
-            <i class="fa-solid fa-heart navbar-icon"></i>
+            <%= image_tag "heart.png", class: "navbar-icon" %>
+            <%# <i class="fa-solid fa-heart navbar-icon"></i> %>
             <% end %>
           </li>
 

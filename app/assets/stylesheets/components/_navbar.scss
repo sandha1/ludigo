@@ -10,7 +10,10 @@
     border: none;
     margin: 0;
     width: 100%;
-  }
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    // min-height: auto !important;
+    }
 
   .navbar-nav {
     display: flex;
@@ -32,5 +35,4 @@
     margin: 0; /* Ensure no margin */
     color: #c30e0e;
     font-size: 28px;
-
 }
