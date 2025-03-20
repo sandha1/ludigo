@@ -23,12 +23,21 @@
   text-decoration: none;
 }
 
+.link-today {
+  font-weight: 500;
+  text-decoration: underline !important;
+}
+
 .simple-calendar table th {
   color: #3a0ca3 !important;
   background-color: #ffd000;
 }
 
 .simple-calendar .today  {
+  background-color: #FFF5EB;
+}
+
+.simple-calendar .next-month  {
   background-color: #FFF5EB;
 }
 
