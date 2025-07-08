@@ -2,16 +2,15 @@ Rails.application.routes.draw do
   devise_for :users
 
   root to: "pages#home"
-
-  resources :activities, only: [:index]
-  resources :favorites, only: [:index, :destroy]
-  resources :slots, only: [:update]
-
   get "/planning", to: "pages#planning"
-  patch "/slots/reset/:id", to: "slots#reset", as: :reset_slot
-  # patch "/slots/update:id", to: "slots#update", as: :update_slot
 
-  resources :activities, only: [:show] do
+  resources :slots, only: [:update] do
+    member do
+      patch :reset
+    end
+  end
+
+  resources :activities, only: [:index, :show] do
     resources :favorites, only: [:create] do
       collection do
         post :toggle
@@ -19,4 +18,6 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  resources :favorites, only: [:index, :destroy]
 end
