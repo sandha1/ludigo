@@ -5,6 +5,5 @@ class User < ApplicationRecord
   has_many :activities, through: :favorites
   has_many :slots, dependent: :destroy
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-  # validates :username, uniqueness: true
+    :recoverable, :rememberable, :validatable
 end

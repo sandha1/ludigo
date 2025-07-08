@@ -4,12 +4,10 @@
   <%= link_to date.day, "/planning?start_date=#{date}", class:"date-circle" %>
 <% end %>
 
-
 <div class="container">
   <% @slots.each do |slot| %>
 
     <div class="d-flex border justify-content-between py-3 mb-3 px-3 align-items-center">
-
       <div>
         <% ds = DateTime.parse((slot.start_at).to_s) %>
         <% de = DateTime.parse((slot.end_at).to_s) %>
@@ -47,12 +45,8 @@
           </div>
       <% end %>
     </div>
-
   <% end %>
 </div>
-
-
-
 
 
 <!-- Modal -->
@@ -119,8 +113,7 @@
                         </p>
                       <% end %>
                     </div>
-
-                  </div>
+</div>
                 <% end %>
               <% else %>
                 <p>Vous n'avez pas encore de favoris.</p>
