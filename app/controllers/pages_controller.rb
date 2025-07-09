@@ -9,7 +9,6 @@ class PagesController < ApplicationController
 
     current_weather
 
-    slots = Slot.all
     today = Date.today
 
     @today_slots = current_user.slots.where(start_at: today.beginning_of_day..today.end_of_day).order(:start_at)
@@ -26,7 +25,7 @@ class PagesController < ApplicationController
     day_slots = [ selected_date.change({ hour: 8, min: 30 }), selected_date.change({ hour: 10 }), selected_date.change({ hour: 13, min: 30 }), selected_date.change({ hour: 15 })]
 
     if @slots.length < 4
-      incomplete_dates = day_slots -  @slots.pluck(:start_at)
+      incomplete_dates = day_slots - @slots.pluck(:start_at)
 
       incomplete_dates.each do |incomplete_date|
         Slot.create(start_at: incomplete_date, end_at: incomplete_date + 1.hour + 30.minutes, user: current_user)
