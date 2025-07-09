@@ -2,7 +2,6 @@ require 'openai'
 require 'open-uri'
 
 class Activity < ApplicationRecord
-
   include PgSearch::Model
   pg_search_scope :search_by_name_and_description,
   against: [ :name, :description ],
@@ -13,6 +12,7 @@ class Activity < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :slots, dependent: :nullify
   has_one_attached :photo
+
   validates :name, presence: true, uniqueness: { case_sensitive: true }
   validates :description, presence: true
   validates :setting, presence: true
